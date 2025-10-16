@@ -1,125 +1,116 @@
 <!doctype html><html lang="zh-Hant"><head>
 <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="color-scheme" content="light dark"/>
-<title>TeaTea｜可愛 x 性感 主題網站示意</title>
-<meta name="description" content="為 IG 創作者打造的示意頁：動漫入場、手掌遮蓋轉場、可愛x性感配色、粒子亮斑的作品懸停效果與互動背景。"/>
+<title>TeaTea｜可愛 x 性感 系列示意</title>
+<meta name="description" content="示意頁：水滴入場漣漪轉場、可愛小動物背景飄浮、全站滑鼠微光粒子、固定導覽、作品選集（女性風格）。"/>
 <style>
-/* ================== 全域基礎（高對比＋雙主題） ================== */
-*,*::before,*::after{box-sizing:border-box}html,body{height:100%}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.6;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-:root{--bg:#0f1215;--text:#f2f5f8;--muted:#a7b0ba;--card:#12161b;--line:#21262c;--brand:#ff6fa9;--brand-2:#ff9fc7;--accent:#7be9e3;--glow:#ffeef7}
-:root[data-theme="light"]{--bg:#fff7fb;--text:#181a1c;--muted:#555f69;--card:#ffffff;--line:#e8dbe6;--brand:#ff4f98;--brand-2:#ffc1dc;--accent:#47d5cc;--glow:#fff0f8}
+/* ========== 全域（高對比＋雙主題） ========== */
+*,*::before,*::after{box-sizing:border-box}html,body{height:100%}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.6;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+:root{--bg:#0f1215;--text:#f2f5f8;--muted:#a7b0ba;--card:#12161b;--line:#21262c;--brand:#ff6fa9;--brand-2:#ffd3e8;--accent:#7be9e3;--glow:#fff3fa}
+:root[data-theme="light"]{--bg:#fff7fb;--text:#181a1c;--muted:#56606a;--card:#ffffff;--line:#e7dbe7;--brand:#ff4f98;--brand-2:#ffd3e8;--accent:#47d5cc;--glow:#ffeef8}
 .container{max-width:1080px;margin:auto;padding:0 20px}.section{padding:80px 0;border-top:1px solid var(--line)}
 h1,h2,h3{line-height:1.2;margin:0 0 10px}h1{font-size:clamp(30px,4.2vw,48px)}h2{font-size:clamp(24px,3vw,32px)}p{margin:0 0 10px;color:var(--muted)}a{color:var(--brand);text-decoration:none}
-.btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:999px;border:1px solid color-mix(in oklab,var(--brand) 60%,#fff 40%);background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;box-shadow:0 10px 24px rgba(255,111,169,.25);cursor:pointer;transition:transform .18s ease,box-shadow .18s ease}.btn:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(255,111,169,.32)}.btn.ghost{background:transparent;color:var(--brand);border:1px solid var(--brand);box-shadow:none}
-.grid{display:grid;gap:18px}.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
-.card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 10px 26px rgba(0,0,0,.18)}
-/* ================== 頁首（永遠固定） ================== */
-header{position:sticky;top:0;z-index:50;background:rgba(15,18,21,.6);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line)}:root[data-theme="light"] header{background:rgba(255,255,255,.6)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:999px;border:1px solid color-mix(in oklab,var(--brand) 60%,#fff 40%);background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#000;box-shadow:0 10px 24px rgba(255,111,169,.25);cursor:pointer;transition:transform .18s ease,box-shadow .18s ease}.btn:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(255,111,169,.32)}.btn.ghost{background:transparent;color:var(--brand);border:1px solid var(--brand);box-shadow:none}
+.grid{display:grid;gap:18px}.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 10px 26px rgba(0,0,0,.18)}
+/* ========== Header（全程固定） ========== */
+header{position:sticky;top:0;z-index:100;background:rgba(15,18,21,.7);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line)}:root[data-theme="light"] header{background:rgba(255,255,255,.65)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:64px}.brand{display:flex;align-items:center;gap:10px;font-weight:800}
-.logo{width:28px;height:28px;border-radius:8px;background:conic-gradient(from 200deg at 50% 50%,var(--brand),var(--accent),var(--brand-2))}
+.logo{width:28px;height:28px;border-radius:8px;background:conic-gradient(from 200deg,var(--brand),var(--accent),var(--brand-2))}
 .nav-links{display:flex;align-items:center;gap:12px}.theme{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:var(--card);display:grid;place-items:center;cursor:pointer}
-/* ================== 動畫背景（可愛 x 性感） ================== */
-.bg{position:fixed;inset:-10% -10% 0 -10%;z-index:-1;overflow:hidden;background:radial-gradient(1200px 520px at 50% -20%,rgba(255,111,169,.12),transparent 60%),radial-gradient(600px 340px at 10% 30%,rgba(123,233,227,.10),transparent 70%),radial-gradient(600px 340px at 90% 60%,rgba(255,193,220,.15),transparent 70%),linear-gradient(180deg,color-mix(in oklab,var(--bg) 88%,#000 12%),var(--bg))}
-.petal,.heart{position:absolute;opacity:.7;filter:drop-shadow(0 10px 10px rgba(0,0,0,.18))}
-.petal{width:18px;height:10px;background:radial-gradient(10px 6px at 30% 50%,#ffd6ea,transparent 70%),radial-gradient(10px 6px at 70% 50%,#ffd6ea,transparent 70%);border-radius:50px 50px 0 0/60px 60px 0 0;transform:rotate(30deg);animation:float 18s linear infinite}
-.heart{width:16px;height:14px;background:conic-gradient(from 45deg at 50% 50%,#ff7fb3 0 25%,#ff7fb3 25% 50%,transparent 50% 100%);-webkit-mask:radial-gradient(8px 8px at 30% 35%,#000 99%,#0000) top left,radial-gradient(8px 8px at 70% 35%,#000 99%,#0000) top right,linear-gradient(#000 0 0) bottom center;background-size:50% 50%;background-repeat:no-repeat;-webkit-mask-composite:source-over,source-over,source-over;mask-composite:exclude;animation:float 22s linear infinite}
-@keyframes float{from{transform:translateY(0) rotate(0)}to{transform:translateY(-120vh) rotate(360deg)}}
-/* ================== HERO ================== */
+.progress{position:absolute;inset:auto 0 0 0;height:3px;background:linear-gradient(90deg,var(--accent),var(--brand));transform-origin:0 50%;transform:scaleX(0)}
+/* ========== 可愛動物背景（固定在後景） ========== */
+.bg-animals{position:fixed;inset:-10% -10% 0 -10%;z-index:-2;pointer-events:none;overflow:hidden}
+.animal{position:absolute;font-size:28px;opacity:.22;filter:drop-shadow(0 8px 16px rgba(0,0,0,.25));animation:floatUp linear infinite}
+@keyframes floatUp{0%{transform:translateY(0) rotate(0)}100%{transform:translateY(-120vh) rotate(360deg)}}
+/* ========== HERO ========== */
 .hero{position:relative;min-height:78vh;display:grid;place-items:center;padding-top:20px}
 .hero-inner{max-width:940px;text-align:center;padding:40px 20px}
 .tag{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid var(--line);color:var(--muted)}
 .avatar{width:96px;height:96px;border-radius:50%;object-fit:cover;border:2px solid var(--line);box-shadow:0 10px 26px rgba(0,0,0,.18)}
 .kpis{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:12px}.kpi{display:flex;flex-direction:column;align-items:center;background:var(--card);border:1px solid var(--line);padding:10px 14px;border-radius:12px;min-width:120px}
-/* ================== 作品（固定 3-4 張，懸停粒子亮斑） ================== */
-.gallery{margin-top:12px}.grid-works{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+/* ========== 作品（女性圖片，3-4 張） ========== */
+.grid-works{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
 .work{position:relative;overflow:hidden;border-radius:16px;border:1px solid var(--line);background:#000}
 .work img{width:100%;height:280px;object-fit:cover;display:block;transition:filter .25s ease,transform .25s ease}
-.work:hover img{filter:brightness(1.15) saturate(1.25);transform:scale(1.02)}
-.work::after{content:"";position:absolute;inset:0;background:radial-gradient(120px 120px at var(--mx,50%) var(--my,50%),rgba(255,255,255,.36),transparent 60%);mix-blend-mode:screen;opacity:0;transition:opacity .15s ease}.work:hover::after{opacity:1}
+.work:hover img{filter:brightness(1.12) saturate(1.2);transform:scale(1.02)}
 .work .cap{position:absolute;left:10px;bottom:10px;padding:6px 10px;border-radius:12px;background:rgba(0,0,0,.35);color:#fff;font-size:14px}
-/* sparkle 畫布（整區域共用） */
-#sparkle{position:fixed;inset:0;pointer-events:none;mix-blend-mode:screen;opacity:.9}
-/* ================== 區塊：關於與服務 ================== */
+/* ========== 關於 / 服務 ========== */
 .list{display:grid;gap:10px}.list li{display:flex;gap:8px;align-items:flex-start}
 .pills{display:flex;flex-wrap:wrap;gap:8px}.pill{padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.06);color:var(--muted)}
-/* ================== 聯絡 ================== */
 input,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--text)}
-/* ================== 入場動畫（角色走近＋手掌遮蓋轉場） ================== */
-.intro{position:fixed;inset:0;z-index:999;background:radial-gradient(900px 420px at 50% -10%,rgba(255,111,169,.16),transparent 60%),linear-gradient(180deg,color-mix(in oklab,var(--bg) 90%,#000 10%),var(--bg));display:grid;place-items:end center;overflow:hidden}
-.intro.hidden{opacity:0;transition:opacity .4s ease}.intro .skip{position:absolute;right:14px;top:14px;padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--muted);cursor:pointer}
-.chara{position:absolute;bottom:-10vh;left:50%;translate:-50% 0;width:min(48vw,520px);filter:drop-shadow(0 18px 30px rgba(0,0,0,.35)) blur(1px);opacity:0;transform:scale(.6);animation:walk-in 2.2s ease-out .2s forwards,focus-up .8s ease-out 2.4s forwards}
-@keyframes walk-in{0%{opacity:0;transform:translateY(12vh) scale(.6)}70%{opacity:1;transform:translateY(-2vh) scale(.95)}100%{opacity:1;transform:translateY(0) scale(1)}}
-@keyframes focus-up{from{filter:blur(1.2px)}to{filter:blur(0)}}
-.hand{position:absolute;bottom:24vh;left:52%;translate:-50% 0;width:40px;height:40px;border-radius:50%;background:radial-gradient(closest-side,#000,#000);opacity:.85;transform:scale(0);filter:blur(.5px);box-shadow:0 0 0 6px rgba(0,0,0,.25);mix-blend-mode:normal}
-.hand.cover{animation:cover-screen 1.1s ease-out forwards}
-@keyframes cover-screen{0%{transform:scale(0)}70%{transform:scale(60)}100%{transform:scale(140)}}
-.cover-dim{position:absolute;inset:0;background:#000;opacity:0}
-.cover-dim.show{animation:dim .9s ease-in .65s forwards}
-@keyframes dim{from{opacity:0}to{opacity:.96}}
-/* ================== 滾動揭露 ================== */
+/* ========== 入場動畫：水滴→漣漪→淡出 ========== */
+.intro{position:fixed;inset:0;z-index:999;background:radial-gradient(900px 420px at 50% -10%,rgba(255,111,169,.12),transparent 60%),linear-gradient(180deg,color-mix(in oklab,var(--bg) 92%,#000 8%),var(--bg));display:grid;place-items:center;overflow:hidden}
+.intro.hidden{opacity:0;transition:opacity .5s ease}
+#rippleStage{width:min(900px,90vw);height:min(900px,90vw)}
+.drop{fill:#8dd9ff;filter:drop-shadow(0 10px 12px rgba(0,0,0,.35));animation:dropFall 1.2s ease-out forwards}
+@keyframes dropFall{0%{transform:translateY(-70vh) scale(.6);opacity:0}70%{transform:translateY(0) scale(1);opacity:1}100%{transform:translateY(8px) scale(.95)}}
+.ring{fill:none;stroke:#9be7ff;stroke-width:2;opacity:0}
+.ring.r1{animation:ring 1.6s ease-out .9s forwards}.ring.r2{animation:ring 1.8s ease-out 1.1s forwards}.ring.r3{animation:ring 2s ease-out 1.3s forwards}
+@keyframes ring{0%{r:6;opacity:.9;stroke-width:3}100%{r:340;opacity:0;stroke-width:0}}
+.fadeCurtain{position:absolute;inset:0;background:#000;opacity:0}
+.fadeCurtain.show{animation:fadeCover .9s ease-in 1.7s forwards}
+@keyframes fadeCover{from{opacity:0}to{opacity:.96}}
+.skip{position:absolute;right:14px;top:14px;padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--muted);cursor:pointer}
+/* ========== 全站滑鼠微光粒子（細微） ========== */
+#sparkle{position:fixed;inset:0;z-index:40;pointer-events:none;mix-blend-mode:screen;opacity:.85}
+/* ========== 滾動揭露與 RWD ========== */
 .reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s ease}.reveal.show{opacity:1;transform:translateY(0)}
-/* ================== RWD（980/640） ================== */
 @media(max-width:980px){.grid-works{grid-template-columns:repeat(3,minmax(0,1fr))}.grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:640px){.grid-works{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-2,.grid-3{grid-template-columns:1fr}.work img{height:220px}.avatar{width:84px;height:84px}}
-/* 低動效偏好 */
-@media (prefers-reduced-motion: reduce){.petal,.heart,.work img,.work::after,#sparkle,.chara,.hand{animation:none;transition:none}}
+@media(prefers-reduced-motion:reduce){.animal,.work img,#sparkle,.intro *{animation:none;transition:none}}
 </style>
 </head><body>
-<!-- 背景裝飾 -->
-<div class="bg" aria-hidden="true" id="bg"></div>
+<!-- 可愛動物背景 -->
+<div class="bg-animals" id="bgAnimals" aria-hidden="true"></div>
 
 <header>
   <div class="container nav">
     <div class="brand"><span class="logo" aria-hidden="true"></span><span>TeaTea</span></div>
     <nav class="nav-links" aria-label="主選單"><a href="#work">作品</a><a href="#about">關於</a><a href="#services">合作</a><a href="#contact">聯絡</a><button id="theme" class="theme" aria-label="切換主題">🌙</button></nav>
   </div>
+  <div class="progress" id="progress"></div>
 </header>
 
 <main>
-  <!-- ================== HERO ================== -->
+  <!-- HERO -->
   <section class="hero" aria-label="主視覺">
     <div class="hero-inner">
       <!-- ===== REPLACE START：主視覺個資 ===== -->
-      <img class="avatar" src="https://picsum.photos/seed/teatea/240/240" alt="創作者頭像（請替換）"/>
+      <img class="avatar" src="https://images.unsplash.com/photo-1519643381401-22c77e60520e?q=80&w=800&auto=format&fit=crop" alt="創作者頭像（請替換）"/>
       <div class="tag" style="margin-top:10px">IG｜@teatea0317 · 可愛 / 性感 / 寫真</div>
       <h1 style="margin:10px 0 6px">可愛與性感的雙重敘事，<br/>把視覺做成會心動的體驗。</h1>
-      <p>柔和粉調、霓光亮點、輕盈互動——專為你的品牌打造。</p>
+      <p>水滴開場、柔和粉調、全站微光粒子——專為你的品牌打造。</p>
       <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px"><a class="btn" href="#services">合作洽談</a><a class="btn ghost" href="#work">看作品</a><a class="btn ghost" href="https://www.instagram.com/teatea0317" target="_blank" rel="noopener">Instagram</a></div>
-      <!-- ===== REPLACE END：主視覺個資 ===== -->
-      <div class="kpis"><div class="kpi"><strong>動畫入場</strong><span class="muted">動漫角色走近＋手掌轉場</span></div><div class="kpi"><strong>粒子亮斑</strong><span class="muted">作品懸停光亮與火花</span></div><div class="kpi"><strong>RWD</strong><span class="muted">行動裝置優化</span></div></div>
+      <!-- ===== REPLACE END ===== -->
+      <div class="kpis"><div class="kpi"><strong>水滴漣漪</strong><span class="muted">入場轉場</span></div><div class="kpi"><strong>可愛動物</strong><span class="muted">背景飄浮</span></div><div class="kpi"><strong>微光粒子</strong><span class="muted">全站滑鼠</span></div></div>
     </div>
   </section>
 
-  <!-- ================== 作品（3–4張） ================== -->
-  <section class="section gallery" id="work">
+  <!-- 作品（女性圖片） -->
+  <section class="section" id="work">
     <div class="container">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px"><h2 class="reveal">作品選集</h2><div class="pills"><span class="pill">性感寫真</span><span class="pill">可愛日常</span><span class="pill">品牌合作</span></div></div>
       <div class="grid-works">
-        <!-- ===== REPLACE START：4張作品（建議 1600px 寬） ===== -->
-        <figure class="work reveal"><img src="https://images.unsplash.com/photo-1530639834082-05bafb67fbbe?q=80&w=1600&auto=format&fit=crop" alt="作品1"/><figcaption class="cap">Glow · 私房系列</figcaption></figure>
-        <figure class="work reveal"><img src="https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?q=80&w=1600&auto=format&fit=crop" alt="作品2"/><figcaption class="cap">Soft Pink · 可愛系</figcaption></figure>
-        <figure class="work reveal"><img src="https://images.unsplash.com/photo-1616530940355-351fabd9524b?q=80&w=1600&auto=format&fit=crop" alt="作品3"/><figcaption class="cap">Neon Kiss · 霓虹感</figcaption></figure>
-        <figure class="work reveal"><img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1600&auto=format&fit=crop" alt="作品4"/><figcaption class="cap">Vintage Film · 胶片</figcaption></figure>
-        <!-- ===== REPLACE END：作品 ===== -->
+        <!-- ===== REPLACE START：女性圖片（建議 1600px 寬） ===== -->
+        <figure class="work reveal"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1600&auto=format&fit=crop" alt="女性作品1"/><figcaption class="cap">Glow · 私房系列</figcaption></figure>
+        <figure class="work reveal"><img src="https://images.unsplash.com/photo-1554151228-14d9def656e4?q=80&w=1600&auto=format&fit=crop" alt="女性作品2"/><figcaption class="cap">Soft Pink · 可愛系</figcaption></figure>
+        <figure class="work reveal"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1600&auto=format&fit=crop" alt="女性作品3"/><figcaption class="cap">Neon Kiss · 霓虹感</figcaption></figure>
+        <figure class="work reveal"><img src="https://images.unsplash.com/photo-1520975922284-56c1a3313381?q=80&w=1600&auto=format&fit=crop" alt="女性作品4"/><figcaption class="cap">Vintage Film · 膠片</figcaption></figure>
+        <!-- ===== REPLACE END ===== -->
       </div>
     </div>
   </section>
 
-  <!-- ================== 關於 ================== -->
+  <!-- 關於 -->
   <section class="section" id="about">
     <div class="container grid grid-2">
       <div class="reveal">
         <h2>風格定位：可愛 x 性感</h2>
-        <ul class="list" style="margin-top:6px">
-          <li>💗 粉紅＋薄荷藍為主調，搭配霓光點綴</li>
-          <li>✨ 動漫式入場：角色走近 → 手掌覆蓋 → 正式揭幕</li>
-          <li>💫 懸停光亮與粒子火花，營造心跳感</li>
-          <li>📱 行動優化與固定導覽，快速導流合作</li>
-        </ul>
+        <ul class="list" style="margin-top:6px"><li>💗 粉紅＋薄荷藍為主調，搭配霓光點綴</li><li>💦 開場水滴漣漪，順勢引導進頁</li><li>🕊️ 小動物背板慢慢升起，增添可愛氛圍</li><li>✨ 全站滑鼠微光粒子，但強度控制不打擾閱讀</li></ul>
       </div>
       <div class="card reveal" style="padding:16px">
         <h3 style="margin-bottom:6px">配色參考</h3>
         <div style="display:flex;gap:10px;flex-wrap:wrap">
-          <div class="card" style="padding:10px;border-radius:12px"><div style="width:140px;height:36px;border-radius:8px;background:linear-gradient(90deg,#ff6fa9,#ffc1dc)"></div><small>粉紅漸層</small></div>
+          <div class="card" style="padding:10px;border-radius:12px"><div style="width:140px;height:36px;border-radius:8px;background:linear-gradient(90deg,#ff6fa9,#ffd3e8)"></div><small>粉紅漸層</small></div>
           <div class="card" style="padding:10px;border-radius:12px"><div style="width:140px;height:36px;border-radius:8px;background:#7be9e3"></div><small>薄荷亮點</small></div>
           <div class="card" style="padding:10px;border-radius:12px"><div style="width:140px;height:36px;border-radius:8px;background:#0f1215"></div><small>高對比底</small></div>
         </div>
@@ -127,19 +118,19 @@ input,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid 
     </div>
   </section>
 
-  <!-- ================== 服務 ================== -->
+  <!-- 合作項目（改：寫真檔期 / JVID・IG 連結 / 會參與的活動） -->
   <section class="section" id="services">
     <div class="container">
       <h2 class="reveal">合作項目</h2>
       <div class="grid grid-3" style="margin-top:8px">
-        <div class="card reveal" style="padding:16px"><h3>個人官網</h3><p>首頁敘事、作品牆、表單；支援多語與付費專區延伸。</p><div class="pills" style="margin-top:8px"><span class="pill">RWD</span><span class="pill">GA4</span><span class="pill">SEO 基礎</span></div></div>
-        <div class="card reveal" style="padding:16px"><h3>寫真檔期頁</h3><p>快速上線，與 IG / X / JVID 節奏同步，便於商業轉換。</p><div class="pills" style="margin-top:8px"><span class="pill">快速交付</span><span class="pill">轉換導向</span></div></div>
-        <div class="card reveal" style="padding:16px"><h3>品牌合作提案頁</h3><p>展示成效重點、受眾輪廓與過往案例亮點。</p><div class="pills" style="margin-top:8px"><span class="pill">案例敘事</span><span class="pill">美感一致</span></div></div>
+        <div class="card reveal" style="padding:16px"><h3>寫真檔期</h3><p>近期可預約時段、主題與地點偏好，快速對接洽談。</p><div class="pills" style="margin-top:8px"><span class="pill">人像</span><span class="pill">私房</span><span class="pill">外拍</span></div></div>
+        <div class="card reveal" style="padding:16px"><h3>JVID / IG 連結</h3><p>整合社群平台入口，提升導流與曝光。</p><div class="pills" style="margin-top:8px"><a class="pill" href="#" onclick="alert('請在代碼中替換為 JVID 連結');return false;">JVID</a><a class="pill" href="https://www.instagram.com/teatea0317" target="_blank" rel="noopener">Instagram</a></div></div>
+        <div class="card reveal" style="padding:16px"><h3>會參與的活動</h3><p>展演 / 攝影展 / 聯名合作等行程公告，便於粉絲追蹤。</p><div class="pills" style="margin-top:8px"><span class="pill">快閃</span><span class="pill">聯名</span><span class="pill">展覽</span></div></div>
       </div>
     </div>
   </section>
 
-  <!-- ================== 聯絡 ================== -->
+  <!-- 聯絡 -->
   <section class="section" id="contact">
     <div class="container grid grid-2">
       <div class="reveal">
@@ -148,10 +139,10 @@ input,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid 
         <ul class="list" style="margin-top:6px"><li>📌 流程：需求訪談 → 風格確認 → 設計開發 → 上線教學</li><li>🧩 可加購：會員/付費牆、私密相簿、進階動畫</li></ul>
       </div>
       <form class="card reveal" onsubmit="event.preventDefault();window.location.href=`mailto:hello@example.com?subject=${encodeURIComponent('合作洽談（來自網站）')}&body=${encodeURIComponent(this.msg.value)}`" style="padding:16px">
-        <!-- ===== REPLACE START：信箱與預設內容 ===== -->
+        <!-- ===== REPLACE START：信箱 ===== -->
         <label for="msg">訊息</label><textarea id="msg" rows="6" placeholder="你好，我想合作的內容是…（可附 IG / X / JVID 連結與檔期）"></textarea>
         <button class="btn" type="submit" style="margin-top:10px">用 Email 送出</button>
-        <!-- ===== REPLACE END：信箱與預設內容 ===== -->
+        <!-- ===== REPLACE END ===== -->
       </form>
     </div>
   </section>
@@ -159,52 +150,52 @@ input,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid 
 
 <footer><div class="container" style="padding:30px 0;text-align:center;color:var(--muted);border-top:1px solid var(--line)">© <span id="y"></span> TeaTea · 示意頁（僅展示互動與排版，非最終商用版）。</div></footer>
 
-<!-- ================== 入場動畫：角色＋手掌遮蓋 ================== -->
+<!-- 入場：水滴漣漪轉場 -->
 <div class="intro" id="intro" aria-hidden="true">
   <button class="skip" id="skip">略過動畫</button>
-  <!-- ===== REPLACE START：角色 PNG（建議透明背景、半身或全身） ===== -->
-  <img class="chara" id="chara" src="https://images.unsplash.com/photo-1611605698335-8b1569810432?q=80&w=1200&auto=format&fit=crop" alt="動漫角色剪影（請替換為你的 PNG）"/>
-  <!-- ===== REPLACE END：角色 PNG ===== -->
-  <div class="hand" id="hand"></div>
-  <div class="cover-dim" id="dim"></div>
+  <svg id="rippleStage" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <radialGradient id="gDrop" cx="50%" cy="50%"><stop offset="0%" stop-color="#b9ecff"/><stop offset="100%" stop-color="#5cc9ff"/></radialGradient>
+    </defs>
+    <circle class="drop" cx="300" cy="300" r="10" fill="url(#gDrop)"/>
+    <circle class="ring r1" cx="300" cy="300" r="6"/>
+    <circle class="ring r2" cx="300" cy="300" r="6"/>
+    <circle class="ring r3" cx="300" cy="300" r="6"/>
+  </svg>
+  <div class="fadeCurtain" id="fadeCurtain"></div>
 </div>
 
-<!-- sparkle 畫布 -->
+<!-- 全站微光粒子 -->
 <canvas id="sparkle" width="0" height="0"></canvas>
 
 <script>
 /* 小工具 */
 const $=s=>document.querySelector(s);const $$=s=>document.querySelectorAll(s);
-/* 年份與主題切換 */
-(()=>{$('#y').textContent=new Date().getFullYear();const r=document.documentElement,b=$('#theme'),t=localStorage.getItem('theme');if(t)r.setAttribute('data-theme',t);b.textContent=(r.getAttribute('data-theme')==='light')?'🌞':'🌙';b.addEventListener('click',()=>{const cur=r.getAttribute('data-theme')==='light'?'light':'dark';const nxt=cur==='light'?'dark':'light';r.setAttribute('data-theme',nxt);localStorage.setItem('theme',nxt);b.textContent=(nxt==='light')?'🌞':'🌙'})})();
-/* 背景落花/愛心（隨機生成） */
-(function(){const bg=$('#bg');const make=(cls,n)=>{for(let i=0;i<n;i++){const e=document.createElement('div');e.className=cls;const s=Math.random()*1.2+.4;const left=Math.random()*110-5;const delay=Math.random()*-20;const dur=(cls==='petal'?18:22)*(Math.random()*0.6+0.7);e.style.left=left+'%';e.style.bottom='-10%';e.style.transform=`scale(${s})`;e.style.animationDuration=`${dur}s`;e.style.animationDelay=`${delay}s`;bg.appendChild(e)}};make('petal',18);make('heart',10)})();
+/* 年份＋主題切換＋滾動進度 */
+(()=>{$('#y').textContent=new Date().getFullYear();const r=document.documentElement,b=$('#theme'),t=localStorage.getItem('theme');if(t)r.setAttribute('data-theme',t);b.textContent=(r.getAttribute('data-theme')==='light')?'🌞':'🌙';b.addEventListener('click',()=>{const cur=r.getAttribute('data-theme')==='light'?'light':'dark';const nxt=cur==='light'?'dark':'light';r.setAttribute('data-theme',nxt);localStorage.setItem('theme',nxt);b.textContent=(nxt==='light')?'🌞':'🌙'})})();(function(){const bar=$('#progress');function onScroll(){const h=document.documentElement;const p=h.scrollTop/((h.scrollHeight-h.clientHeight)||1);bar.style.transform=`scaleX(${p})`}onScroll();document.addEventListener('scroll',onScroll,{passive:true})})();
 /* 滾動揭露 */
 (function(){const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('show')),{threshold:.12});$$('.reveal').forEach(n=>io.observe(n))})();
-/* 作品：滑鼠位置驅動亮斑＋火花 */
-(function(){const cards=[...document.querySelectorAll('.work')];const c=document.getElementById('sparkle');const ctx=c.getContext('2d');let W=innerWidth,H=innerHeight;function resize(){W=innerWidth;H=innerHeight;c.width=W;c.height=H}resize();addEventListener('resize',resize);let particles=[];function addParticles(x,y){for(let i=0;i<24;i++){const a=Math.random()*Math.PI*2;const sp=1.2+Math.random()*2.2;particles.push({x,y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,life:1,decay:.018+Math.random()*0.02,size:1.2+Math.random()*2.4})}}function step(){ctx.clearRect(0,0,W,H);ctx.globalCompositeOperation='lighter';for(let i=particles.length-1;i>=0;i--){const p=particles[i];p.x+=p.vx;p.y+=p.vy;p.life-=p.decay;if(p.life<=0){particles.splice(i,1);continue}ctx.globalAlpha=Math.max(p.life,0);ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);ctx.fillStyle='rgba(255,200,240,.9)';ctx.fill();ctx.beginPath();ctx.arc(p.x,p.y,p.size*.6,0,Math.PI*2);ctx.fillStyle='rgba(123,233,227,.9)';ctx.fill()}requestAnimationFrame(step)}step();cards.forEach(card=>{card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect();const x=e.clientX-r.left;const y=e.clientY-r.top;card.style.setProperty('--mx',x+'px');card.style.setProperty('--my',y+'px');addParticles(e.clientX,e.clientY)});card.addEventListener('mouseenter',()=>c.style.opacity=.95);card.addEventListener('mouseleave',()=>c.style.opacity=.0)})})();
-/* 入場：角色走近 → 手掌放大覆蓋 → 淡出顯示頁面 */
-(function(){const prefersReduced=matchMedia('(prefers-reduced-motion: reduce)').matches;const intro=$('#intro'),hand=$('#hand'),dim=$('#dim'),skip=$('#skip');function end(){intro.classList.add('hidden');setTimeout(()=>intro.remove(),420)}if(prefersReduced){end();return}let t1=setTimeout(()=>{hand.classList.add('cover');dim.classList.add('show')},2400);let t2=setTimeout(()=>end(),3600);skip.addEventListener('click',()=>{clearTimeout(t1);clearTimeout(t2);end()})})();
+/* 可愛動物背景（🐰 🐶 🐥 慢慢往上飄） */
+(function(){const box=$('#bgAnimals');const pool=['🐰','🐶','🐥','🐱','🐻','🐼'];for(let i=0;i<22;i++){const el=document.createElement('div');el.className='animal';el.textContent=pool[Math.floor(Math.random()*pool.length)];const s=.7+Math.random()*1.4;const left=Math.random()*110-5;const delay=Math.random()*-20;const dur=26+Math.random()*18;el.style.left=left+'%';el.style.bottom='-12%';el.style.transform=`scale(${s})`;el.style.animationDuration=`${dur}s`;el.style.animationDelay=`${delay}s`;box.appendChild(el)}})();
+/* 入場：水滴→漣漪→淡出 */
+(function(){const prefersReduced=matchMedia('(prefers-reduced-motion: reduce)').matches;const intro=$('#intro'),fade=$('#fadeCurtain'),skip=$('#skip'),drop=$('.drop');if(prefersReduced){intro.remove();return}const end=()=>{intro.classList.add('hidden');setTimeout(()=>intro.remove(),500)};const t1=setTimeout(()=>fade.classList.add('show'),1700);const t2=setTimeout(end,2600);skip.addEventListener('click',()=>{clearTimeout(t1);clearTimeout(t2);end()});/* 輕微彈跳 */setTimeout(()=>{drop.style.transformOrigin='center';drop.style.animation='dropFall 1.2s ease-out forwards'},20)})();
+/* 全站滑鼠微光粒子（低密度） */
+(function(){const c=$('#sparkle'),ctx=c.getContext('2d');let W=innerWidth,H=innerHeight;function resize(){W=innerWidth;H=innerHeight;c.width=W;c.height=H}resize();addEventListener('resize',resize);let particles=[];let lastEmit=0;function emit(x,y){particles.push({x,y,vx:(Math.random()-.5)*.6,vy:(Math.random()-.5)*.6,life:1,decay:.015+Math.random()*.015,size:.8+Math.random()*1.8})}function step(){ctx.clearRect(0,0,W,H);ctx.globalCompositeOperation='lighter';for(let i=particles.length-1;i>=0;i--){const p=particles[i];p.x+=p.vx;p.y+=p.vy;p.life-=p.decay;if(p.life<=0){particles.splice(i,1);continue}ctx.globalAlpha=Math.max(p.life,0);ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);ctx.fillStyle='rgba(255,220,245,.9)';ctx.fill();ctx.beginPath();ctx.arc(p.x,p.y,p.size*.6,0,Math.PI*2);ctx.fillStyle='rgba(123,233,227,.85)';ctx.fill()}requestAnimationFrame(step)}step();addEventListener('pointermove',e=>{const now=performance.now();if(now-lastEmit>26){for(let i=0;i<2;i++)emit(e.clientX,e.clientY);lastEmit=now}})})();
 /* 無障礙：Esc 跳過動畫 */
 addEventListener('keydown',e=>{if(e.key==='Escape'){const i=$('#intro');if(i){i.classList.add('hidden');setTimeout(()=>i.remove(),300)}}});
 </script>
 
-<!-- ================== 使用與替換說明（不顯示） ==================
-【REPLACE 區塊】
-1) 角色 PNG：搜尋「角色 PNG」，替換成你的動漫角色或剪影（透明背景）。建議 1000~1400px 寬。若想精準手掌位置，調整 .hand 的 bottom/left。
-2) 作品圖片：搜尋「4張作品」，替換為你的 3–4 張封面圖；可增減 <figure class="work">。
-3) Email：在 #contact 表單替換 hello@example.com。
-4) 配色：:root 內 --brand / --brand-2 / --accent 可微調成你的 IG 風格。
-
+<!-- ========== 使用與替換說明（不顯示） ==========
+【REPLACE】
+1) 主視覺頭像、文案與連結：搜尋「REPLACE START」區塊。
+2) 作品圖片：在 #work 的四張 <figure> 改成實際女性作品封面（建議寬≥1600px）。
+3) JVID 連結：在「JVID / IG 連結」卡片替換為實際 URL。
+4) 顏色：:root 的 --brand / --accent 可微調以貼近 IG 風格。
 【特效摘要】
-- 背景動畫：粉心/花瓣自底部緩緩升起（可愛氛圍）。
-- 入場動畫：角色走近後，手掌以圓形遮罩放大覆蓋畫面，再淡出呈現頁面。
-- 作品懸停：滑鼠位置產生亮斑＋火花粒子（Canvas，輕量）。
-- Header 固定：導覽列始終可見；主題切換支援亮/暗模式。
-
+- 開場：水滴落下→三圈漣漪擴散→短暫黑幕→網站顯示。
+- 背景：萌系動物（emoji）從底部往上飄；置於固定後景、不擋操作。
+- 滑鼠：全站細微光點（低密度、性能友善）。
+- Header：z-index 100，始終存在（滾動不消失）。
 【RWD】
-- 980/640 斷點，手機下作品牆自適應為 2 欄，高對比可讀。
-
-【效能】
-- 粒子只在作品卡片懸停時產生；prefers-reduced-motion 會自動停用大部分動畫。
+- 980/640 斷點；手機作品牆自動改為 2 欄。
 --></body></html>
