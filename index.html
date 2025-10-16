@@ -6,9 +6,11 @@
 <meta name="color-scheme" content="dark light"/>
 <meta name="theme-color" content="#ff7ebe"/>
 <title>茶茶兒專頁</title>
-<meta name="description" content="可愛 x 性感個人品牌頁。Q 版吉祥物單次入場（精準停靠不重播）、玻璃感固定導覽、Q 動物背景、彩色微光粒子（不跑版）、泳裝特輯與完整合作表單。"/>
+<meta name="description" content="可愛 x 性感個人品牌頁。Q 動物背景、可愛貓咪吉祥物（無入場動畫）、彩色微光粒子、泳裝特輯與完整合作表單。"/>
 <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+
 <style>
+/* ===== 基礎 ===== */
 *,*::before,*::after{box-sizing:border-box}
 html,body{height:100%}
 body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.6;background:var(--bg);color:var(--text)}
@@ -29,7 +31,7 @@ h2{font-size:clamp(22px,3vw,32px)}
 p{margin:0 0 10px;color:var(--muted)}
 a{color:var(--brand);text-decoration:none}
 
-/* Header */
+/* ===== Header（玻璃＋高亮＋進度條） ===== */
 header{position:fixed;inset:0 0 auto 0;height:66px;z-index:10000;
   background:linear-gradient(180deg,rgba(15,18,21,.72),rgba(15,18,21,.52));
   -webkit-backdrop-filter:saturate(160%) blur(10px);backdrop-filter:saturate(160%) blur(10px);
@@ -48,12 +50,12 @@ body{padding-top:66px}
 .nav-links a.active::after{opacity:1;transform:scaleX(1)}
 .theme{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:transparent;color:inherit;display:grid;place-items:center;cursor:pointer}
 
-/* Q 動物背景 */
+/* ===== Q 版動物背景 ===== */
 .bg-q{position:fixed;inset:-10% -10% 0 -10%;z-index:-2;pointer-events:none;overflow:hidden;contain:paint}
 .q{position:absolute;font-size:28px;opacity:.22;filter:drop-shadow(0 8px 16px rgba(0,0,0,.25));animation:floatUp linear infinite}
 @keyframes floatUp{0%{transform:translateY(0) rotate(0)}100%{transform:translateY(-120vh) rotate(360deg)}}
 
-/* 區段 */
+/* ===== 區段 ===== */
 .section{padding:72px 0 64px;content-visibility:auto;contain-intrinsic-size:800px}
 .hero{position:relative;min-height:64vh;display:grid;place-items:center;padding-top:8px;background:
   radial-gradient(800px 420px at 50% 0,rgba(255,126,190,.10),transparent 60%),
@@ -70,12 +72,12 @@ body{padding-top:66px}
   background:radial-gradient(circle at 30% 25%,var(--brand2),transparent 58%),linear-gradient(180deg,rgba(255,255,255,.08),transparent);
   box-shadow:0 6px 16px rgba(0,0,0,.16);font-size:20px}
 
-/* 標籤 Chips */
+/* 個人標籤 Chips */
 .chips{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:16px}
 .chip{padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.06);color:var(--text);font-size:14px}
 .chip i{margin-right:6px;opacity:.8}
 
-/* 作品 */
+/* 作品網格 */
 .grid-works{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
 .work{position:relative;overflow:hidden;border-radius:16px;border:1px solid var(--line);background:#000;will-change:transform,filter}
 .work img{width:100%;height:280px;object-fit:cover;display:block;transition:filter .25s ease,transform .25s ease}
@@ -88,7 +90,7 @@ body{padding-top:66px}
 .badges{display:flex;flex-wrap:wrap;gap:8px}
 .badge{padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--muted)}
 
-/* 表單 */
+/* 表單/列表 */
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 input,select,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--text)}
@@ -97,7 +99,7 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
 .list{display:grid;gap:8px}.list li{display:flex;gap:8px;align-items:flex-start}
 .help{font-size:12px;color:var(--muted)}
 
-/* 泳裝 */
+/* 泳裝 / 游泳特輯 */
 .swim{position:relative;overflow:hidden;background:
   radial-gradient(700px 320px at 20% 10%,rgba(120,227,255,.10),transparent 70%),
   radial-gradient(600px 300px at 90% 70%,rgba(123,233,227,.08),transparent 70%)}
@@ -114,17 +116,16 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
 .wave:nth-child(3){color:var(--brand2);opacity:.35;animation-duration:26s}
 @keyframes waveMove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* 粒子 */
+/* 微光粒子（不跑版） */
 #sparkle{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:40;pointer-events:none;mix-blend-mode:screen;opacity:.9}
 
-/* 吉祥物 */
-#mascot{position:fixed;left:0;top:0;width:90px;height:90px;opacity:0;pointer-events:none;transform-origin:50% 70%;z-index:12000}
-#mascot .shadow{position:absolute;left:16px;bottom:4px;width:58px;height:12px;background:rgba(0,0,0,.28);border-radius:50%;filter:blur(4px);opacity:.0}
-@keyframes earWiggle{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
-@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-#mascot.idle{animation:bob 2.2s ease-in-out infinite}
-#mascot.idle .ear{transform-origin:50% 20%;animation:earWiggle 1.6s ease-in-out infinite}
+/* 吉祥物（固定的可愛貓咪，無入場動畫） */
 #mascotDock{position:absolute;left:calc(50% + 120px);top:18px;width:90px;height:90px;z-index:1200;pointer-events:none}
+#mascot{position:absolute;inset:0;width:90px;height:90px}
+#mascot .shadow{position:absolute;left:16px;bottom:4px;width:58px;height:12px;background:rgba(0,0,0,.28);border-radius:50%;filter:blur(4px);opacity:.25}
+#mascot.idle{animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+
 @media(max-width:640px){#mascotDock{left:calc(50% + 80px);top:6px}}
 
 /* reveal & RWD */
@@ -132,10 +133,11 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
 .reveal.show{opacity:1;transform:translateY(0)}
 @media(max-width:980px){.grid-works{grid-template-columns:repeat(3,minmax(0,1fr))}.profile{grid-template-columns:1fr}}
 @media(max-width:640px){.grid-works{grid-template-columns:repeat(2,minmax(0,1fr))}.work img{height:220px}.avatar-wrap{width:104px;height:104px}.avatar{width:92px;height:92px}.grid-2,.grid-3{grid-template-columns:1fr}}
-@media(prefers-reduced-motion:reduce){#sparkle,.q{animation:none}}
+@media(prefers-reduced-motion:reduce){#sparkle,.q,#mascot.idle{animation:none}}
 </style>
 </head>
 <body>
+<!-- 背景：Q 版動物 -->
 <div class="bg-q" id="bgQ" aria-hidden="true"></div>
 
 <header>
@@ -149,9 +151,42 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
 </header>
 
 <main>
+  <!-- 自我介紹 -->
   <section class="hero" id="about" aria-label="自我介紹">
     <div class="hero-inner">
-      <div id="mascotDock" aria-hidden="true"></div>
+      <!-- 固定吉祥物（貓） -->
+      <div id="mascotDock" aria-hidden="true">
+        <div id="mascot" class="idle">
+          <svg viewBox="0 0 120 120" width="100%" height="100%" aria-label="可愛貓咪吉祥物">
+            <g id="cat">
+              <!-- 身體 -->
+              <ellipse cx="60" cy="70" rx="25" ry="26" fill="#fff" opacity=".95"/>
+              <!-- 臉 -->
+              <ellipse cx="60" cy="55" rx="22" ry="18" fill="#fff"/>
+              <!-- 耳朵 -->
+              <path d="M42,38 Q45,18 60,26 Q50,38 42,38Z" fill="#fff"/>
+              <path d="M78,38 Q75,18 60,26 Q70,38 78,38Z" fill="#fff"/>
+              <path d="M44,30 Q46,20 56,24 Q52,30 44,30Z" fill="#ffd3e8"/>
+              <path d="M76,30 Q74,20 64,24 Q68,30 76,30Z" fill="#ffd3e8"/>
+              <!-- 眼睛 -->
+              <circle cx="50" cy="58" r="3.2" fill="#222"/>
+              <circle cx="70" cy="58" r="3.2" fill="#222"/>
+              <!-- 鼻子 -->
+              <ellipse cx="60" cy="63" rx="3" ry="2" fill="#ff7ebe"/>
+              <!-- 鬍鬚 -->
+              <line x1="40" y1="63" x2="28" y2="61" stroke="#aaa" stroke-width="1.2"/>
+              <line x1="40" y1="66" x2="28" y2="67" stroke="#aaa" stroke-width="1.2"/>
+              <line x1="80" y1="63" x2="92" y2="61" stroke="#aaa" stroke-width="1.2"/>
+              <line x1="80" y1="66" x2="92" y2="67" stroke="#aaa" stroke-width="1.2"/>
+              <!-- 腳 -->
+              <ellipse cx="48" cy="92" rx="9" ry="6" fill="#fff"/>
+              <ellipse cx="72" cy="92" rx="9" ry="6" fill="#fff"/>
+            </g>
+          </svg>
+          <div class="shadow"></div>
+        </div>
+      </div>
+
       <div class="avatar-wrap">
         <img class="avatar" alt="創作者頭像（請替換）"
              src="https://images.unsplash.com/photo-1519643381401-22c77e60520e?q=80&w=800&auto=format&fit=crop"
@@ -159,8 +194,9 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
       </div>
       <div class="tag" style="margin-top:10px">IG｜@teatea0317 · 可愛 / 性感 · 寫真</div>
       <h1 style="margin:10px 0 6px">可愛與性感的雙重敘事，<br/>把視覺做成會心動的體驗。</h1>
-      <p>Q 版小兔單次入場、Q 動物背景、彩色微光粒子。</p>
+      <p>固定貓咪吉祥物、Q 動物背景、彩色微光粒子。</p>
 
+      <!-- 個人標籤 chips -->
       <div class="chips" id="chips">
         <span class="chip"><i>💗</i>可愛系</span>
         <span class="chip"><i>🔥</i>性感寫真</span>
@@ -190,6 +226,7 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
 
   <div class="container"><div style="height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent)"></div></div>
 
+  <!-- 作品選集 -->
   <section class="section" id="work">
     <div class="container">
       <div class="heading"><span class="kawaii">🐱</span><h2>作品選集</h2></div>
@@ -204,10 +241,11 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
 
   <div class="container"><div style="height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent)"></div></div>
 
+  <!-- 泳裝 / 游泳特輯 -->
   <section class="section swim" id="swim" aria-label="泳裝與游泳特輯">
     <div class="container">
       <div class="heading"><span class="kawaii">🐬</span><h2>泳裝 / 游泳特輯</h2></div>
-      <p>以海藍色調與水面反光為靈感，展現可愛又性感的泳裝視覺。</p>
+    <p>以海藍色調與水面反光為靈感，展現可愛又性感的泳裝視覺。</p>
       <div class="grid-works grid-swim" style="margin-top:12px">
         <figure class="work reveal"><img src="https://images.unsplash.com/photo-1512777576244-b846ac3d816f?q=80&w=1600&auto=format&fit=crop" alt="泳裝特輯1" width="600" height="400" loading="lazy" decoding="async"/><figcaption class="cap">Aqua Glow</figcaption></figure>
         <figure class="work reveal"><img src="https://images.unsplash.com/photo-1492284163710-4eef97892705?q=80&w=1600&auto=format&fit=crop" alt="泳裝特輯2" width="600" height="400" loading="lazy" decoding="async"/><figcaption class="cap">Sun Kiss</figcaption></figure>
@@ -224,13 +262,14 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
 
   <div class="container"><div style="height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent)"></div></div>
 
+  <!-- 合作項目 -->
   <section class="section" id="services">
     <div class="container">
       <div class="heading"><span class="kawaii">🐰</span><h2>合作項目</h2></div>
       <div class="list" style="margin-top:6px">
         <div>
           <h3 class="heading" style="margin:0 0 6px"><span class="kawaii">📸</span><span>寫真檔期</span></h3>
-          <ul class="list"><li>📅 每月更新：平日/假日</li><li>📍 台北/桃園為主，外縣市可議</li><li>🎨 主題：可愛/性感/時尚/膠片</li></ul>
+          <ul class="list"><li>📅 每月更新：平日 / 假日</li><li>📍 台北 / 桃園為主，外縣市可議</li><li>🎨 主題：可愛 / 性感 / 時尚 / 膠片</li></ul>
         </div>
         <div>
           <h3 class="heading" style="margin:12px 0 6px"><span class="kawaii">🔗</span><span>JKF / IG 連結</span></h3>
@@ -250,6 +289,7 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
 
   <div class="container"><div style="height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent)"></div></div>
 
+  <!-- 聯絡合作 -->
   <section class="section" id="contact">
     <div class="container">
       <div class="heading"><span class="kawaii">🐶</span><h2>聯絡合作</h2></div>
@@ -298,39 +338,14 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
   <div class="container" style="padding:26px 0;text-align:center;color:var(--muted)">© <span id="y"></span> 茶茶兒 · 示意頁</div>
 </footer>
 
+<!-- 微光粒子 -->
 <canvas id="sparkle" width="0" height="0" aria-hidden="true"></canvas>
 
-<div id="mascot" aria-hidden="true">
-  <svg viewBox="0 0 120 120" width="100%" height="100%">
-    <g id="bunny">
-      <ellipse cx="60" cy="68" rx="24" ry="26" fill="#fff" opacity=".95"/>
-      <ellipse cx="60" cy="52" rx="22" ry="18" fill="#fff"/>
-      <g class="ear">
-        <path d="M46,20 Q44,6 56,8 Q66,10 62,24 Z" fill="#fff"/>
-        <path d="M74,20 Q76,6 64,8 Q54,10 58,24 Z" fill="#fff"/>
-        <path d="M49,17 Q47,8 55,9 Q61,10 59,20 Z" fill="#ffd3e8"/>
-        <path d="M71,17 Q73,8 65,9 Q59,10 61,20 Z" fill="#ffd3e8"/>
-      </g>
-      <circle cx="50" cy="56" r="3.5" fill="#222"/>
-      <circle cx="70" cy="56" r="3.5" fill="#222"/>
-      <ellipse cx="60" cy="64" rx="6" ry="3" fill="#ff7ebe" opacity=".7"/>
-      <circle cx="45" cy="62" r="3" fill="#ffb6d6" opacity=".8"/>
-      <circle cx="75" cy="62" r="3" fill="#ffb6d6" opacity=".8"/>
-      <ellipse cx="48" cy="92" rx="10" ry="6" fill="#fff"/>
-      <ellipse cx="72" cy="92" rx="10" ry="6" fill="#fff"/>
-    </g>
-  </svg>
-  <div class="shadow"></div>
-</div>
-
 <script>
-/* ==================== Boot 鎖：若已啟動就完全終止 ==================== */
-if (window.__TT_BOOT__) { /* 已有另一份腳本在跑，直接不做任何事 */ }
-else { window.__TT_BOOT__ = true;
-
+/* ========= Helpers ========= */
 const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
 
-/* 年份 / 主題 / Header 進度條 */
+/* 年份 + 主題切換 + Header 進度條 */
 (()=>{$('#y').textContent=new Date().getFullYear();
   const r=document.documentElement,b=$('#theme'),t=localStorage.getItem('theme');if(t)r.setAttribute('data-theme',t);
   b.textContent=(r.getAttribute('data-theme')==='light')?'🌞':'🌙';
@@ -350,121 +365,36 @@ const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
   ['about','work','swim','services','contact'].forEach(id=>{const s=document.getElementById(id);s&&io.observe(s)});
 })();
 
-/* Q 背景（Idle 生成） */
+/* Q 背景（Idle 生成，16 個） */
 (function(){const box=$('#bgQ');const pool=['🐰','🐶','🐥','🐱','🐻','🐼','🦊','🐹'];let i=0;
   function add(){if(i>=16)return;i++;const e=document.createElement('div');e.className='q';
     const s=.8+Math.random()*1.2,left=Math.random()*110-5,delay=Math.random()*-22,dur=26+Math.random()*16;
     e.style.left=left+'%';e.style.bottom='-12%';e.style.transform=`scale(${s})`;e.style.animationDuration=`${dur}s`;e.style.animationDelay=`${delay}s`;
     e.textContent=pool[Math.floor(Math.random()*pool.length)];box.appendChild(e);if(i<16)requestIdleCallback(add)}requestIdleCallback(add)})();
 
-/* 粒子（視覺口鎖定，不跑版） */
+/* 微光粒子（不跑版：DPR、視窗視覺口改變、上限、被動事件） */
 (function(){
   const c=$('#sparkle'),ctx=c.getContext('2d',{alpha:true,desynchronized:true});
-  function sizeToViewport(){const vw=(visualViewport?.width||innerWidth),vh=(visualViewport?.height||innerHeight),dpr=Math.min(1.75,devicePixelRatio||1);
-    c.width=vw*dpr; c.height=vh*dpr; c.style.width='100vw'; c.style.height='100vh'; ctx.setTransform(dpr,0,0,dpr,0,0);}
-  sizeToViewport(); addEventListener('resize',sizeToViewport,{passive:true}); visualViewport&&visualViewport.addEventListener('resize',sizeToViewport,{passive:true});
-  const cs=getComputedStyle(document.documentElement); const colors=[cs.getPropertyValue('--spark1').trim(),cs.getPropertyValue('--spark2').trim(),cs.getPropertyValue('--spark3').trim()];
+  function sizeToViewport(){
+    const vw = (window.visualViewport?.width || innerWidth);
+    const vh = (window.visualViewport?.height || innerHeight);
+    const dpr=Math.min(1.75,window.devicePixelRatio||1);
+    c.width=vw*dpr; c.height=vh*dpr; c.style.width='100vw'; c.style.height='100vh';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+  sizeToViewport();
+  addEventListener('resize',sizeToViewport,{passive:true});
+  window.visualViewport && visualViewport.addEventListener('resize',sizeToViewport,{passive:true});
+
+  const cs=getComputedStyle(document.documentElement);
+  const colors=[cs.getPropertyValue('--spark1').trim(),cs.getPropertyValue('--spark2').trim(),cs.getPropertyValue('--spark3').trim()];
   const MAX=80; let pts=[],last=0;
   function emit(x,y){if(pts.length>MAX)pts.shift();pts.push({x,y,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,life:1,decay:.012+Math.random()*.012,size:1+Math.random()*2,color:colors[Math.floor(Math.random()*colors.length)]})}
   function step(){ctx.clearRect(0,0,c.width,c.height);ctx.globalCompositeOperation='lighter';
     for(let i=pts.length-1;i>=0;i--){const p=pts[i];p.x+=p.vx;p.y+=p.vy;p.life-=p.decay;if(p.life<=0){pts.splice(i,1);continue}
-      ctx.globalAlpha=Math.max(p.life,0);ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);ctx.fillStyle=p.color;ctx.fill()}requestAnimationFrame(step)} step();
+      ctx.globalAlpha=Math.max(p.life,0);ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);ctx.fillStyle=p.color;ctx.fill()}requestAnimationFrame(step)}
+  step();
   addEventListener('pointermove',e=>{const now=performance.now();if(now-last>28){const r=c.getBoundingClientRect();emit(e.clientX-r.left,e.clientY-r.top);last=now}},{passive:true});
-})();
-
-/* ========== 入口動畫：三重鎖（Boot + sessionStorage + DOM 狀態） ========== */
-(function(){
-  const el=$('#mascot'), dock=$('#mascotDock'); if(!el||!dock) return;
-
-  // DOM 狀態鎖：若已 Dock 或正在跑，直接靜態就位
-  const state = el.getAttribute('data-state');
-  if (state==='docked' || state==='running' || state==='docking') { placeStatic(); return; }
-
-  // 播放鎖：在任何事件註冊前，先寫入 sessionStorage
-  //（只要有別的入口再呼叫，看到這個 flag 就不會再跑）
-  const PLAY_KEY='__teatea__mascotPlayed';
-  if (sessionStorage.getItem(PLAY_KEY)==='1'){ placeStatic(); return; }
-  sessionStorage.setItem(PLAY_KEY,'1');
-
-  // 設狀態
-  el.setAttribute('data-state','running');
-  window.__mascotState='running';
-
-  function buildFrames(){
-    const end=dock.getBoundingClientRect();
-    const endX=end.left, endY=end.top;
-    const startX=-120, startY=innerHeight-140;
-    const c1x=innerWidth*0.18, c1y=innerHeight*0.72;
-    const c2x=innerWidth*0.58, c2y=Math.min(endY-120, innerHeight*0.35);
-    const cubic=(p0,p1,p2,p3,t)=>{const u=1-t;return u*u*u*p0+3*u*u*t*p1+3*u*t*t*p2+t*t*t*p3};
-    const ease=t=>1-Math.pow(1-t,3);
-    const frames=[],shadow=[]; const steps=52;
-    for(let i=0;i<=steps;i++){
-      const raw=i/steps,t=ease(raw);
-      const x=cubic(startX,c1x,c2x,endX,t), y=cubic(startY,c1y,c2y,endY,t);
-      const ang=Math.atan2(endY-y,endX-x)*180/Math.PI/10;
-      frames.push({transform:`translate(${x}px,${y}px) rotate(${ang}deg)`,offset:raw,opacity:1});
-      shadow.push({opacity:0.15+0.25*(1-t),offset:raw});
-    }
-    return {frames,shadow};
-  }
-
-  function run(){
-    if (el.getAttribute('data-state')!=='running') return;
-    const {frames,shadow}=buildFrames();
-    el.style.opacity='1';
-    const a=el.animate(frames,{duration:2200,easing:'linear',fill:'forwards'});
-    el.querySelector('.shadow').animate(shadow,{duration:2200,easing:'linear',fill:'forwards'});
-    a.finished.then(dockFlip).catch(()=>{}); // 若中途中止，直接忽略
-  }
-
-  function dockFlip(){
-    if (el.getAttribute('data-state')!=='running') return;
-    el.setAttribute('data-state','docking');
-
-    // 取消任何殘留動畫，避免 reparent 造成重播
-    try{ el.getAnimations().forEach(anim=>anim.cancel()); }catch{}
-
-    const before=el.getBoundingClientRect();
-    dock.appendChild(el);
-    el.style.position='absolute'; el.style.left='0'; el.style.top='0'; el.style.opacity='1';
-
-    const after=el.getBoundingClientRect();
-    const dx=before.left-after.left, dy=before.top-after.top;
-
-    el.style.transform=`translate(${dx}px,${dy}px)`;
-    el.animate([{transform:`translate(${dx}px,${dy}px)`},{transform:'translate(0,0)'}],{duration:320,easing:'ease-out',fill:'forwards'}).finished.then(()=>{
-      finalizeDock();
-    }).catch(finalizeDock);
-  }
-
-  function finalizeDock(){
-    el.classList.add('idle'); el.style.transform='translate(0,0)';
-    el.setAttribute('data-state','docked'); window.__mascotState='docked';
-    // 清除所有可能二次觸發的監聽
-    window.removeEventListener('pageshow',onPageshow,true);
-    document.removeEventListener('visibilitychange',onVis,true);
-    window.removeEventListener('resize',onResize,true);
-  }
-
-  function placeStatic(){
-    dock.appendChild(el); el.style.position='absolute'; el.style.left='0'; el.style.top='0';
-    el.style.transform='translate(0,0)'; el.style.opacity='1'; el.classList.add('idle');
-    el.setAttribute('data-state','docked'); window.__mascotState='docked';
-  }
-
-  function onPageshow(e){ if(e.persisted && el.getAttribute('data-state')!=='docked') placeStatic(); }
-  function onVis(){ if(document.visibilityState==='hidden' && el.getAttribute('data-state')!=='docked') placeStatic(); }
-  function onResize(){ /* 只重算軌跡，不重啟動畫：若還在 running，就取消現有動畫並直接 Dock（避免“再跑一次”） */
-    if (el.getAttribute('data-state')==='running') { try{ el.getAnimations().forEach(a=>a.cancel()); }catch{} dockFlip(); }
-  }
-
-  window.addEventListener('pageshow',onPageshow,true);
-  document.addEventListener('visibilitychange',onVis,true);
-  window.addEventListener('resize',onResize,true);
-
-  // **唯一入口**：只用 load，且 once:true
-  if (document.readyState==='complete') run(); else window.addEventListener('load',run,{once:true});
 })();
 
 /* reveal */
@@ -478,8 +408,6 @@ function submitMailto(e){
   const to="hello@example.com"; const subject=`合作洽談｜${data.type}｜${data.name}（網站表單）`; const body=encodeURIComponent(lines);
   window.location.href=`mailto:${to}?subject=${encodeURIComponent(subject)}&body=${body}`;
 }
-
-} /* ———— end of BOOT guard ———— */
 </script>
 </body>
 </html>
