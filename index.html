@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
 
 <style>
-/* =========== 基礎 =========== */
+/* ===== 基礎 ===== */
 *,*::before,*::after{box-sizing:border-box}
 html,body{height:100%}
 body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.6;background:var(--bg);color:var(--text)}
@@ -31,7 +31,7 @@ h2{font-size:clamp(22px,3vw,32px)}
 p{margin:0 0 10px;color:var(--muted)}
 a{color:var(--brand);text-decoration:none}
 
-/* =========== Header（玻璃＋高亮＋進度條） =========== */
+/* ===== Header（玻璃＋高亮＋進度條） ===== */
 header{position:fixed;inset:0 0 auto 0;height:66px;z-index:10000;
   background:linear-gradient(180deg,rgba(15,18,21,.72),rgba(15,18,21,.52));
   -webkit-backdrop-filter:saturate(160%) blur(10px);backdrop-filter:saturate(160%) blur(10px);
@@ -50,12 +50,12 @@ body{padding-top:66px}
 .nav-links a.active::after{opacity:1;transform:scaleX(1)}
 .theme{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:transparent;color:inherit;display:grid;place-items:center;cursor:pointer}
 
-/* =========== Q 版動物背景 =========== */
+/* ===== Q 版動物背景 ===== */
 .bg-q{position:fixed;inset:-10% -10% 0 -10%;z-index:-2;pointer-events:none;overflow:hidden;contain:paint}
 .q{position:absolute;font-size:28px;opacity:.22;filter:drop-shadow(0 8px 16px rgba(0,0,0,.25));animation:floatUp linear infinite}
 @keyframes floatUp{0%{transform:translateY(0) rotate(0)}100%{transform:translateY(-120vh) rotate(360deg)}}
 
-/* =========== 區段 =========== */
+/* ===== 區段 ===== */
 .section{padding:72px 0 64px;content-visibility:auto;contain-intrinsic-size:800px}
 .hero{position:relative;min-height:64vh;display:grid;place-items:center;padding-top:8px;background:
   radial-gradient(800px 420px at 50% 0,rgba(255,126,190,.10),transparent 60%),
@@ -66,31 +66,31 @@ body{padding-top:66px}
   background:radial-gradient(circle at 50% 40%,var(--brand2),transparent 62%);box-shadow:0 10px 26px rgba(0,0,0,.18);border:1px solid var(--line)}
 .avatar{width:104px;height:104px;border-radius:50%;object-fit:cover;border:2px solid var(--line)}
 
-/* 小標題徽章 */
+/* ===== 小標題徽章 ===== */
 .heading{display:flex;align-items:center;gap:10px;margin-bottom:12px}
 .kawaii{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:10px;border:1px solid var(--line);
   background:radial-gradient(circle at 30% 25%,var(--brand2),transparent 58%),linear-gradient(180deg,rgba(255,255,255,.08),transparent);
   box-shadow:0 6px 16px rgba(0,0,0,.16);font-size:20px}
 
-/* 個人標籤 Chips */
+/* ===== 個人標籤 Chips ===== */
 .chips{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:16px}
 .chip{padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.06);color:var(--text);font-size:14px}
 .chip i{margin-right:6px;opacity:.8}
 
-/* 作品網格 */
+/* ===== 作品網格 ===== */
 .grid-works{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
 .work{position:relative;overflow:hidden;border-radius:16px;border:1px solid var(--line);background:#000;will-change:transform,filter}
 .work img{width:100%;height:280px;object-fit:cover;display:block;transition:filter .25s ease,transform .25s ease}
 .work:hover img{filter:brightness(1.12) saturate(1.2);transform:scale(1.02)}
 .work .cap{position:absolute;left:10px;bottom:10px;padding:6px 10px;border-radius:12px;background:rgba(0,0,0,.35);color:#fff;font-size:13px}
 
-/* 自我介紹補充 */
+/* ===== 自我介紹補充 ===== */
 .profile{display:grid;grid-template-columns:160px 1fr;gap:16px;align-items:center}
 .profile img{width:160px;height:160px;object-fit:cover;border-radius:16px;border:1px solid var(--line)}
 .badges{display:flex;flex-wrap:wrap;gap:8px}
 .badge{padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--muted)}
 
-/* 表單/列表 */
+/* ===== 表單/列表 ===== */
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 input,select,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--text)}
@@ -99,7 +99,7 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
 .list{display:grid;gap:8px}.list li{display:flex;gap:8px;align-items:flex-start}
 .help{font-size:12px;color:var(--muted)}
 
-/* 泳裝 / 游泳特輯 */
+/* ===== 泳裝 / 游泳特輯 ===== */
 .swim{position:relative;overflow:hidden;background:
   radial-gradient(700px 320px at 20% 10%,rgba(120,227,255,.10),transparent 70%),
   radial-gradient(600px 300px at 90% 70%,rgba(123,233,227,.08),transparent 70%)}
@@ -116,10 +116,10 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
 .wave:nth-child(3){color:var(--brand2);opacity:.35;animation-duration:26s}
 @keyframes waveMove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* 微光粒子（不跑版） */
+/* ===== 微光粒子（不跑版） ===== */
 #sparkle{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:40;pointer-events:none;mix-blend-mode:screen;opacity:.9}
 
-/* 吉祥物入場：單次、精準停靠 */
+/* ===== 吉祥物入場：單次、精準停靠 ===== */
 #mascot{position:fixed;left:0;top:0;width:90px;height:90px;opacity:0;pointer-events:none;transform-origin:50% 70%;z-index:12000}
 #mascot .shadow{position:absolute;left:16px;bottom:4px;width:58px;height:12px;background:rgba(0,0,0,.28);border-radius:50%;filter:blur(4px);opacity:.0}
 @keyframes earWiggle{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
@@ -131,7 +131,7 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
 #mascotDock{position:absolute;left:calc(50% + 120px);top:18px;width:90px;height:90px;z-index:1200;pointer-events:none}
 @media(max-width:640px){#mascotDock{left:calc(50% + 80px);top:6px}}
 
-/* reveal & RWD */
+/* ===== reveal & RWD ===== */
 .reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s ease}
 .reveal.show{opacity:1;transform:translateY(0)}
 @media(max-width:980px){.grid-works{grid-template-columns:repeat(3,minmax(0,1fr))}.profile{grid-template-columns:1fr}}
@@ -158,6 +158,7 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
   <section class="hero" id="about" aria-label="自我介紹">
     <div class="hero-inner">
       <div id="mascotDock" aria-hidden="true"></div>
+
       <div class="avatar-wrap">
         <img class="avatar" alt="創作者頭像（請替換）"
              src="https://images.unsplash.com/photo-1519643381401-22c77e60520e?q=80&w=800&auto=format&fit=crop"
@@ -264,7 +265,7 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
   <section class="section" id="contact">
     <div class="container">
       <div class="heading"><span class="kawaii">🐶</span><h2>聯絡合作</h2></div>
-    <p>請留下完整資訊，能幫助我更快回覆與排程。</p>
+      <p>請留下完整資訊，能幫助我更快回覆與排程。</p>
 
       <form id="contactForm" class="reveal" style="margin-top:12px" onsubmit="submitMailto(event)">
         <div class="grid-3">
@@ -337,7 +338,11 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
 </div>
 
 <script>
-/* ========= Helpers ========= */
+/* ========================= 重要：一次性啟動鎖 =========================
+   任何其他 script 再怎麼重複載入，看到這個旗標就不會再初始化一次 */
+if (!window.__ttBooted) window.__ttBooted = true; else { /* 已啟動過，直接退出全部腳本 */ throw new Error("booted"); }
+
+/* ========= 快捷選取 ========= */
 const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
 
 /* 年份 + 主題切換 + Header 進度條 */
@@ -367,7 +372,7 @@ const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
     e.style.left=left+'%';e.style.bottom='-12%';e.style.transform=`scale(${s})`;e.style.animationDuration=`${dur}s`;e.style.animationDelay=`${delay}s`;
     e.textContent=pool[Math.floor(Math.random()*pool.length)];box.appendChild(e);if(i<16)requestIdleCallback(add)}requestIdleCallback(add)})();
 
-/* 微光粒子（不跑版：DPR、視窗視覺口改變、上限、被動事件） */
+/* 微光粒子（不跑版：DPR、視窗視覺口、上限、被動事件） */
 (function(){
   const c=$('#sparkle'),ctx=c.getContext('2d',{alpha:true,desynchronized:true});
   function sizeToViewport(){
@@ -392,16 +397,16 @@ const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
   addEventListener('pointermove',e=>{const now=performance.now();if(now-last>28){const r=c.getBoundingClientRect();emit(e.clientX-r.left,e.clientY-r.top);last=now}},{passive:true});
 })();
 
-/* 吉祥物入場：只跑一次、精準停靠、不再復播 */
+/* =============== 吉祥物入場：只跑一次、精準停靠、不重播 =============== */
 (function(){
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches){placeStatic();return;}
-  if(window.__mascotState==='docked'){placeStatic();return;}
-  if(window.__mascotState==='running'){return;}
-  window.__mascotState='running';
+  // 狀態機（全域）
+  if (window.__mascotState === 'docked') { placeStatic(); return; }
+  if (window.__mascotState === 'running' || window.__mascotState === 'docking') { return; }
+  window.__mascotState = 'running';
 
-  const el=$('#mascot'),dock=$('#mascotDock'); if(!el||!dock){window.__mascotState='docked';return;}
+  const el=$('#mascot'), dock=$('#mascotDock'); if(!el||!dock){ window.__mascotState='docked'; return; }
 
-  function run(){
+  function buildFrames(){
     const end=dock.getBoundingClientRect();
     const endX=end.left, endY=end.top;
     const startX=-120, startY=innerHeight-140;
@@ -410,8 +415,7 @@ const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
     const cubic=(p0,p1,p2,p3,t)=>{const u=1-t;return u*u*u*p0+3*u*u*t*p1+3*u*t*t*p2+t*t*t*p3};
     const ease=t=>1-Math.pow(1-t,3);
 
-    const frames=[],shadow=[];
-    const steps=52;
+    const frames=[],shadow=[]; const steps=52;
     for(let i=0;i<=steps;i++){
       const raw=i/steps,t=ease(raw);
       const x=cubic(startX,c1x,c2x,endX,t), y=cubic(startY,c1y,c2y,endY,t);
@@ -419,34 +423,54 @@ const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
       frames.push({transform:`translate(${x}px,${y}px) rotate(${ang}deg)`,offset:raw,opacity:1});
       shadow.push({opacity:0.15+0.25*(1-t),offset:raw});
     }
+    return {frames,shadow};
+  }
+
+  function runOnce(){
+    const {frames,shadow}=buildFrames();
     el.style.opacity='1';
     const a=el.animate(frames,{duration:2200,easing:'linear',fill:'forwards'});
     el.querySelector('.shadow').animate(shadow,{duration:2200,easing:'linear',fill:'forwards'});
-    a.finished.then(()=>dockFlip()).catch(()=>{}); // 若被取消直接忽略
+    a.finished.then(dockFlip).catch(()=>{}); // 若被取消就忽略
   }
 
   function dockFlip(){
-    if(window.__mascotState!=='running'){return;}
+    if(window.__mascotState!=='running') return;
     window.__mascotState='docking';
-    // 停止任何殘留動畫
-    el.getAnimations().forEach(anim=>{try{anim.cancel()}catch{}});
+    // 取消殘留動畫，避免 reparent 造成重播
+    try{ el.getAnimations().forEach(anim=>anim.cancel()); }catch{}
+
     const before=el.getBoundingClientRect();
-    dock.appendChild(el); el.style.position='absolute'; el.style.left='0'; el.style.top='0'; el.style.opacity='1';
+    dock.appendChild(el);
+    el.style.position='absolute'; el.style.left='0'; el.style.top='0'; el.style.opacity='1';
     const after=el.getBoundingClientRect();
     const dx=before.left-after.left, dy=before.top-after.top;
+
     el.style.transform=`translate(${dx}px,${dy}px)`;
     el.animate([{transform:`translate(${dx}px,${dy}px)`},{transform:'translate(0,0)'}],{duration:320,easing:'ease-out',fill:'forwards'}).finished.then(()=>{
       el.classList.add('idle'); el.style.transform='translate(0,0)'; window.__mascotState='docked';
-    }).catch(()=>{el.classList.add('idle'); window.__mascotState='docked';});
+      // Dock 後不再留下任何可能重觸發的監聽
+      window.removeEventListener('pageshow',onPageshow,true);
+      document.removeEventListener('visibilitychange',onVis,true);
+    }).catch(()=>{ el.classList.add('idle'); window.__mascotState='docked'; });
   }
 
   function placeStatic(){
-    const dock=$('#mascotDock'),el=$('#mascot'); if(!dock||!el) return;
-    dock.appendChild(el); el.style.position='absolute'; el.style.left='0'; el.style.top='0'; el.style.opacity='1'; el.classList.add('idle');
+    const dock=$('#mascotDock'), el=$('#mascot'); if(!dock||!el) return;
+    dock.appendChild(el); el.style.position='absolute'; el.style.left='0'; el.style.top='0';
+    el.style.transform='translate(0,0)'; el.style.opacity='1'; el.classList.add('idle');
     window.__mascotState='docked';
   }
 
-  if(document.readyState==='complete'){run()}else{addEventListener('load',run,{once:true})}
+  // bfcache 回來或頁面恢復可見：絕不重播，只靜態就位
+  function onPageshow(e){ if(e.persisted && window.__mascotState!=='docked') placeStatic(); }
+  function onVis(){ if(document.visibilityState==='hidden' && window.__mascotState!=='docked') placeStatic(); }
+
+  window.addEventListener('pageshow',onPageshow,true);
+  document.addEventListener('visibilitychange',onVis,true);
+
+  // 等載入完成再執行一次（唯一入口）
+  if (document.readyState === 'complete') runOnce(); else window.addEventListener('load',runOnce,{once:true});
 })();
 
 /* reveal */
