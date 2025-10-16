@@ -1,12 +1,22 @@
-<!doctype html><html lang="zh-Hant"><head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>TeaTea｜可愛 x 性感（Q 版動物入場＋Q 動物背景）</title>
-<meta name="description" content="可愛又性感的個人品牌頁。入場動畫：Q 版小兔沿曲線跑到 HERO 旁的固定停靠點並常駐；保留 Q 動物背景、彩色粒子、固定導覽、完整表單。"/>
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="color-scheme" content="dark light"/>
+<meta name="theme-color" content="#ff7ebe"/>
+<link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+<title>TeaTea｜可愛 x 性感（Q 版入場＋最佳化）</title>
+<meta name="description" content="Q 版吉祥物沿路徑入場並停靠 HERO，保留可愛 Q 動物背景、彩色光粒子、固定導覽、完整表單與泳裝特輯。全面優化效能與體驗。"/>
+
 <style>
-/* ===== 基礎 ===== */
+/* ===== 基礎（最佳化：系統字體、內容可見性、容器限制） ===== */
 *,*::before,*::after{box-sizing:border-box}
 html,body{height:100%}
-body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.6;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+body{
+  margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+  line-height:1.6;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;
+}
 :root{
   --bg:#0f1215;--text:#f5f7fa;--muted:#a7b0ba;--line:#1f252b;
   --brand:#ff7ebe;--brand-2:#ffd3e8;--accent:#78e3ff;--accent2:#7be9e3;
@@ -23,12 +33,15 @@ h1{font-size:clamp(30px,4.2vw,48px)}
 h2{font-size:clamp(22px,3vw,32px)}
 p{margin:0 0 10px;color:var(--muted)}
 a{color:var(--brand);text-decoration:none}
-.btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#000;box-shadow:0 10px 24px rgba(255,111,169,.25);cursor:pointer;transition:transform .18s ease,box-shadow .18s ease}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:999px;border:1px solid rgba(255,255,255,.18);
+  background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#000;box-shadow:0 10px 24px rgba(255,111,169,.25);
+  cursor:pointer;transition:transform .18s ease,box-shadow .18s ease;will-change:transform}
 .btn:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(255,111,169,.32)}
 .btn.ghost{background:transparent;color:var(--brand);border:1px solid var(--brand);box-shadow:none}
 
-/* ===== Header（固定） ===== */
-header{position:fixed;top:0;left:0;right:0;z-index:10000;background:rgba(15,18,21,.8);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line)}
+/* ===== Header（固定＋最佳化：backdrop） ===== */
+header{position:fixed;top:0;left:0;right:0;z-index:10000;background:rgba(15,18,21,.8);
+  backdrop-filter:saturate(160%) blur(10px);-webkit-backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line)}
 :root[data-theme="light"] header{background:rgba(255,255,255,.8)}
 body{padding-top:66px}
 .nav{display:flex;align-items:center;justify-content:space-between;height:66px}
@@ -37,57 +50,55 @@ body{padding-top:66px}
 .nav-links{display:flex;align-items:center;gap:12px}
 .theme{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:transparent;color:inherit;display:grid;place-items:center;cursor:pointer}
 
-/* ===== Q 版動物背景（保留） ===== */
-.bg-q{position:fixed;inset:-10% -10% 0 -10%;z-index:-2;pointer-events:none;overflow:hidden}
-.q{position:absolute;font-size:28px;opacity:.22;filter:drop-shadow(0 8px 16px rgba(0,0,0,.25));animation:floatUp linear infinite}
+/* ===== 背景：Q 版動物（最佳化：數量下修、lazy spawn） ===== */
+.bg-q{position:fixed;inset:-10% -10% 0 -10%;z-index:-2;pointer-events:none;overflow:hidden;contain:paint}
+.q{position:absolute;font-size:28px;opacity:.22;filter:drop-shadow(0 8px 16px rgba(0,0,0,.25));
+  animation:floatUp linear infinite will-change;will-change:transform}
 @keyframes floatUp{0%{transform:translateY(0) rotate(0)}100%{transform:translateY(-120vh) rotate(360deg)}}
 
-/* ===== 區段分隔（柔和細線） ===== */
-.section{padding:72px 0 64px}
-.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent)}
-:root[data-theme="light"] .divider{background:linear-gradient(90deg,transparent,rgba(0,0,0,.08),transparent)}
+/* ===== 區段（最佳化：content-visibility） ===== */
+.section{padding:72px 0 64px;content-visibility:auto;contain-intrinsic-size:800px}
+.hero{position:relative;min-height:64vh;display:grid;place-items:center;padding-top:8px;background:
+  radial-gradient(800px 420px at 50% 0,rgba(255,126,190,.08),transparent 60%),
+  radial-gradient(600px 340px at 85% 70%,rgba(120,227,255,.06),transparent 70%);
+  content-visibility:auto;contain-intrinsic-size:600px}
+.hero-inner{max-width:960px;text-align:center;padding:40px 20px;position:relative}
+.tag{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted);background:rgba(255,255,255,.04)}
+.avatar-wrap{display:inline-grid;place-items:center;width:118px;height:118px;border-radius:50%;
+  background:radial-gradient(circle at 50% 40%,var(--brand-2),transparent 62%);box-shadow:0 10px 26px rgba(0,0,0,.18);border:1px solid var(--line)}
+.avatar{width:104px;height:104px;border-radius:50%;object-fit:cover;border:2px solid var(--line)}
 
 /* ===== 小標題可愛徽章 ===== */
 .heading{display:flex;align-items:center;gap:10px;margin-bottom:12px}
 .kawaii{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:10px;border:1px solid var(--line);background:
-  radial-gradient(circle at 30% 25%,var(--brand-2),transparent 58%),
-  linear-gradient(180deg,rgba(255,255,255,.08),transparent);
-box-shadow:0 6px 16px rgba(0,0,0,.16);font-size:20px}
+  radial-gradient(circle at 30% 25%,var(--brand-2),transparent 58%),linear-gradient(180deg,rgba(255,255,255,.08),transparent);
+  box-shadow:0 6px 16px rgba(0,0,0,.16);font-size:20px}
 
-/* ===== HERO（與背景融合） ===== */
-.hero{position:relative;min-height:64vh;display:grid;place-items:center;padding-top:8px;background:
-  radial-gradient(800px 420px at 50% 0,rgba(255,126,190,.08),transparent 60%),
-  radial-gradient(600px 340px at 85% 70%,rgba(120,227,255,.06),transparent 70%)}
-.hero-inner{max-width:960px;text-align:center;padding:40px 20px;position:relative}
-.tag{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted);background:rgba(255,255,255,.04)}
-.avatar-wrap{display:inline-grid;place-items:center;width:118px;height:118px;border-radius:50%;background:radial-gradient(circle at 50% 40%,var(--brand-2),transparent 62%);box-shadow:0 10px 26px rgba(0,0,0,.18);border:1px solid var(--line)}
-.avatar{width:104px;height:104px;border-radius:50%;object-fit:cover;border:2px solid var(--line)}
-.kpis{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:12px}
-.kpi{display:flex;flex-direction:column;align-items:center;padding:8px 12px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.04)}
-
-/* ===== 作品（女性圖片） ===== */
+/* ===== 作品網格（最佳化：lazy image、will-change） ===== */
 .grid-works{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-.work{position:relative;overflow:hidden;border-radius:16px;border:1px solid var(--line);background:#000}
+.work{position:relative;overflow:hidden;border-radius:16px;border:1px solid var(--line);background:#000;will-change:transform,filter}
 .work img{width:100%;height:280px;object-fit:cover;display:block;transition:filter .25s ease,transform .25s ease}
 .work:hover img{filter:brightness(1.12) saturate(1.2);transform:scale(1.02)}
 .work .cap{position:absolute;left:10px;bottom:10px;padding:6px 10px;border-radius:12px;background:rgba(0,0,0,.35);color:#fff;font-size:13px}
 
-/* ===== 自我介紹 ===== */
+/* ===== 自我介紹補充 ===== */
+.kpis{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.kpi{display:flex;flex-direction:column;align-items:center;padding:8px 12px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.04)}
 .profile{display:grid;grid-template-columns:160px 1fr;gap:16px;align-items:center}
 .profile img{width:160px;height:160px;object-fit:cover;border-radius:16px;border:1px solid var(--line)}
 .badges{display:flex;flex-wrap:wrap;gap:8px}
 .badge{padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--muted)}
 
-/* ===== 表單/列表 ===== */
+/* ===== 表單（最佳化：觸控尺寸、欄位群組） ===== */
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.list{display:grid;gap:8px}.list li{display:flex;gap:8px;align-items:flex-start}
-.pills{display:flex;flex-wrap:wrap;gap:8px}.pill{padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.06);color:var(--muted)}
 input,select,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--text)}
 label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
+.pills{display:flex;flex-wrap:wrap;gap:8px}.pill{padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.06);color:var(--muted)}
+.list{display:grid;gap:8px}.list li{display:flex;gap:8px;align-items:flex-start}
 .help{font-size:12px;color:var(--muted)}
 
-/* ===== 泳裝 / 游泳特輯 ===== */
+/* ===== 泳裝特輯（裝飾波浪） ===== */
 .swim{position:relative;overflow:hidden;background:
   radial-gradient(700px 320px at 20% 10%,rgba(120,227,255,.08),transparent 70%),
   radial-gradient(600px 300px at 90% 70%,rgba(123,233,227,.06),transparent 70%)}
@@ -104,11 +115,12 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
 .wave:nth-child(3){color:var(--brand-2);opacity:.35;animation-duration:26s}
 @keyframes waveMove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* ===== 全站彩色微光粒子 ===== */
+/* ===== 彩色微光粒子（最佳化：上限、DPR 限制） ===== */
 #sparkle{position:fixed;inset:0;z-index:40;pointer-events:none;mix-blend-mode:screen;opacity:.9}
 
-/* ===== 入場：Q 版小兔（停到真正的 Dock 位置） ===== */
-#mascot{position:fixed;z-index:12000;left:0;top:0;width:90px;height:90px;pointer-events:none;opacity:0;transform-origin:50% 70%}
+/* ===== 吉祥物入場（停靠 Dock，單次保證） ===== */
+#mascot{position:fixed;z-index:12000;left:0;top:0;width:90px;height:90px;pointer-events:none;opacity:0;
+  transform-origin:50% 70%;will-change:transform}
 #mascot.show{opacity:1}
 #mascot .shadow{position:absolute;left:16px;bottom:4px;width:58px;height:12px;background:rgba(0,0,0,.28);border-radius:50%;filter:blur(4px);opacity:.0}
 @keyframes earWiggle{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
@@ -116,18 +128,19 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
 #mascot.idle{animation:bob 2.2s ease-in-out infinite}
 #mascot.idle .ear{transform-origin:50% 20%;animation:earWiggle 1.6s ease-in-out infinite}
 
-/* 停靠錨點：就在 HERO 右側，之後會常駐的真實位置 */
+/* Dock：實際常駐位置（HERO 右側） */
 #mascotDock{position:absolute;left:calc(50% + 120px);top:18px;width:90px;height:90px;z-index:1200;pointer-events:none}
-/* 小螢幕把小兔收近一點 */
 @media(max-width:640px){#mascotDock{left:calc(50% + 80px);top:6px}}
-/* ===== reveal & RWD ===== */
+
+/* ===== 進場 reveal & RWD ===== */
 .reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s ease}
 .reveal.show{opacity:1;transform:translateY(0)}
 @media(max-width:980px){.grid-works{grid-template-columns:repeat(3,minmax(0,1fr))}.profile{grid-template-columns:1fr}}
 @media(max-width:640px){.grid-works{grid-template-columns:repeat(2,minmax(0,1fr))}.work img{height:220px}.avatar-wrap{width:104px;height:104px}.avatar{width:92px;height:92px}.grid-2,.grid-3{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){#sparkle,.q{animation:none}#mascot{transition:none}}
 </style>
-</head><body>
+</head>
+<body>
 <!-- 背景：Q 版動物 -->
 <div class="bg-q" id="bgQ" aria-hidden="true"></div>
 
@@ -145,14 +158,18 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
   <!-- 自我介紹（第一區塊） -->
   <section class="hero" id="about" aria-label="自我介紹">
     <div class="hero-inner">
-      <!-- 真正的停靠位置（動畫終點 = 之後常駐的位置） -->
+      <!-- 這裡就是入場的最終停靠點 -->
       <div id="mascotDock" aria-hidden="true"></div>
 
-      <div class="avatar-wrap"><img class="avatar" src="https://images.unsplash.com/photo-1519643381401-22c77e60520e?q=80&w=800&auto=format&fit=crop" alt="創作者頭像（請替換）"/></div>
-      <div class="tag" style="margin-top:10px">IG｜@teatea0317 · 可愛 / 性感 / 寫真</div>
+      <div class="avatar-wrap">
+        <img class="avatar" alt="創作者頭像（請替換）"
+             src="https://images.unsplash.com/photo-1519643381401-22c77e60520e?q=80&w=800&auto=format&fit=crop"
+             width="104" height="104" fetchpriority="high" decoding="async"/>
+      </div>
+      <div class="tag" style="margin-top:10px">IG｜@teatea0317 · 可愛 / 性感 · 寫真</div>
       <h1 style="margin:10px 0 6px">可愛與性感的雙重敘事，<br/>把視覺做成會心動的體驗。</h1>
       <p>Q 版小兔跑進場、Q 動物背景、彩色微光粒子。</p>
-      <div class="kpis" style="margin-top:12px">
+      <div class="kpis" aria-live="polite" style="margin-top:12px">
         <div class="kpi"><strong>入場</strong><span class="muted">小兔跑進 HERO</span></div>
         <div class="kpi"><strong>可愛背景</strong><span class="muted">兔狗貓鳥</span></div>
         <div class="kpi"><strong>彩色粒子</strong><span class="muted">全站滑鼠</span></div>
@@ -161,7 +178,8 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
       <div class="container" style="margin-top:24px;max-width:820px">
         <div class="heading"><span class="kawaii">🐻</span><h2>關於我</h2></div>
         <div class="profile">
-          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=900&auto=format&fit=crop" alt="個人形象照（請替換）"/>
+          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=900&auto=format&fit=crop"
+               alt="個人形象照（請替換）" width="160" height="160" loading="lazy" decoding="async"/>
           <div>
             <p>嗨，我是 TeaTea，經營 IG / X / JVID 的插畫與寫真創作者。喜歡把可愛與性感融合，用色彩與光影講故事；合作主題包含私房、外拍、品牌聯名等。</p>
             <div class="badges" style="margin-top:8px">
@@ -174,22 +192,34 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
     </div>
   </section>
 
-  <div class="divider"></div>
+  <div class="divider" style="height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent)"></div>
 
   <!-- 作品選集 -->
   <section class="section" id="work">
     <div class="container">
       <div class="heading"><span class="kawaii">🐱</span><h2>作品選集</h2></div>
       <div class="grid-works">
-        <figure class="work reveal"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1600&auto=format&fit=crop" alt="女性作品1"/><figcaption class="cap">Glow · 私房系列</figcaption></figure>
-        <figure class="work reveal"><img src="https://images.unsplash.com/photo-1554151228-14d9def656e4?q=80&w=1600&auto=format&fit=crop" alt="女性作品2"/><figcaption class="cap">Soft Pink · 可愛系</figcaption></figure>
-        <figure class="work reveal"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1600&auto=format&fit=crop" alt="女性作品3"/><figcaption class="cap">Neon Kiss · 霓虹感</figcaption></figure>
-        <figure class="work reveal"><img src="https://images.unsplash.com/photo-1520975922284-56c1a3313381?q=80&w=1600&auto=format&fit=crop" alt="女性作品4"/><figcaption class="cap">Vintage Film · 膠片</figcaption></figure>
+        <figure class="work reveal">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1600&auto=format&fit=crop"
+               alt="女性作品1" width="600" height="400" loading="lazy" decoding="async"/><figcaption class="cap">Glow · 私房系列</figcaption>
+        </figure>
+        <figure class="work reveal">
+          <img src="https://images.unsplash.com/photo-1554151228-14d9def656e4?q=80&w=1600&auto=format&fit=crop"
+               alt="女性作品2" width="600" height="400" loading="lazy" decoding="async"/><figcaption class="cap">Soft Pink · 可愛系</figcaption>
+        </figure>
+        <figure class="work reveal">
+          <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1600&auto=format&fit=crop"
+               alt="女性作品3" width="600" height="400" loading="lazy" decoding="async"/><figcaption class="cap">Neon Kiss · 霓虹感</figcaption>
+        </figure>
+        <figure class="work reveal">
+          <img src="https://images.unsplash.com/photo-1520975922284-56c1a3313381?q=80&w=1600&auto=format&fit=crop"
+               alt="女性作品4" width="600" height="400" loading="lazy" decoding="async"/><figcaption class="cap">Vintage Film · 膠片</figcaption>
+        </figure>
       </div>
     </div>
   </section>
 
-  <div class="divider"></div>
+  <div class="divider" style="height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent)"></div>
 
   <!-- 泳裝 / 游泳特輯 -->
   <section class="section swim" id="swim" aria-label="泳裝與游泳特輯">
@@ -197,10 +227,22 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
       <div class="heading"><span class="kawaii">🐬</span><h2>泳裝 / 游泳特輯</h2></div>
       <p>以海藍色調與水面反光為靈感，展現可愛又性感的泳裝視覺。</p>
       <div class="grid-works grid-swim" style="margin-top:12px">
-        <figure class="work reveal"><img src="https://images.unsplash.com/photo-1512777576244-b846ac3d816f?q=80&w=1600&auto=format&fit=crop" alt="泳裝特輯1"/><figcaption class="cap">Aqua Glow</figcaption></figure>
-        <figure class="work reveal"><img src="https://images.unsplash.com/photo-1492284163710-4eef97892705?q=80&w=1600&auto=format&fit=crop" alt="泳裝特輯2"/><figcaption class="cap">Sun Kiss</figcaption></figure>
-        <figure class="work reveal"><img src="https://images.unsplash.com/photo-1496482475496-a91f31e0386a?q=80&w=1600&auto=format&fit=crop" alt="泳裝特輯3"/><figcaption class="cap">Blue Hour</figcaption></figure>
-        <figure class="work reveal"><img src="https://images.unsplash.com/photo-1495012379376-194a416fcc5f?q=80&w=1600&auto=format&fit=crop" alt="泳裝特輯4"/><figcaption class="cap">Wave Motion</figcaption></figure>
+        <figure class="work reveal">
+          <img src="https://images.unsplash.com/photo-1512777576244-b846ac3d816f?q=80&w=1600&auto=format&fit=crop"
+               alt="泳裝特輯1" width="600" height="400" loading="lazy" decoding="async"/><figcaption class="cap">Aqua Glow</figcaption>
+        </figure>
+        <figure class="work reveal">
+          <img src="https://images.unsplash.com/photo-1492284163710-4eef97892705?q=80&w=1600&auto=format&fit=crop"
+               alt="泳裝特輯2" width="600" height="400" loading="lazy" decoding="async"/><figcaption class="cap">Sun Kiss</figcaption>
+        </figure>
+        <figure class="work reveal">
+          <img src="https://images.unsplash.com/photo-1496482475496-a91f31e0386a?q=80&w=1600&auto=format&fit=crop"
+               alt="泳裝特輯3" width="600" height="400" loading="lazy" decoding="async"/><figcaption class="cap">Blue Hour</figcaption>
+        </figure>
+        <figure class="work reveal">
+          <img src="https://images.unsplash.com/photo-1495012379376-194a416fcc5f?q=80&w=1600&auto=format&fit=crop"
+               alt="泳裝特輯4" width="600" height="400" loading="lazy" decoding="async"/><figcaption class="cap">Wave Motion</figcaption>
+        </figure>
       </div>
     </div>
     <svg class="waves" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
@@ -210,7 +252,7 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
     </svg>
   </section>
 
-  <div class="divider"></div>
+  <div class="divider" style="height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent)"></div>
 
   <!-- 合作項目 -->
   <section class="section" id="services">
@@ -223,7 +265,9 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
         </div>
         <div>
           <h3 class="heading" style="margin:12px 0 6px"><span class="kawaii">🔗</span><span>JVID / IG 連結</span></h3>
-          <div class="pills"><a class="pill" href="#" onclick="alert('請替換為 JVID 連結');return false;">JVID</a><a class="pill" href="https://www.instagram.com/teatea0317" target="_blank" rel="noopener">Instagram</a><a class="pill" href="#" onclick="alert('請替換為 X 連結');return false;">X</a></div>
+          <div class="pills"><a class="pill" href="#" onclick="alert('請替換為 JVID 連結');return false;">JVID</a>
+            <a class="pill" href="https://www.instagram.com/teatea0317" target="_blank" rel="noopener">Instagram</a>
+            <a class="pill" href="#" onclick="alert('請替換為 X 連結');return false;">X</a></div>
         </div>
         <div>
           <h3 class="heading" style="margin:12px 0 6px"><span class="kawaii">🎪</span><span>會參與的活動</span></h3>
@@ -233,9 +277,9 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
     </div>
   </section>
 
-  <div class="divider"></div>
+  <div class="divider" style="height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent)"></div>
 
-  <!-- 聯絡合作（含完整表單） -->
+  <!-- 聯絡合作（完整表單） -->
   <section class="section" id="contact">
     <div class="container">
       <div class="heading"><span class="kawaii">🐶</span><h2>聯絡合作</h2></div>
@@ -243,22 +287,12 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
 
       <form id="contactForm" class="reveal" style="margin-top:12px" onsubmit="submitMailto(event)">
         <div class="grid-3">
-          <div>
-            <label for="name">您的稱呼 / 名字 *</label>
-            <input id="name" name="name" required placeholder="例如：王小美 / Meow Studio"/>
-          </div>
-          <div>
-            <label for="email">Email *</label>
-            <input id="email" name="email" type="email" required placeholder="your@email.com"/>
-          </div>
+          <div><label for="name">您的稱呼 / 名字 *</label><input id="name" name="name" required placeholder="例如：王小美 / Meow Studio"/></div>
+          <div><label for="email">Email *</label><input id="email" name="email" type="email" required placeholder="your@email.com"/></div>
           <div>
             <label for="type">身分類型 *</label>
             <select id="type" name="type" required>
-              <option value="">請選擇</option>
-              <option>廠商 / 品牌</option>
-              <option>個人</option>
-              <option>影像工作室</option>
-              <option>其他</option>
+              <option value="">請選擇</option><option>廠商 / 品牌</option><option>個人</option><option>影像工作室</option><option>其他</option>
             </select>
           </div>
         </div>
@@ -266,32 +300,15 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
         <div class="grid-3" style="margin-top:12px">
           <div>
             <label for="gender">性別</label>
-            <select id="gender" name="gender">
-              <option value="">不提供</option>
-              <option>女</option>
-              <option>男</option>
-              <option>非二元 / 其他</option>
-            </select>
+            <select id="gender" name="gender"><option value="">不提供</option><option>女</option><option>男</option><option>非二元 / 其他</option></select>
           </div>
-          <div>
-            <label for="social">社群連結</label>
-            <input id="social" name="social" placeholder="IG / X / JVID 連結"/>
-          </div>
-          <div>
-            <label for="date">期望檔期</label>
-            <input id="date" name="date" type="date"/>
-          </div>
+          <div><label for="social">社群連結</label><input id="social" name="social" placeholder="IG / X / JVID 連結"/></div>
+          <div><label for="date">期望檔期</label><input id="date" name="date" type="date"/></div>
         </div>
 
         <div class="grid-2" style="margin-top:12px">
-          <div>
-            <label for="topic">合作主題 *</label>
-            <input id="topic" name="topic" required placeholder="可愛 x 性感寫真 / 泳裝特輯 / 品牌聯名…"/>
-          </div>
-          <div>
-            <label for="location">拍攝地點</label>
-            <input id="location" name="location" placeholder="台北 / 桃園 / 其他"/>
-          </div>
+          <div><label for="topic">合作主題 *</label><input id="topic" name="topic" required placeholder="可愛 x 性感寫真 / 泳裝特輯 / 品牌聯名…"/></div>
+          <div><label for="location">拍攝地點</label><input id="location" name="location" placeholder="台北 / 桃園 / 其他"/></div>
         </div>
 
         <div style="margin-top:12px">
@@ -311,18 +328,20 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
 
 <footer>
   <div class="divider"></div>
-  <div class="container" style="padding:26px 0;text-align:center;color:var(--muted)">© <span id="y"></span> TeaTea · 示意頁。</div>
+  <div class="container" style="padding:26px 0;text-align:center;color:var(--muted)">
+    © <span id="y"></span> TeaTea · 示意頁（展示互動與排版）。
+  </div>
 </footer>
 
-<!-- 全站彩色微光粒子 -->
+<!-- 彩色微光粒子畫布 -->
 <canvas id="sparkle" width="0" height="0" aria-hidden="true"></canvas>
 
-<!-- 入場動畫：Q 版小兔（沿路徑跑到 #mascotDock 並常駐） -->
+<!-- 入場動畫：Q 版小兔（沿路徑→Dock；一次性） -->
 <div id="mascot" aria-hidden="true">
   <svg viewBox="0 0 120 120" width="100%" height="100%">
     <g id="bunny">
-      <ellipse cx="60" cy="68" rx="24" ry="26" fill="#fff" opacity=".95" />
-      <ellipse cx="60" cy="52" rx="22" ry="18" fill="#fff" />
+      <ellipse cx="60" cy="68" rx="24" ry="26" fill="#fff" opacity=".95"/>
+      <ellipse cx="60" cy="52" rx="22" ry="18" fill="#fff"/>
       <g class="ear">
         <path d="M46,20 Q44,6 56,8 Q66,10 62,24 Z" fill="#fff"/>
         <path d="M74,20 Q76,6 64,8 Q54,10 58,24 Z" fill="#fff"/>
@@ -342,40 +361,69 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
 </div>
 
 <script>
-/* ===== 小工具 & 主題 ===== */
+/* ===== 快捷選取 ===== */
 const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
+
+/* ===== 年份 + 主題切換（優化：localStorage） ===== */
 (()=>{$('#y').textContent=new Date().getFullYear();
   const r=document.documentElement,b=$('#theme'),t=localStorage.getItem('theme');if(t)r.setAttribute('data-theme',t);
   b.textContent=(r.getAttribute('data-theme')==='light')?'🌞':'🌙';
-  b.addEventListener('click',()=>{const cur=r.getAttribute('data-theme')==='light'?'light':'dark';const nxt=cur==='light'?'dark':'light';r.setAttribute('data-theme',nxt);localStorage.setItem('theme',nxt);b.textContent=(nxt==='light')?'🌞':'🌙'})
-})();
+  b.addEventListener('click',()=>{const cur=r.getAttribute('data-theme')==='light'?'light':'dark';const nxt=cur==='light'?'dark':'light';
+    r.setAttribute('data-theme',nxt);localStorage.setItem('theme',nxt);b.textContent=(nxt==='light')?'🌞':'🌙'})})();
+
 /* ===== 滾動 reveal ===== */
 (function(){const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('show')),{threshold:.12});$$('.reveal').forEach(n=>io.observe(n))})();
-/* ===== Q 背景 ===== */
-(function(){const box=$('#bgQ');const pool=['🐰','🐶','🐥','🐱','🐻','🐼','🦊','🐹'];for(let i=0;i<24;i++){const e=document.createElement('div');e.className='q';const s=.7+Math.random()*1.4;const left=Math.random()*110-5;const delay=Math.random()*-22;const dur=28+Math.random()*18;e.style.left=left+'%';e.style.bottom='-12%';e.style.transform=`scale(${s})`;e.style.animationDuration=`${dur}s`;e.style.animationDelay=`${delay}s`;e.textContent=pool[Math.floor(Math.random()*pool.length)];box.appendChild(e)}})();
-/* ===== 彩色粒子（低密度） ===== */
-(function(){const c=$('#sparkle'),ctx=c.getContext('2d');let W=innerWidth,H=innerHeight;function resize(){W=innerWidth;H=innerHeight;c.width=W;c.height=H}resize();addEventListener('resize',resize);
-  const styles=getComputedStyle(document.documentElement);const colors=[styles.getPropertyValue('--spark1').trim(),styles.getPropertyValue('--spark2').trim(),styles.getPropertyValue('--spark3').trim()];
-  let pts=[],last=0;function emit(x,y){pts.push({x,y,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,life:1,decay:.012+Math.random()*.012,size:1+Math.random()*2,color:colors[Math.floor(Math.random()*colors.length)]})}
-  function step(){ctx.clearRect(0,0,W,H);ctx.globalCompositeOperation='lighter';for(let i=pts.length-1;i>=0;i--){const p=pts[i];p.x+=p.vx;p.y+=p.vy;p.life-=p.decay;if(p.life<=0){pts.splice(i,1);continue}ctx.globalAlpha=Math.max(p.life,0);ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);ctx.fillStyle=p.color;ctx.fill()}requestAnimationFrame(step)}step();
-  addEventListener('pointermove',e=>{const now=performance.now();if(now-last>28){emit(e.clientX,e.clientY);last=now}})
+
+/* ===== Q 背景（優化：延遲生成、數量 16） ===== */
+(function(){
+  const box=$('#bgQ'); const pool=['🐰','🐶','🐥','🐱','🐻','🐼','🦊','🐹']; let i=0;
+  function addOne(){
+    if(i>=16) return; i++;
+    const e=document.createElement('div'); e.className='q';
+    const s=.8+Math.random()*1.2, left=Math.random()*110-5, delay=Math.random()*-22, dur=26+Math.random()*16;
+    e.style.left=left+'%'; e.style.bottom='-12%'; e.style.transform=`scale(${s})`; e.style.animationDuration=`${dur}s`; e.style.animationDelay=`${delay}s`;
+    e.textContent=pool[Math.floor(Math.random()*pool.length)]; box.appendChild(e);
+    if(i<16) requestIdleCallback(addOne);
+  }
+  requestIdleCallback(addOne);
 })();
 
-/* ===== 入場動畫（終點 = #mascotDock，使用 FLIP 無縫停靠） ===== */
+/* ===== 彩色粒子（優化：DPR 限制、最大數量、被動事件） ===== */
 (function(){
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches){placeMascotStatic();return;}
-  const el=$('#mascot'); const dock=$('#mascotDock'); if(!el||!dock) return;
+  const c=$('#sparkle'),ctx=c.getContext('2d',{alpha:true,desynchronized:true});
+  let W=innerWidth,H=innerHeight,dpr=Math.min(1.75,devicePixelRatio||1);
+  function resize(){W=innerWidth;H=innerHeight;dpr=Math.min(1.75,devicePixelRatio||1);c.width=W*dpr;c.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
+  resize(); addEventListener('resize',resize,{passive:true});
+  const styles=getComputedStyle(document.documentElement);
+  const colors=[styles.getPropertyValue('--spark1').trim(),styles.getPropertyValue('--spark2').trim(),styles.getPropertyValue('--spark3').trim()];
+  const MAX=80; let pts=[],last=0;
+  function emit(x,y){ if(pts.length>MAX) pts.shift();
+    pts.push({x,y,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,life:1,decay:.012+Math.random()*.012,size:1+Math.random()*2,color:colors[Math.floor(Math.random()*colors.length)]})}
+  function step(){ctx.clearRect(0,0,W,H);ctx.globalCompositeOperation='lighter';
+    for(let i=pts.length-1;i>=0;i--){const p=pts[i];p.x+=p.vx;p.y+=p.vy;p.life-=p.decay;if(p.life<=0){pts.splice(i,1);continue}
+      ctx.globalAlpha=Math.max(p.life,0);ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);ctx.fillStyle=p.color;ctx.fill()}
+    requestAnimationFrame(step)} step();
+  addEventListener('pointermove',e=>{const now=performance.now();if(now-last>28){emit(e.clientX,e.clientY);last=now}},{passive:true});
+})();
+
+/* ===== 吉祥物入場（修正重跑問題：一次性鎖 + FLIP，且終點=Dock） ===== */
+(function(){
+  // 一次性鎖：避免任何情況下重播（例如 reactive/hot reload 或尺寸變動）
+  if(window.__mascotDone){ placeMascotStatic(); return; }
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){ window.__mascotDone=true; placeMascotStatic(); return; }
+
+  const el=$('#mascot'), dock=$('#mascotDock'); if(!el||!dock){ return; }
+  window.__mascotRunning=true; window.__mascotDone=false;
 
   const styles=getComputedStyle(document.documentElement);
   const trailColors=[styles.getPropertyValue('--spark1').trim(),styles.getPropertyValue('--spark2').trim(),styles.getPropertyValue('--spark3').trim()];
 
-  function lerp(a,b,t){return a+(b-a)*t}
-  function cubic(p0,p1,p2,p3,t){const u=1-t;return u*u*u*p0 + 3*u*u*t*p1 + 3*u*t*t*p2 + t*t*t*p3}
+  const cubic=(p0,p1,p2,p3,t)=>{const u=1-t;return u*u*u*p0 + 3*u*u*t*p1 + 3*u*t*t*p2 + t*t*t*p3};
   const easeOutCubic = t => 1-Math.pow(1-t,3);
 
   function spark(x,y){
     const s=document.createElement('span');
-    s.style.cssText='position:fixed;width:6px;height:6px;border-radius:50%;mix-blend-mode:screen;pointer-events:none;z-index:11000';
+    s.style.cssText='position:fixed;width:6px;height:6px;border-radius:50%;mix-blend-mode:screen;pointer-events:none;z-index:11000;will-change:transform,opacity';
     s.style.background=trailColors[Math.floor(Math.random()*trailColors.length)]||'#fff';
     s.style.left=(x-3)+'px'; s.style.top=(y-3)+'px';
     document.body.appendChild(s);
@@ -384,64 +432,91 @@ const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
     setTimeout(()=>s.remove(),620);
   }
 
-  function run(){
-    const endRect = dock.getBoundingClientRect();         // 真正停靠位置
-    const endX = endRect.left;                            // 與 dock 左上對齊（dock 尺寸 = 90x90 與小兔一致）
-    const endY = endRect.top;
+  let rafId=null, startTs=null;
+  const DURATION=2200;
 
-    // 起點：左下外側；控制點：拋物線弧度
+  function frame(ts){
+    if(!startTs) startTs=ts;
+
+    // 每幀取得 dock 的最新座標（避免字體/圖片載入後 layout 改變）
+    const endRect = dock.getBoundingClientRect();
+    const endX = endRect.left, endY = endRect.top;
+
+    // 起點 & 控制點
     const startX = -120, startY = innerHeight - 140;
     const cp1x = innerWidth*0.18, cp1y = innerHeight*0.72;
     const cp2x = innerWidth*0.58, cp2y = Math.min(endY-120, innerHeight*0.35);
 
-    el.classList.add('show');
-    const shadow=el.querySelector('.shadow');
+    const raw=(ts-startTs)/DURATION; const t=Math.min(1,easeOutCubic(raw));
+    if(raw===0) el.classList.add('show');
 
-    const t0=performance.now(); const dur=2200;
-    (function loop(now){
-      const raw=(now-t0)/dur; const t=Math.min(1,easeOutCubic(raw));
-      const x=cubic(startX,cp1x,cp2x,endX,t);
-      const y=cubic(startY,cp1y,cp2y,endY,t);
-      const angle = Math.atan2(endY-y,endX-x)*180/Math.PI/10;
-      el.style.transform=`translate(${x}px,${y}px) scale(${1+0.04*Math.sin(t*8)}) rotate(${angle}deg)`;
-      shadow.style.opacity=String(0.15+0.25*(1-t));
-      shadow.style.transform=`scale(${0.9+0.3*(1-t)})`;
-      if(raw<1){
-        if(Math.random()<0.25) spark(x+60,y+45);
-        requestAnimationFrame(loop);
-      }else{
-        dockAndFlip(); // 0 跳動停靠
-      }
-    })(t0);
+    const x=cubic(startX,cp1x,cp2x,endX,t);
+    const y=cubic(startY,cp1y,cp2y,endY,t);
+    const angle = Math.atan2(endY-y,endX-x)*180/Math.PI/10;
+    el.style.transform=`translate3d(${x}px,${y}px,0) scale(${1+0.04*Math.sin(t*8)}) rotate(${angle}deg)`;
+    el.querySelector('.shadow').style.opacity=String(0.15+0.25*(1-t));
+
+    if(Math.random()<0.25) spark(x+60,y+45);
+
+    if(raw<1){
+      rafId=requestAnimationFrame(frame);
+    }else{
+      dockAndFlip(); // 完成：Dock + FLIP
+    }
   }
 
-  // FLIP：把元素搬進 dock 容器，保持螢幕位置不變，然後平滑歸零
   function dockAndFlip(){
+    // 防抖：若已完成過就直接靜態化
+    if(window.__mascotDone){ placeMascotStatic(); return; }
+
     const oldBox = el.getBoundingClientRect();
-    dock.appendChild(el);                    // 變成 dock 的子節點（position 交由父容器）
-    el.style.position='absolute';
-    el.style.left='0'; el.style.top='0';
+    dock.appendChild(el); // reparent 到 Dock
+    el.style.position='absolute'; el.style.left='0'; el.style.top='0';
     const newBox = el.getBoundingClientRect();
     const dx = oldBox.left - newBox.left;
     const dy = oldBox.top  - newBox.top;
-    // 先套位移抵消 reparent 差異，再動畫回 0
-    el.style.transform=`translate(${dx}px,${dy}px)`;
-    el.animate([{transform:`translate(${dx}px,${dy}px)`},{transform:'translate(0,0)'}],{duration:300,easing:'ease-out'});
-    setTimeout(()=>{ el.style.transform='translate(0,0)'; el.classList.add('idle'); },300);
+
+    // FLIP：抵消 reparent 位移 → 平滑歸零
+    el.style.transform=`translate3d(${dx}px,${dy}px,0)`;
+    el.animate([{transform:`translate3d(${dx}px,${dy}px,0)`},{transform:'translate3d(0,0,0)'}],{duration:320,easing:'ease-out'});
+    setTimeout(()=>{
+      el.style.transform='translate3d(0,0,0)';
+      el.classList.add('idle');
+      // 一次性結束旗標
+      window.__mascotRunning=false; window.__mascotDone=true;
+      // 保底：移除任何 resize 觸發重跑
+      window.removeEventListener('resize',rerunOnResize,true);
+      document.removeEventListener('visibilitychange',visibilityGuard,true);
+    },320);
   }
 
   function placeMascotStatic(){
-    const endRect = dock.getBoundingClientRect();
-    el.style.opacity='1'; el.style.transform=`translate(${endRect.left}px,${endRect.top}px)`; // 直接放到 dock 位置
-    dock.appendChild(el); el.style.position='absolute'; el.style.left='0'; el.style.top='0'; el.classList.add('idle');
+    const endRect = $('#mascotDock')?.getBoundingClientRect?.() || {left:innerWidth*0.5,top:40};
+    const el = $('#mascot'); if(!el) return;
+    $('#mascotDock')?.appendChild?.(el);
+    el.style.position='absolute'; el.style.left='0'; el.style.top='0';
+    el.style.transform='translate3d(0,0,0)'; el.style.opacity='1'; el.classList.add('idle');
   }
 
-  // 啟動
-  requestAnimationFrame(run);
+  // 只在「尚未 Dock」時才允許因 resize 而重新起算軌跡；Dock 後立即清除
+  function rerunOnResize(){
+    if(window.__mascotDone) return;
+    if(rafId) cancelAnimationFrame(rafId);
+    startTs=null; rafId=requestAnimationFrame(frame);
+  }
+  window.addEventListener('resize',rerunOnResize,{passive:true});
 
-  // 螢幕尺寸變化：若在動畫中變動，下一次刷新再計算終點；動畫完成後由 dock 定位
-  let rAF=null, resizeTimer;
-  addEventListener('resize',()=>{ if(el.parentElement===document.body){ cancelAnimationFrame(rAF); clearTimeout(resizeTimer); resizeTimer=setTimeout(()=>{ run(); },120);} });
+  // 若使用者切到背景或裝置性能差，直接靜態化避免重播或閃爍
+  function visibilityGuard(){
+    if(document.visibilityState==='hidden' && !window.__mascotDone){
+      if(rafId) cancelAnimationFrame(rafId);
+      window.__mascotDone=true; placeMascotStatic();
+    }
+  }
+  document.addEventListener('visibilitychange',visibilityGuard,{passive:true});
+
+  // 啟動
+  rafId=requestAnimationFrame(frame);
 })();
 
 /* ===== 聯絡表單 → mailto 草稿 ===== */
@@ -471,4 +546,5 @@ function submitMailto(e){
   window.location.href=`mailto:${to}?subject=${encodeURIComponent(subject)}&body=${body}`;
 }
 </script>
-</body></html>
+</body>
+</html>
