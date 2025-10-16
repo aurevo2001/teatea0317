@@ -1,7 +1,7 @@
 <!doctype html><html lang="zh-Hant"><head>
 <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>TeaTea｜可愛 x 性感（Q 版動物入場＋Q 動物背景）</title>
-<meta name="description" content="可愛又性感的個人品牌頁。入場動畫：Q 版小兔沿曲線跑進 HERO，停在頭像旁擺動耳朵；保留 Q 動物背景、彩色粒子、固定導覽、完整表單。"/>
+<meta name="description" content="可愛又性感的個人品牌頁。入場動畫：Q 版小兔沿曲線跑到 HERO 旁的固定停靠點並常駐；保留 Q 動物背景、彩色粒子、固定導覽、完整表單。"/>
 <style>
 /* ===== 基礎 ===== */
 *,*::before,*::after{box-sizing:border-box}
@@ -107,23 +107,25 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
 /* ===== 全站彩色微光粒子 ===== */
 #sparkle{position:fixed;inset:0;z-index:40;pointer-events:none;mix-blend-mode:screen;opacity:.9}
 
-/* ===== 新入場動畫：Q 版小兔跑進 HERO ===== */
-#heroAnchor{position:absolute;left:50%;top:12px;transform:translateX(-50%);width:0;height:0} /* 目標錨點（HERO 正上） */
-.mascot{position:fixed;z-index:12000;left:0;top:0;width:96px;height:96px;pointer-events:none;opacity:0;transform-origin:50% 70%}
-.mascot.show{opacity:1}
-.mascot .shadow{position:absolute;left:18px;bottom:4px;width:60px;height:14px;background:rgba(0,0,0,.28);border-radius:50%;filter:blur(4px);opacity:.0}
+/* ===== 入場：Q 版小兔（停到真正的 Dock 位置） ===== */
+#mascot{position:fixed;z-index:12000;left:0;top:0;width:90px;height:90px;pointer-events:none;opacity:0;transform-origin:50% 70%}
+#mascot.show{opacity:1}
+#mascot .shadow{position:absolute;left:16px;bottom:4px;width:58px;height:12px;background:rgba(0,0,0,.28);border-radius:50%;filter:blur(4px);opacity:.0}
 @keyframes earWiggle{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-.mascot.idle{position:absolute;width:90px;height:90px;animation:bob 2.2s ease-in-out infinite}
-.mascot.idle .ear{transform-origin:50% 20%;animation:earWiggle 1.6s ease-in-out infinite}
-.spark{position:fixed;width:6px;height:6px;border-radius:50%;pointer-events:none;will-change:transform,opacity;mix-blend-mode:screen}
+#mascot.idle{animation:bob 2.2s ease-in-out infinite}
+#mascot.idle .ear{transform-origin:50% 20%;animation:earWiggle 1.6s ease-in-out infinite}
 
+/* 停靠錨點：就在 HERO 右側，之後會常駐的真實位置 */
+#mascotDock{position:absolute;left:calc(50% + 120px);top:18px;width:90px;height:90px;z-index:1200;pointer-events:none}
+/* 小螢幕把小兔收近一點 */
+@media(max-width:640px){#mascotDock{left:calc(50% + 80px);top:6px}}
 /* ===== reveal & RWD ===== */
 .reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s ease}
 .reveal.show{opacity:1;transform:translateY(0)}
 @media(max-width:980px){.grid-works{grid-template-columns:repeat(3,minmax(0,1fr))}.profile{grid-template-columns:1fr}}
 @media(max-width:640px){.grid-works{grid-template-columns:repeat(2,minmax(0,1fr))}.work img{height:220px}.avatar-wrap{width:104px;height:104px}.avatar{width:92px;height:92px}.grid-2,.grid-3{grid-template-columns:1fr}}
-@media(prefers-reduced-motion:reduce){#sparkle,.q{animation:none}.mascot{transition:none}}
+@media(prefers-reduced-motion:reduce){#sparkle,.q{animation:none}#mascot{transition:none}}
 </style>
 </head><body>
 <!-- 背景：Q 版動物 -->
@@ -143,7 +145,9 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
   <!-- 自我介紹（第一區塊） -->
   <section class="hero" id="about" aria-label="自我介紹">
     <div class="hero-inner">
-      <span id="heroAnchor" aria-hidden="true"></span><!-- 入場動畫落點 -->
+      <!-- 真正的停靠位置（動畫終點 = 之後常駐的位置） -->
+      <div id="mascotDock" aria-hidden="true"></div>
+
       <div class="avatar-wrap"><img class="avatar" src="https://images.unsplash.com/photo-1519643381401-22c77e60520e?q=80&w=800&auto=format&fit=crop" alt="創作者頭像（請替換）"/></div>
       <div class="tag" style="margin-top:10px">IG｜@teatea0317 · 可愛 / 性感 / 寫真</div>
       <h1 style="margin:10px 0 6px">可愛與性感的雙重敘事，<br/>把視覺做成會心動的體驗。</h1>
@@ -172,7 +176,7 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
 
   <div class="divider"></div>
 
-  <!-- 作品選集（第二） -->
+  <!-- 作品選集 -->
   <section class="section" id="work">
     <div class="container">
       <div class="heading"><span class="kawaii">🐱</span><h2>作品選集</h2></div>
@@ -187,7 +191,7 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
 
   <div class="divider"></div>
 
-  <!-- 泳裝 / 游泳特輯（第三） -->
+  <!-- 泳裝 / 游泳特輯 -->
   <section class="section swim" id="swim" aria-label="泳裝與游泳特輯">
     <div class="container">
       <div class="heading"><span class="kawaii">🐬</span><h2>泳裝 / 游泳特輯</h2></div>
@@ -208,7 +212,7 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
 
   <div class="divider"></div>
 
-  <!-- 合作項目（第四） -->
+  <!-- 合作項目 -->
   <section class="section" id="services">
     <div class="container">
       <div class="heading"><span class="kawaii">🐰</span><h2>合作項目</h2></div>
@@ -231,7 +235,7 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
 
   <div class="divider"></div>
 
-  <!-- 聯絡合作（第五，完整表單） -->
+  <!-- 聯絡合作（含完整表單） -->
   <section class="section" id="contact">
     <div class="container">
       <div class="heading"><span class="kawaii">🐶</span><h2>聯絡合作</h2></div>
@@ -313,27 +317,23 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
 <!-- 全站彩色微光粒子 -->
 <canvas id="sparkle" width="0" height="0" aria-hidden="true"></canvas>
 
-<!-- 入場動畫：Q 版小兔（SVG）會沿路徑跑到 HERO 並待在旁邊 -->
-<div id="mascot" class="mascot" aria-hidden="true">
+<!-- 入場動畫：Q 版小兔（沿路徑跑到 #mascotDock 並常駐） -->
+<div id="mascot" aria-hidden="true">
   <svg viewBox="0 0 120 120" width="100%" height="100%">
-    <!-- 身體 -->
     <g id="bunny">
       <ellipse cx="60" cy="68" rx="24" ry="26" fill="#fff" opacity=".95" />
       <ellipse cx="60" cy="52" rx="22" ry="18" fill="#fff" />
-      <!-- 耳朵 -->
       <g class="ear">
         <path d="M46,20 Q44,6 56,8 Q66,10 62,24 Z" fill="#fff"/>
         <path d="M74,20 Q76,6 64,8 Q54,10 58,24 Z" fill="#fff"/>
         <path d="M49,17 Q47,8 55,9 Q61,10 59,20 Z" fill="#ffd3e8"/>
         <path d="M71,17 Q73,8 65,9 Q59,10 61,20 Z" fill="#ffd3e8"/>
       </g>
-      <!-- 臉 -->
       <circle cx="50" cy="56" r="3.5" fill="#222"/>
       <circle cx="70" cy="56" r="3.5" fill="#222"/>
       <ellipse cx="60" cy="64" rx="6" ry="3" fill="#ff7ebe" opacity=".7"/>
       <circle cx="45" cy="62" r="3" fill="#ffb6d6" opacity=".8"/>
       <circle cx="75" cy="62" r="3" fill="#ffb6d6" opacity=".8"/>
-      <!-- 腳 -->
       <ellipse cx="48" cy="92" rx="10" ry="6" fill="#fff"/>
       <ellipse cx="72" cy="92" rx="10" ry="6" fill="#fff"/>
     </g>
@@ -361,21 +361,23 @@ const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
   addEventListener('pointermove',e=>{const now=performance.now();if(now-last>28){emit(e.clientX,e.clientY);last=now}})
 })();
 
-/* ===== 新入場動畫：小兔跑進 HERO 並常駐 ===== */
+/* ===== 入場動畫（終點 = #mascotDock，使用 FLIP 無縫停靠） ===== */
 (function(){
   if(matchMedia('(prefers-reduced-motion: reduce)').matches){placeMascotStatic();return;}
-  const el=$('#mascot'); const heroAnchor=$('#heroAnchor'); if(!el||!heroAnchor){return;}
+  const el=$('#mascot'); const dock=$('#mascotDock'); if(!el||!dock) return;
+
   const styles=getComputedStyle(document.documentElement);
   const trailColors=[styles.getPropertyValue('--spark1').trim(),styles.getPropertyValue('--spark2').trim(),styles.getPropertyValue('--spark3').trim()];
 
   function lerp(a,b,t){return a+(b-a)*t}
   function cubic(p0,p1,p2,p3,t){const u=1-t;return u*u*u*p0 + 3*u*u*t*p1 + 3*u*t*t*p2 + t*t*t*p3}
-  function easeOutCubic(t){return 1- Math.pow(1-t,3)}
-  function makeSpark(x,y){
-    const s=document.createElement('span');s.className='spark';
-    const c=trailColors[Math.floor(Math.random()*trailColors.length)]||'#fff';
-    s.style.background=c;s.style.left=(x-3)+'px';s.style.top=(y-3)+'px'; s.style.opacity='1'; s.style.transform='scale(1)';
-    s.style.zIndex='11000';
+  const easeOutCubic = t => 1-Math.pow(1-t,3);
+
+  function spark(x,y){
+    const s=document.createElement('span');
+    s.style.cssText='position:fixed;width:6px;height:6px;border-radius:50%;mix-blend-mode:screen;pointer-events:none;z-index:11000';
+    s.style.background=trailColors[Math.floor(Math.random()*trailColors.length)]||'#fff';
+    s.style.left=(x-3)+'px'; s.style.top=(y-3)+'px';
     document.body.appendChild(s);
     const dx=(Math.random()-.5)*24, dy=(Math.random()-.5)*18;
     s.animate([{transform:'translate(0,0) scale(1)',opacity:1},{transform:`translate(${dx}px,${dy}px) scale(.3)`,opacity:0}],{duration:600,easing:'ease-out'});
@@ -383,85 +385,63 @@ const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
   }
 
   function run(){
-    // 初始點：左下角外側；終點：heroAnchor 附近
+    const endRect = dock.getBoundingClientRect();         // 真正停靠位置
+    const endX = endRect.left;                            // 與 dock 左上對齊（dock 尺寸 = 90x90 與小兔一致）
+    const endY = endRect.top;
+
+    // 起點：左下外側；控制點：拋物線弧度
     const startX = -120, startY = innerHeight - 140;
-    const rect = heroAnchor.getBoundingClientRect();
-    const endX = rect.left + rect.width/2 - 40; // 落在 HERO 近中間
-    const endY = rect.top + 30;
-    // 控制點：決定曲線弧度（拋物線感）
     const cp1x = innerWidth*0.18, cp1y = innerHeight*0.72;
     const cp2x = innerWidth*0.58, cp2y = Math.min(endY-120, innerHeight*0.35);
 
     el.classList.add('show');
     const shadow=el.querySelector('.shadow');
 
-    const t0=performance.now(); const dur=2200; // 動畫時長
+    const t0=performance.now(); const dur=2200;
     (function loop(now){
       const raw=(now-t0)/dur; const t=Math.min(1,easeOutCubic(raw));
       const x=cubic(startX,cp1x,cp2x,endX,t);
       const y=cubic(startY,cp1y,cp2y,endY,t);
-      el.style.transform=`translate(${x}px,${y}px) scale(${1+0.04*Math.sin(t*8)}) rotate(${Math.atan2(endY-y,endX-x)*180/Math.PI/10}deg)`;
+      const angle = Math.atan2(endY-y,endX-x)*180/Math.PI/10;
+      el.style.transform=`translate(${x}px,${y}px) scale(${1+0.04*Math.sin(t*8)}) rotate(${angle}deg)`;
       shadow.style.opacity=String(0.15+0.25*(1-t));
       shadow.style.transform=`scale(${0.9+0.3*(1-t)})`;
       if(raw<1){
-        if(Math.random()<0.25) makeSpark(x+70,y+50);
+        if(Math.random()<0.25) spark(x+60,y+45);
         requestAnimationFrame(loop);
       }else{
-        dock();
+        dockAndFlip(); // 0 跳動停靠
       }
     })(t0);
   }
 
-  function dock(){
-    // 把小兔掛到 HERO 區塊旁邊（不再用 fixed）
-    const elFixed=$('#mascot');
-    const heroInner=$('.hero-inner');
-    const dockBox=document.createElement('div'); // 容器使其絕對定位
-    dockBox.style.position='absolute';
-    dockBox.style.left='calc(50% + 120px)'; // 頭像右側
-    dockBox.style.top='18px';
-    dockBox.style.width='90px'; dockBox.style.height='90px';
-    dockBox.style.zIndex='1200';
-    heroInner.appendChild(dockBox);
-
-    // 轉為常駐
-    elFixed.style.position='absolute';
-    elFixed.style.left='0'; elFixed.style.top='0';
-    elFixed.style.transform='none';
-    elFixed.classList.add('idle');
-    dockBox.appendChild(elFixed);
-
-    // 可愛的心心一顆
-    const heart=document.createElement('div');
-    heart.textContent='💗';
-    heart.style.position='absolute'; heart.style.left='26px'; heart.style.top='-4px';
-    heart.style.filter='drop-shadow(0 4px 6px rgba(0,0,0,.25))'; heart.style.opacity='0';
-    dockBox.appendChild(heart);
-    heart.animate([{transform:'translateY(6px) scale(.9)',opacity:0},{transform:'translateY(-8px) scale(1.1)',opacity:1},{transform:'translateY(-24px) scale(1)',opacity:0}],{duration:1200,easing:'ease-out'});
-
-    // 重新計算（RWD）避免視窗改變後位置跑掉
-    let resizeTimer;
-    addEventListener('resize',()=>{
-      clearTimeout(resizeTimer);
-      resizeTimer=setTimeout(()=>{
-        const avatar=$('.avatar-wrap').getBoundingClientRect();
-        dockBox.style.left=`${(window.innerWidth/2) + 120}px`;
-        dockBox.style.top=`18px`;
-      },120);
-    });
+  // FLIP：把元素搬進 dock 容器，保持螢幕位置不變，然後平滑歸零
+  function dockAndFlip(){
+    const oldBox = el.getBoundingClientRect();
+    dock.appendChild(el);                    // 變成 dock 的子節點（position 交由父容器）
+    el.style.position='absolute';
+    el.style.left='0'; el.style.top='0';
+    const newBox = el.getBoundingClientRect();
+    const dx = oldBox.left - newBox.left;
+    const dy = oldBox.top  - newBox.top;
+    // 先套位移抵消 reparent 差異，再動畫回 0
+    el.style.transform=`translate(${dx}px,${dy}px)`;
+    el.animate([{transform:`translate(${dx}px,${dy}px)`},{transform:'translate(0,0)'}],{duration:300,easing:'ease-out'});
+    setTimeout(()=>{ el.style.transform='translate(0,0)'; el.classList.add('idle'); },300);
   }
 
   function placeMascotStatic(){
-    const elFixed=$('#mascot'); if(!elFixed) return;
-    const heroInner=$('.hero-inner'); const dockBox=document.createElement('div');
-    dockBox.style.position='absolute'; dockBox.style.left='calc(50% + 120px)'; dockBox.style.top='18px'; dockBox.style.width='90px'; dockBox.style.height='90px'; dockBox.style.zIndex='1200';
-    heroInner.appendChild(dockBox);
-    elFixed.classList.add('show','idle'); elFixed.style.position='absolute'; elFixed.style.left='0'; elFixed.style.top='0'; elFixed.style.transform='none';
-    dockBox.appendChild(elFixed);
+    const endRect = dock.getBoundingClientRect();
+    el.style.opacity='1'; el.style.transform=`translate(${endRect.left}px,${endRect.top}px)`; // 直接放到 dock 位置
+    dock.appendChild(el); el.style.position='absolute'; el.style.left='0'; el.style.top='0'; el.classList.add('idle');
   }
 
   // 啟動
   requestAnimationFrame(run);
+
+  // 螢幕尺寸變化：若在動畫中變動，下一次刷新再計算終點；動畫完成後由 dock 定位
+  let rAF=null, resizeTimer;
+  addEventListener('resize',()=>{ if(el.parentElement===document.body){ cancelAnimationFrame(rAF); clearTimeout(resizeTimer); resizeTimer=setTimeout(()=>{ run(); },120);} });
 })();
 
 /* ===== 聯絡表單 → mailto 草稿 ===== */
