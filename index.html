@@ -1,7 +1,7 @@
 <!doctype html><html lang="zh-Hant"><head>
 <meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>TeaTea｜可愛 x 性感 個人品牌（3D 入場＋Q 動物背景）</title>
-<meta name="description" content="原生 WebGL 3D 水滴漣漪入場、Q 版動物背景、彩色微光粒子、固定導覽、女性作品選集、自我介紹、JVID/IG/活動。"/>
+<meta name="description" content="原生 WebGL 3D 水滴漣漪入場、Q 版動物背景、彩色微光粒子、固定導覽、女性作品選集、自我介紹、JVID/IG/活動、泳裝/游泳特輯。"/>
 <style>
 /* ===== 基礎 ===== */
 *,*::before,*::after{box-sizing:border-box}
@@ -37,24 +37,24 @@ body{padding-top:66px}
 .nav-links{display:flex;align-items:center;gap:12px}
 .theme{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:transparent;color:inherit;display:grid;place-items:center;cursor:pointer}
 
-/* ===== Q 版動物背景（保留你的原風格） ===== */
+/* ===== Q 版動物背景（保留） ===== */
 .bg-q{position:fixed;inset:-10% -10% 0 -10%;z-index:-2;pointer-events:none;overflow:hidden}
 .q{position:absolute;font-size:28px;opacity:.22;filter:drop-shadow(0 8px 16px rgba(0,0,0,.25));animation:floatUp linear infinite}
 @keyframes floatUp{0%{transform:translateY(0) rotate(0)}100%{transform:translateY(-120vh) rotate(360deg)}}
 
-/* ===== 區段（不要大色塊，只用柔和細線分隔） ===== */
+/* ===== 區段分隔（柔和細線） ===== */
 .section{padding:72px 0 64px}
 .divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent)}
 :root[data-theme="light"] .divider{background:linear-gradient(90deg,transparent,rgba(0,0,0,.08),transparent)}
 
-/* ===== 小標題可愛徽章（熊/兔/狗/貓） ===== */
+/* ===== 小標題可愛徽章 ===== */
 .heading{display:flex;align-items:center;gap:10px;margin-bottom:12px}
 .kawaii{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:10px;border:1px solid var(--line);background:
   radial-gradient(circle at 30% 25%,var(--brand-2),transparent 58%),
   linear-gradient(180deg,rgba(255,255,255,.08),transparent);
 box-shadow:0 6px 16px rgba(0,0,0,.16);font-size:20px}
 
-/* ===== HERO（與背景融洽） ===== */
+/* ===== HERO ===== */
 .hero{position:relative;min-height:72vh;display:grid;place-items:center;padding-top:8px;background:
   radial-gradient(800px 420px at 50% 0,rgba(255,126,190,.08),transparent 60%),
   radial-gradient(600px 340px at 85% 70%,rgba(120,227,255,.06),transparent 70%)}
@@ -78,12 +78,32 @@ box-shadow:0 6px 16px rgba(0,0,0,.16);font-size:20px}
 .badges{display:flex;flex-wrap:wrap;gap:8px}
 .badge{padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--muted)}
 
-/* ===== 表單 ===== */
+/* ===== 表單/列表 ===== */
 .list{display:grid;gap:8px}.list li{display:flex;gap:8px;align-items:flex-start}
 .pills{display:flex;flex-wrap:wrap;gap:8px}.pill{padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.06);color:var(--muted)}
 input,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--text)}
 
-/* ===== 入場覆蓋（原生 WebGL；保證出現＋內建 2D 後備） ===== */
+/* ===== 新增：泳裝 / 游泳特輯 ===== */
+.swim{position:relative;overflow:hidden;background:
+  radial-gradient(700px 320px at 20% 10%,rgba(120,227,255,.08),transparent 70%),
+  radial-gradient(600px 300px at 90% 70%,rgba(123,233,227,.06),transparent 70%)}
+.grid-swim .work{background:#001018;border-color:color-mix(in oklab,var(--accent) 20%,var(--line) 80%)}
+.grid-swim .work::after{
+  content:"";position:absolute;inset:-120% -60% auto -60%;height:160%;
+  background:radial-gradient(120px 60px at 50% 50%,rgba(255,255,255,.45),rgba(255,255,255,0) 60%),
+             radial-gradient(80px 40px at 60% 60%,rgba(120,227,255,.45),rgba(120,227,255,0) 60%);
+  transform:rotate(-20deg);opacity:.0;pointer-events:none
+}
+.grid-swim .work:hover::after{animation:shine 1.2s ease forwards}
+@keyframes shine{from{transform:translateX(-40%) rotate(-20deg);opacity:.0}30%{opacity:.35}to{transform:translateX(60%) rotate(-20deg);opacity:0}}
+
+.waves{position:absolute;left:0;right:0;bottom:-1px;width:200%;height:140px;opacity:.28;pointer-events:none}
+.wave{fill:currentColor;color:var(--accent);animation:waveMove 18s linear infinite}
+.wave:nth-child(2){color:var(--accent2);opacity:.5;animation-duration:22s;animation-direction:reverse}
+.wave:nth-child(3){color:var(--brand-2);opacity:.35;animation-duration:26s}
+@keyframes waveMove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ===== 入場覆蓋（WebGL＋2D 後備） ===== */
 #intro{position:fixed;inset:0;z-index:20000;display:grid;place-items:center;background:linear-gradient(180deg,color-mix(in oklab,var(--bg) 90%,#000 10%),var(--bg))}
 #intro.hidden{opacity:0;transition:opacity .6s ease}
 #introGL,#intro2D{position:absolute;inset:0;width:100%;height:100%}
@@ -100,21 +120,21 @@ input,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid 
 @media(prefers-reduced-motion:reduce){#sparkle,.q{animation:none}}
 </style>
 </head><body>
-<!-- 背景：Q 版動物（你滿意的樣式） -->
+<!-- 背景：Q 版動物 -->
 <div class="bg-q" id="bgQ" aria-hidden="true"></div>
 
 <header>
   <div class="container nav">
     <div class="brand"><span class="logo" aria-hidden="true"></span><span>TeaTea</span></div>
     <nav class="nav-links" aria-label="主選單">
-      <a href="#work">作品</a><a href="#about">自我介紹</a><a href="#services">合作</a><a href="#contact">聯絡</a>
+      <a href="#work">作品</a><a href="#swim">泳裝</a><a href="#about">自我介紹</a><a href="#services">合作</a><a href="#contact">聯絡</a>
       <button id="theme" class="theme" aria-label="切換主題">🌙</button>
     </nav>
   </div>
 </header>
 
 <main>
-  <!-- HERO：柔和、與背景融洽 -->
+  <!-- HERO -->
   <section class="hero" aria-label="主視覺">
     <div class="hero-inner">
       <div class="avatar-wrap"><img class="avatar" src="https://images.unsplash.com/photo-1519643381401-22c77e60520e?q=80&w=800&auto=format&fit=crop" alt="創作者頭像（請替換）"/></div>
@@ -147,6 +167,28 @@ input,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid 
         <figure class="work reveal"><img src="https://images.unsplash.com/photo-1520975922284-56c1a3313381?q=80&w=1600&auto=format&fit=crop" alt="女性作品4"/><figcaption class="cap">Vintage Film · 膠片</figcaption></figure>
       </div>
     </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- 新增：泳裝 / 游泳特輯 -->
+  <section class="section swim" id="swim" aria-label="泳裝與游泳特輯">
+    <div class="container">
+      <div class="heading"><span class="kawaii">🐬</span><h2>泳裝 / 游泳特輯</h2></div>
+      <p>以海藍色調與水面反光為靈感，展現可愛又性感的泳裝視覺。</p>
+      <div class="grid-works grid-swim" style="margin-top:12px">
+        <figure class="work reveal"><img src="https://images.unsplash.com/photo-1512777576244-b846ac3d816f?q=80&w=1600&auto=format&fit=crop" alt="泳裝特輯1"/><figcaption class="cap">Aqua Glow</figcaption></figure>
+        <figure class="work reveal"><img src="https://images.unsplash.com/photo-1492284163710-4eef97892705?q=80&w=1600&auto=format&fit=crop" alt="泳裝特輯2"/><figcaption class="cap">Sun Kiss</figcaption></figure>
+        <figure class="work reveal"><img src="https://images.unsplash.com/photo-1496482475496-a91f31e0386a?q=80&w=1600&auto=format&fit=crop" alt="泳裝特輯3"/><figcaption class="cap">Blue Hour</figcaption></figure>
+        <figure class="work reveal"><img src="https://images.unsplash.com/photo-1495012379376-194a416fcc5f?q=80&w=1600&auto=format&fit=crop" alt="泳裝特輯4"/><figcaption class="cap">Wave Motion</figcaption></figure>
+      </div>
+    </div>
+    <!-- 柔和動態海浪裝飾（SVG） -->
+    <svg class="waves" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
+      <path class="wave" d="M0,80 C150,120 350,0 600,60 850,120 1050,20 1200,80 L1200,120 L0,120 Z"></path>
+      <path class="wave" d="M0,90 C180,130 360,20 600,70 840,120 1020,40 1200,90 L1200,120 L0,120 Z"></path>
+      <path class="wave" d="M0,100 C200,140 380,40 600,80 820,120 1000,60 1200,100 L1200,120 L0,120 Z"></path>
+    </svg>
   </section>
 
   <div class="divider"></div>
@@ -213,7 +255,7 @@ input,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid 
   <div class="container" style="padding:26px 0;text-align:center;color:var(--muted)">© <span id="y"></span> TeaTea · 示意頁（展示互動與排版，非最終商用版）。</div>
 </footer>
 
-<!-- 入場：原生 WebGL（保證顯示，含 2D 後備） -->
+<!-- 入場：原生 WebGL（含 2D 後備） -->
 <div id="intro" aria-hidden="true">
   <canvas id="introGL"></canvas>
   <canvas id="intro2D"></canvas>
@@ -242,11 +284,11 @@ const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
   function step(){ctx.clearRect(0,0,W,H);ctx.globalCompositeOperation='lighter';for(let i=pts.length-1;i>=0;i--){const p=pts[i];p.x+=p.vx;p.y+=p.vy;p.life-=p.decay;if(p.life<=0){pts.splice(i,1);continue}ctx.globalAlpha=Math.max(p.life,0);ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);ctx.fillStyle=p.color;ctx.fill()}requestAnimationFrame(step)}step();
   addEventListener('pointermove',e=>{const now=performance.now();if(now-last>28){emit(e.clientX,e.clientY);last=now}})
 })();
-/* ===== 入場動畫：原生 WebGL（顯示保證）＋2D 後備 ===== */
+/* ===== 入場動畫：WebGL（有則用之）→ 2D 後備 ===== */
 (function(){
   const overlay=$('#intro'),glCanvas=$('#introGL'),ctx2DCanvas=$('#intro2D'),skip=$('#skip');
   function end(){overlay.classList.add('hidden');setTimeout(()=>overlay.remove(),600)}
-  // 嘗試 WebGL
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){end();return}
   let gl=null;try{gl=glCanvas.getContext('webgl',{antialias:true,alpha:true,powerPreference:'high-performance'})||glCanvas.getContext('experimental-webgl')}catch(e){}
   if(gl){
     const vert=`attribute vec2 p;void main(){gl_Position=vec4(p,0.0,1.0);} `;
@@ -255,12 +297,10 @@ const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
       float ripple(vec2 uv,vec2 c,float t){float d=distance(uv,c);return sin(22.0*d-5.2*t)*exp(-3.2*d);}
       void main(){
         vec2 uv=gl_FragCoord.xy/u_res; uv.y=1.0-uv.y;
-        float t=u_time;
-        float hit=1.15; float a=max(0.0,t-hit);
+        float t=u_time; float hit=1.15; float a=max(0.0,t-hit);
         float r=ripple(uv,vec2(0.5,0.58),a)+.6*ripple(uv,vec2(0.52,0.59),a-.08);
         float h=r*0.22;
         vec3 col=base(uv)+vec3(clamp(h*2.0,0.0,1.0))*0.35;
-        // drop highlight (前 0.2s)
         if(t<hit+0.2){
           float d=distance(uv,vec2(0.5,mix(1.25,0.58,clamp(t/hit,0.0,1.0))));
           col = mix(col, vec3(0.80,0.93,1.0), smoothstep(0.12,0.0,d));
@@ -289,21 +329,20 @@ const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
       if(t>3.0){end();return}requestAnimationFrame(loop)
     })(t0);
   }else{
-    // 後備：Canvas 2D 漣漪（保證至少看到入場）
+    // 2D 後備
     const c=ctx2DCanvas,ctx=c.getContext('2d');function resize(){c.width=innerWidth*devicePixelRatio;c.height=innerHeight*devicePixelRatio}resize();addEventListener('resize',resize);
     const t0=performance.now();
     (function loop(now){
       const t=(now-t0)/1000;ctx.clearRect(0,0,c.width,c.height);
       const cx=c.width/2,cy=c.height*0.58;
       for(let i=0;i<3;i++){const r=(t*220+i*26);const alpha=Math.max(0,1-t*0.7-i*0.2);ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.strokeStyle=`rgba(155,231,255,${alpha})`;ctx.lineWidth=3*devicePixelRatio;ctx.stroke()}
-      // 水滴
       if(t<1.2){ctx.beginPath();ctx.arc(cx,cy-(c.height*0.35*(1-t/1.15)),10*devicePixelRatio,0,Math.PI*2);ctx.fillStyle='rgba(185,236,255,.95)';ctx.fill()}
       if(t>3.0){end();return}requestAnimationFrame(loop)
     })(t0);
   }
   skip.addEventListener('click',end);
 })();
-/* ===== 無障礙：Esc 跳過入場 ===== */
-addEventListener('keydown',e=>{if(e.key==='Escape'){const i=$('#intro');if(i){i.classList.add('hidden');setTimeout(()=>i.remove(),300)}}});
+/* ===== Esc 跳過入場 ===== */
+addEventListener('keydown',e=>{if(e.key==='Escape'){const i=document.getElementById('intro');if(i){i.classList.add('hidden');setTimeout(()=>i.remove(),300)}}});
 </script>
 </body></html>
