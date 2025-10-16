@@ -1,0 +1,221 @@
+<!doctype html><html lang="zh-Hant"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="color-scheme" content="light dark"/>
+<title>TeaTea｜合作網站示意</title>
+<meta name="description" content="為 IG 創作者量身打造的極簡互動網站示意：入場動畫、場景互動、滾動特效、作品展示與合作洽談。"/>
+<style>
+/* ========== 基礎設定 ========== */
+*,*::before,*::after{box-sizing:border-box}html,body{height:100%}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Inter,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.6;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+:root{--bg:#f7f6f2;--text:#1a1a1a;--muted:#5a5a5a;--brand:#2f7d4f;--brand-2:#9bc89e;--card:#ffffff;--line:#e6e2d9;--accent:#b6722a;--shadow:0 10px 30px rgba(0,0,0,.08)}
+/* 深色模式（自動） */
+@media (prefers-color-scheme: dark){:root{--bg:#111315;--text:#e8e8e8;--muted:#9aa0a6;--card:#15181b;--line:#2a2f34;--brand:#78d39f;--brand-2:#2c6b4a;--accent:#f0b36e}}
+/* 手動主題切換 */
+:root[data-theme="light"]{--bg:#f7f6f2;--text:#1a1a1a;--muted:#5a5a5a;--card:#ffffff;--line:#e6e2d9;--brand:#2f7d4f;--brand-2:#9bc89e;--accent:#b6722a}
+:root[data-theme="dark"]{--bg:#111315;--text:#e8e8e8;--muted:#9aa0a6;--card:#15181b;--line:#2a2f34;--brand:#78d39f;--brand-2:#2c6b4a;--accent:#f0b36e}
+.container{max-width:1080px;margin:auto;padding:0 20px}
+.section{padding:80px 0;border-top:1px solid var(--line);background:linear-gradient(180deg,transparent,transparent 50%,rgba(0,0,0,.02) 100%)}
+h1,h2,h3{line-height:1.2;margin:0 0 12px}h1{font-size:clamp(28px,4vw,44px)}h2{font-size:clamp(22px,3vw,30px)}p{margin:0 0 12px;color:var(--muted)}
+a{color:var(--brand);text-decoration:none}a:hover{opacity:.9}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:999px;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;border:0;box-shadow:var(--shadow);cursor:pointer;transition:transform .2s ease,box-shadow .2s ease}.btn:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(0,0,0,.12)}
+.btn.outline{background:transparent;color:var(--brand);border:1px solid var(--brand);box-shadow:none}.btn.small{padding:8px 12px;font-size:14px}
+.grid{display:grid;gap:20px}.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
+.tag{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;background:rgba(0,0,0,.05);color:var(--muted);border:1px solid var(--line)}@media(prefers-color-scheme:dark){.tag{background:rgba(255,255,255,.04)}}
+/* ========== 頁首與導覽 ========== */
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.5);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line)}@media(prefers-color-scheme:dark){header{background:rgba(17,19,21,.5)}}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--text)}
+.logo{width:28px;height:28px;display:inline-grid;place-items:center;border-radius:8px;background:conic-gradient(from 240deg at 50% 50%,var(--brand),var(--brand-2))}
+.nav-links{display:flex;gap:14px;align-items:center}
+.theme-toggle{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:var(--card);display:grid;place-items:center;cursor:pointer}
+.progress{position:absolute;inset:auto 0 0 0;height:3px;background:linear-gradient(90deg,var(--brand),var(--accent));transform-origin:0 50%;transform:scaleX(0)}
+/* ========== 入場場景（互動） ========== */
+.hero{position:relative;min-height:78vh;display:grid;place-items:center;overflow:hidden;background:radial-gradient(1200px 480px at 50% 0,rgba(123,200,150,.18),transparent 60%)}
+.scene{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.leaf{position:absolute;will-change:transform;opacity:.9;filter:drop-shadow(0 10px 8px rgba(0,0,0,.08))}
+.leaf svg{display:block}
+.leaf.slow{opacity:.5}.leaf.fast{opacity:.85}
+.hero-inner{position:relative;z-index:2;max-width:900px;text-align:center;padding:40px 20px}
+.avatar{width:100px;height:100px;border-radius:50%;object-fit:cover;border:2px solid var(--line);box-shadow:var(--shadow)}
+.hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+.kpis{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+.kpi{display:flex;flex-direction:column;align-items:center;background:var(--card);border:1px solid var(--line);padding:10px 14px;border-radius:12px;min-width:120px}
+/* ========== 區塊樣式 ========== */
+.section-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+.gallery{position:relative}.gallery-track{display:grid;grid-auto-flow:column;grid-auto-columns:80%;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px}.gallery-item{scroll-snap-align:center}
+.gallery img{width:100%;height:360px;object-fit:cover;border-radius:16px;border:1px solid var(--line)}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.list{display:grid;gap:10px}.list li{display:flex;gap:10px;align-items:flex-start}
+.contact{display:grid;gap:12px}
+input,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--text)}
+footer{padding:30px 0;text-align:center;color:var(--muted);border-top:1px solid var(--line)}
+/* ========== 動畫：入場 / 滾動揭露 ========== */
+.reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s ease}.reveal.show{opacity:1;transform:translateY(0)}
+.fade-in{animation:fadeIn .8s ease both}@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+/* 低動效偏好 */
+@media (prefers-reduced-motion: reduce){.leaf{animation:none;transition:none}.reveal{transition:none}.btn{transition:none}}
+/* ========== RWD 斷點（維持 980/640） ========== */
+@media(max-width:980px){.grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}.gallery-track{grid-auto-columns:88%}}
+@media(max-width:640px){.grid-2,.grid-3{grid-template-columns:1fr}.gallery img{height:300px}.avatar{width:84px;height:84px}}
+</style>
+</head><body>
+<header>
+  <div class="container nav">
+    <div class="brand"><span class="logo" aria-hidden="true"></span><span>TeaTea</span></div>
+    <nav class="nav-links" aria-label="主選單">
+      <a href="#work">作品</a><a href="#about">關於</a><a href="#services">合作</a><a href="#contact">聯絡</a>
+      <button id="themeToggle" class="theme-toggle" aria-label="切換主題" title="切換主題">🌞</button>
+    </nav>
+  </div>
+  <div class="progress" id="progress"></div>
+</header>
+
+<main>
+  <!-- ========== HERO：入場動畫＋場景互動 ========== -->
+  <section class="hero" aria-label="主視覺">
+    <div class="scene" aria-hidden="true" id="scene">
+      <!-- 茶葉 SVG 元件（多層視差） -->
+      <div class="leaf slow" style="left:8%;top:20%" data-depth="0.06"><?xml version="1.0"?><svg width="90" height="52" viewBox="0 0 90 52" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 25C30-6 60-6 85 25C60 56 30 56 5 25Z" fill="url(#g1)"/><ellipse cx="45" cy="25" rx="3" ry="21" fill="rgba(0,0,0,.12)"/><defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#2f7d4f"/><stop offset="1" stop-color="#9bc89e"/></linearGradient></defs></svg></div>
+      <div class="leaf" style="left:70%;top:16%" data-depth="0.1"><?xml version="1.0"?><svg width="70" height="46" viewBox="0 0 90 52" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 25C30-6 60-6 85 25C60 56 30 56 5 25Z" fill="url(#g2)"/><defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#2f7d4f"/><stop offset="1" stop-color="#78a680"/></linearGradient></defs></svg></div>
+      <div class="leaf fast" style="left:20%;top:70%" data-depth="0.18"><?xml version="1.0"?><svg width="110" height="58" viewBox="0 0 90 52" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 25C30-6 60-6 85 25C60 56 30 56 5 25Z" fill="url(#g3)"/><defs><linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#3e8a5c"/><stop offset="1" stop-color="#9bc89e"/></linearGradient></defs></svg></div>
+      <div class="leaf" style="left:85%;top:75%" data-depth="0.12"><?xml version="1.0"?><svg width="76" height="44" viewBox="0 0 90 52" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 25C30-6 60-6 85 25C60 56 30 56 5 25Z" fill="url(#g4)"/><defs><linearGradient id="g4" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#2f7d4f"/><stop offset="1" stop-color="#6ca87a"/></linearGradient></defs></svg></div>
+    </div>
+    <div class="hero-inner">
+      <!-- ===== REPLACE START：個人資料（改成創作者資訊） ===== -->
+      <img class="avatar fade-in" src="https://picsum.photos/seed/teatea/300/300" alt="創作者頭像（請更換）"/>
+      <div class="tag fade-in" style="margin-top:12px">IG｜@teatea0317 · 生活 / 美感 / 旅茶</div>
+      <h1 class="fade-in" style="margin-top:12px">以茶為景的生活敘事，<br/>把日常做成會呼吸的美學。</h1>
+      <p class="fade-in">極簡畫面、自然綠感、細膩互動——這是專屬於你的網站體驗。</p>
+      <div class="hero-actions fade-in">
+        <a class="btn" href="#services">合作洽談</a>
+        <a class="btn outline" href="#work">看作品</a>
+        <a class="btn small outline" href="https://www.instagram.com/teatea0317" target="_blank" rel="noopener">Instagram</a>
+      </div>
+      <div class="kpis fade-in" aria-label="重點數據">
+        <div class="kpi"><strong>3–5 秒</strong><span class="muted">入場敘事動畫</span></div>
+        <div class="kpi"><strong>60 FPS</strong><span class="muted">場景互動優化</span></div>
+        <div class="kpi"><strong>RWD</strong><span class="muted">手機優化設計</span></div>
+      </div>
+      <!-- ===== REPLACE END：個人資料 ===== -->
+    </div>
+  </section>
+
+  <!-- ========== 作品展示 ========== -->
+  <section class="section" id="work">
+    <div class="container">
+      <div class="section-title"><h2 class="reveal">作品選集</h2><div class="pills"><span class="tag">攝影</span><span class="tag">旅行</span><span class="tag">生活提案</span></div></div>
+      <div class="gallery reveal">
+        <div class="gallery-track" id="gallery">
+          <!-- ===== REPLACE START：將下方圖片替換為實際作品 ===== -->
+          <figure class="gallery-item card"><img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?q=80&w=1600&auto=format&fit=crop" alt="山嵐與茶園"/><figcaption style="padding:12px">山嵐與茶園 · 系列攝影</figcaption></figure>
+          <figure class="gallery-item card"><img src="https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?q=80&w=1600&auto=format&fit=crop" alt="晨光下的手沖"/><figcaption style="padding:12px">晨光下的手沖 · 居家紀錄</figcaption></figure>
+          <figure class="gallery-item card"><img src="https://images.unsplash.com/photo-1532635223-6bc5d3a58520?q=80&w=1600&auto=format&fit=crop" alt="綠意與留白"/><figcaption style="padding:12px">綠意與留白 · 空間與花影</figcaption></figure>
+          <!-- ===== REPLACE END：作品 ===== -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 關於敘事 ========== -->
+  <section class="section" id="about">
+    <div class="container grid grid-2">
+      <div class="reveal">
+        <h2>創作者的視覺語言</h2>
+        <p>用最少的元素，說最多的故事。以茶的色階作為網站的主色調，延伸出乾淨的留白、輕盈的排版、與微妙的互動回饋。</p>
+        <ul class="list" style="margin-top:10px">
+          <li>✅ 視差葉片：跟著滑鼠與滾動輕移</li>
+          <li>✅ 入場敘事：頭像、標題與按鈕漸進登場</li>
+          <li>✅ 滾動揭露：段落與圖片在視窗出現時淡入</li>
+          <li>✅ 行動導向：固定導覽 + 進度條提示閱讀</li>
+        </ul>
+      </div>
+      <div class="reveal card" style="padding:16px">
+        <h3 style="margin-bottom:6px">風格關鍵字</h3>
+        <div class="pills" style="margin:8px 0 14px"><span class="tag">自然綠感</span><span class="tag">留白</span><span class="tag">極簡</span><span class="tag">手作溫度</span><span class="tag">膠片色調</span></div>
+        <h3 style="margin-bottom:6px">配色</h3>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <div class="card" style="padding:10px;border-radius:12px"><div style="width:140px;height:36px;border-radius:8px;background:linear-gradient(90deg,#2f7d4f,#9bc89e)"></div><small>茶綠漸層</small></div>
+          <div class="card" style="padding:10px;border-radius:12px"><div style="width:140px;height:36px;border-radius:8px;background:#f7f6f2"></div><small>溫潤底色</small></div>
+          <div class="card" style="padding:10px;border-radius:12px"><div style="width:140px;height:36px;border-radius:8px;background:#b6722a"></div><small>焦糖點綴</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 合作服務 ========== -->
+  <section class="section" id="services">
+    <div class="container">
+      <h2 class="reveal">合作項目</h2>
+      <div class="grid grid-3" style="margin-top:10px">
+        <div class="card reveal" style="padding:16px"><h3>個人品牌官網</h3><p>首頁敘事＋作品集＋聯絡表單，完整展現你的拍攝與美感。</p><div style="margin-top:10px"><span class="tag">RWD</span> <span class="tag">SEO 基礎</span> <span class="tag">GA4</span></div></div>
+        <div class="card reveal" style="padding:16px"><h3>活動 / 檔期頁</h3><p>快速上線、社群導流、可自行更新，完美對接 IG 貼文節奏。</p><div style="margin-top:10px"><span class="tag">快速交付</span> <span class="tag">可擴充</span></div></div>
+        <div class="card reveal" style="padding:16px"><h3>品牌合作頁</h3><p>為品牌客戶提供專屬提案頁，整合作品亮點與成效指標。</p><div style="margin-top:10px"><span class="tag">案例敘事</span> <span class="tag">轉換導向</span></div></div>
+      </div>
+      <div class="reveal" style="margin-top:14px"><a class="btn" href="#contact">取得報價</a></div>
+    </div>
+  </section>
+
+  <!-- ========== 聯絡區塊 ========== -->
+  <section class="section" id="contact">
+    <div class="container grid grid-2">
+      <div class="reveal">
+        <h2>聯絡合作</h2>
+        <p>希望把 IG 的質感延伸成更完整的網站體驗？告訴我你的想法。</p>
+        <ul class="list" style="margin-top:10px">
+          <li>📌 推薦流程：初談需求 → 範例確認 → 設計開發 → 上線教學</li>
+          <li>⏱ 一般交付：7–14 天（依內容複雜度而定）</li>
+          <li>🧩 可加購：多語系、進階動畫、部落格模組</li>
+        </ul>
+      </div>
+      <form class="contact card reveal" onsubmit="event.preventDefault();window.location.href=`mailto:hello@example.com?subject=${encodeURIComponent('合作洽談（來自網站）')}&body=${encodeURIComponent(this.message.value)}`" style="padding:16px">
+        <!-- ===== REPLACE START：信箱與預設內容 ===== -->
+        <label for="message">訊息</label>
+        <textarea id="message" rows="6" placeholder="你好，我想合作的內容是…（可附 IG 帳號與檔期）"></textarea>
+        <button class="btn" type="submit" style="margin-top:10px">用 Email 送出</button>
+        <!-- ===== REPLACE END：信箱與預設內容 ===== -->
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer><div class="container">© <span id="y"></span> TeaTea · 網站示意。此頁僅作風格展示，非商用最終版。</div></footer>
+
+<script>
+/* ========== 實用工具 ========== */
+const $=s=>document.querySelector(s);const $$=s=>document.querySelectorAll(s);
+/* 年份 */
+(()=>{$('#y').textContent=new Date().getFullYear()})();
+/* 主題切換 */
+(function(){const r=document.documentElement,t=localStorage.getItem('theme');if(t)r.setAttribute('data-theme',t);const b=$('#themeToggle');function ico(){b.textContent=(r.getAttribute('data-theme')==='dark')?'🌙':'🌞'}ico();b.addEventListener('click',()=>{const cur=r.getAttribute('data-theme');const nxt=cur==='dark'?'light':'dark';r.setAttribute('data-theme',nxt);localStorage.setItem('theme',nxt);ico()})})();
+/* 滾動進度條 */
+(function(){const bar=$('#progress');function onScroll(){const h=document.documentElement;const p=h.scrollTop/((h.scrollHeight-h.clientHeight)||1);bar.style.transform=`scaleX(${p})`}onScroll();document.addEventListener('scroll',onScroll,{passive:true})})();
+/* 入場：延時淡入 */
+window.addEventListener('DOMContentLoaded',()=>{setTimeout(()=>{$$('.fade-in').forEach((el,i)=>{el.style.animationDelay=`${i*0.08}s`})},20)});
+/* 滾動揭露 */
+(function(){const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('show')),{threshold:.12});$$('.reveal').forEach(n=>io.observe(n))})();
+/* 場景互動（滑鼠視差＋緩動） */
+(function(){const scene=$('#scene');const leaves=[...scene.querySelectorAll('.leaf')].map(el=>({el,depth:parseFloat(el.dataset.depth||.1),x:0,y:0,tx:0,ty:0}));let mx=0,my=0;function onMove(e){const rect=scene.getBoundingClientRect();const cx=rect.left+rect.width/2;const cy=rect.top+rect.height/2;mx=((e.clientX||cx)-cx)/rect.width;my=((e.clientY||cy)-cy)/rect.height}function tick(){leaves.forEach(o=>{o.tx=mx*40*o.depth;o.ty=my*40*o.depth;o.x+= (o.tx-o.x)*.06;o.y+= (o.ty-o.y)*.06;o.el.style.transform=`translate3d(${o.x}px,${o.y}px,0)`});requestAnimationFrame(tick)}tick();window.addEventListener('pointermove',onMove,{passive:true});document.addEventListener('scroll',()=>{const sy=window.scrollY||0;leaves.forEach(o=>{const s=Math.sin((sy*o.depth)/130);o.el.style.rotate=`${s*8}deg`})},{passive:true})})();
+/* 作品滑動（滑輪→水平） */
+(function(){const el=$('#gallery');if(!el)return;el.addEventListener('wheel',e=>{if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){el.scrollBy({left:e.deltaY*0.9,behavior:'smooth'});e.preventDefault()}},{passive:false})})();
+</script>
+
+<!-- ========== 使用說明（不會顯示） ========== -->
+<!--
+【替換指南】
+1) 頭像與文案：搜尋「REPLACE START：個人資料」，把頭像 src、標題、描述與按鈕連結改成創作者風格。
+2) 作品圖片：到 #work 區塊，把三張示意圖替換為實拍作品（建議 1600px 寬）。
+3) 聯絡信箱：在 #contact 表單，把 hello@example.com 改為你的 Email。
+4) 色彩微調：在 :root 調整 --brand / --brand-2 / --accent 以對應 IG 色調。
+5) 動畫強度：視差深度 data-depth 建議 0.06~0.2；數值愈大移動愈多。
+
+【特效摘要】
+- 入場動畫：.fade-in 項目自動漸進顯示
+- 場景互動：.leaf 元件跟隨指標與滾動微移、旋轉
+- 滾動揭露：.reveal 進入視窗淡入
+- 導覽進度：頂部進度條顯示閱讀位置
+- 主題切換：右上角按鈕可切換亮/暗模式並保存偏好
+
+【無障礙】
+- prefers-reduced-motion 時降低動畫
+- 圖片提供替代文字
+-->
+</body></html>
