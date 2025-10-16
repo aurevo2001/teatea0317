@@ -13,6 +13,7 @@
 /* ========= Base ========= */
 *,*::before,*::after{box-sizing:border-box}
 :root{
+  --hdr:76px; /* 會在 JS 依 header 高度更新，抽屜與遮罩不會蓋到 header */
   --bg:#fff7fb; --panel:#ffffffee; --text:#1a1d21; --muted:#5e6a75; --line:#ecddea;
   --brand:#ff64b0; --brand-2:#ffd3e8; --acc:#2fbfff; --acc-2:#41d6cc;
   --spark1:#ff5daa; --spark2:#2db7ff; --spark3:#ff9a3c;
@@ -42,21 +43,32 @@ h1{font-size:clamp(30px,4.2vw,48px)}
 h2{font-size:clamp(22px,3vw,32px)}
 p{margin:0 0 10px;color:var(--muted)}
 a{color:var(--brand);text-decoration:none}
-section{scroll-margin-top:84px}
+section{scroll-margin-top:calc(var(--hdr) + 8px)}
 
-/* ========= Header : pills + drawer ========= */
+/* ========= Header ========= */
 header{
-  position:fixed; inset:0 0 auto 0; height:76px; z-index:9999;
+  position:fixed; inset:0 0 auto 0; height:var(--hdr); z-index:9999;
   background:linear-gradient(180deg, var(--panel), color-mix(in oklab,var(--panel) 68%, transparent));
   -webkit-backdrop-filter:saturate(160%) blur(12px); backdrop-filter:saturate(160%) blur(12px);
   border-bottom:1px solid var(--line);
 }
-body{padding-top:76px}
-.nav{height:76px; display:flex; align-items:center; justify-content:space-between}
+body{padding-top:var(--hdr)}
+.nav{height:100%; display:flex; align-items:center; justify-content:space-between}
 .brand{display:flex;align-items:center;gap:10px;font-weight:800}
 .logo{width:28px;height:28px;border-radius:8px;box-shadow:var(--shadow);
   background:conic-gradient(from 200deg,var(--brand),var(--acc),var(--brand-2))}
-.pills-right{display:flex;align-items:center;gap:10px}
+
+/* 桌機：保留原本連結導覽（不要改成目錄） */
+.nav-links{display:flex;align-items:center;gap:8px}
+.nav-links a{position:relative;padding:10px 12px;border-radius:12px;color:var(--text)}
+.nav-links a:hover{background:color-mix(in oklab, var(--brand-2) 18%, transparent)}
+.nav-links a.active::after{
+  content:""; position:absolute; left:12px; right:12px; bottom:6px; height:3px; border-radius:3px;
+  background:linear-gradient(90deg,var(--brand),var(--acc));
+}
+
+/* 手機：右上三顆膠囊按鈕（只在 <= 960px 顯示） */
+.pills-right{display:none;align-items:center;gap:10px}
 .pillbtn{
   display:inline-flex;align-items:center;gap:10px;
   padding:10px 14px;border-radius:14px;border:1px solid var(--line);
@@ -65,27 +77,26 @@ body{padding-top:76px}
 }
 .pillbtn:active{transform:translateY(1px)}
 .pillbtn .dot{width:6px;height:6px;border-radius:999px;background:var(--brand)}
-/* progress underline (scroll %) */
+
+/* Header 進度線 */
 header::after{content:"";position:absolute;left:0;top:100%;height:2px;width:var(--prog,0%);
   background:linear-gradient(90deg,var(--brand),var(--acc))}
 
-/* Drawer */
+/* ========= Drawer（只在手機使用；不蓋 header） ========= */
 .drawer-overlay{
-  position:fixed; inset:0; background:rgba(0,0,0,.28); backdrop-filter:blur(2px);
+  position:fixed; left:0; right:0; top:var(--hdr); bottom:0;
+  background:rgba(0,0,0,.28); backdrop-filter:blur(2px);
   opacity:0; pointer-events:none; transition:opacity .25s ease; z-index:9998;
 }
-.drawer{ position:fixed; top:0; right:0; height:100dvh; width:min(80vw,420px);
+.drawer{
+  position:fixed; right:0; top:var(--hdr); height:calc(100dvh - var(--hdr));
+  width:min(76vw,360px); /* 比之前更窄 */
   background:var(--drawer-bg); border-left:1px solid var(--line);
   box-shadow:-20px 0 60px rgba(0,0,0,.25); transform:translateX(100%);
-  transition:transform .28s ease; z-index:9999; display:flex; flex-direction:column;
+  transition:transform .28s ease; z-index:9998; display:flex; flex-direction:column;
+  border-top-left-radius:16px;
 }
-.drawer header{ height:62px; border-bottom:1px solid var(--line);
-  display:flex; align-items:center; justify-content:space-between;
-  background:transparent; position:sticky; top:0; inset:auto; padding:0 16px;
-}
-.drawer .title{display:flex;align-items:center;gap:10px;font-weight:800}
-.drawer .close{border:1px solid var(--line); background:transparent; color:inherit; border-radius:10px; padding:6px 10px; cursor:pointer}
-.drawer-nav{padding:12px 16px 20px; display:grid; gap:12px; overflow:auto}
+.drawer-nav{padding:14px 16px 18px; display:grid; gap:12px; overflow:auto}
 .drawer-nav a{
   display:flex; align-items:center; justify-content:space-between;
   padding:14px 16px; border-radius:14px; border:1px solid var(--line);
@@ -97,7 +108,7 @@ header::after{content:"";position:absolute;left:0;top:100%;height:2px;width:var(
 
 .no-scroll{overflow:hidden; touch-action:none}
 
-/* ========= BG kawaii ========= */
+/* ========= 背景 Q 動物 ========= */
 .bg-q{position:fixed; inset:-10% -10% 0 -10%; z-index:-2; pointer-events:none; overflow:hidden}
 .q{position:absolute; font-size:28px; opacity:.22; filter:drop-shadow(0 8px 16px rgba(0,0,0,.2)); animation:floatUp linear infinite}
 @keyframes floatUp{0%{transform:translateY(0) rotate(0)}100%{transform:translateY(-120vh) rotate(360deg)}}
@@ -113,14 +124,14 @@ header::after{content:"";position:absolute;left:0;top:100%;height:2px;width:var(
   background:radial-gradient(circle at 50% 40%,var(--brand-2),transparent 64%); box-shadow:var(--shadow); border:1px solid var(--line)}
 .avatar{width:104px;height:104px;border-radius:50%;object-fit:cover;border:2px solid var(--line)}
 
-/* mascot cat (fixed) */
+/* 吉祥物：貓（固定，無入場動畫） */
 #mascotDock{position:absolute; left:calc(50% + 140px); top:6px; width:96px; height:96px; z-index:1200; pointer-events:none}
 #mascot{position:absolute; inset:0; width:96px; height:96px}
 #mascot .shadow{position:absolute; left:18px; bottom:2px; width:60px; height:12px; background:rgba(0,0,0,.22); border-radius:50%; filter:blur(5px); opacity:.3}
 #mascot.idle{animation:bob 2.8s ease-in-out infinite}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
 
-/* badges / chips */
+/* 小標題徽章 / Chips */
 .heading{display:flex;align-items:center;gap:10px;margin-bottom:14px}
 .kawaii{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:10px;border:1px solid var(--line);
   background:radial-gradient(circle at 30% 25%,var(--brand-2),transparent 58%),linear-gradient(180deg,rgba(255,255,255,.18),transparent);
@@ -129,7 +140,7 @@ header::after{content:"";position:absolute;left:0;top:100%;height:2px;width:var(
 .chip{padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:color-mix(in oklab,var(--panel) 85%, transparent);color:var(--text);font-size:14px}
 .chip i{margin-right:6px;opacity:.8}
 
-/* works grid */
+/* 作品網格 */
 .grid-works{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
 .work{position:relative;overflow:hidden;border-radius:18px;border:1px solid var(--line);background:var(--card);box-shadow:var(--shadow)}
 .work img{width:100%;height:280px;object-fit:cover;display:block;transition:transform .35s ease, filter .35s ease}
@@ -142,13 +153,13 @@ header::after{content:"";position:absolute;left:0;top:100%;height:2px;width:var(
 @keyframes shine{from{transform:translateX(-60%) rotate(-20deg);opacity:.0}30%{opacity:.35}to{transform:translateX(60%) rotate(-20deg);opacity:0}}
 .work .cap{position:absolute;left:10px;bottom:10px;padding:6px 10px;border-radius:12px;background:rgba(0,0,0,.35);color:#fff;font-size:13px}
 
-/* profile */
+/* 自我介紹格 */
 .profile{display:grid;grid-template-columns:160px 1fr;gap:18px;align-items:center}
 .profile img{width:160px;height:160px;object-fit:cover;border-radius:16px;border:1px solid var(--line);box-shadow:var(--shadow)}
 .badges{display:flex;flex-wrap:wrap;gap:8px}
 .badge{padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:color-mix(in oklab,var(--panel) 88%, transparent);color:var(--muted)}
 
-/* swim */
+/* 泳裝 / 游泳特輯 */
 .swim{position:relative;overflow:hidden}
 .waves{position:absolute;left:0;right:0;bottom:-1px;width:200%;height:120px;opacity:.32;pointer-events:none}
 .wave{fill:currentColor;color:var(--acc);animation:waveMove 18s linear infinite}
@@ -158,7 +169,7 @@ header::after{content:"";position:absolute;left:0;top:100%;height:2px;width:var(
 .grid-swim .work{background:linear-gradient(180deg, #031724, #06293a);border-color:color-mix(in oklab,var(--acc) 22%, var(--line) 78%)}
 .grid-swim .cap{background:rgba(0,0,0,.45)}
 
-/* form & buttons */
+/* 表單與按鈕 */
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 input,select,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:color-mix(in oklab,var(--panel) 92%, transparent);color:var(--text)}
@@ -170,7 +181,7 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
 .btn{padding:10px 14px;border-radius:12px;border:1px solid var(--brand);background:var(--brand);color:#fff;cursor:pointer;box-shadow:var(--shadow)}
 .btn:hover{filter:brightness(1.05)}
 
-/* sparkle */
+/* 粒子 */
 #sparkle{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:40;pointer-events:none;mix-blend-mode:screen;opacity:.85}
 
 /* reveal */
@@ -178,10 +189,16 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
 .reveal.show{opacity:1;transform:translateY(0)}
 
 /* RWD */
+@media(max-width:1200px){.container{max-width:1000px}}
 @media(max-width:1000px){
   .grid-works{grid-template-columns:repeat(3,minmax(0,1fr))}
   .profile{grid-template-columns:1fr}
   #mascotDock{left:calc(50% + 100px)}
+}
+/* 手機：隱藏桌機連結、顯示膠囊與抽屜 */
+@media(max-width:960px){
+  .nav-links{display:none}
+  .pills-right{display:flex}
 }
 @media(max-width:640px){
   .grid-works{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -205,10 +222,21 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
 <!-- 背景：粉彩漸層 + Q 動物 -->
 <div class="bg-q" id="bgQ" aria-hidden="true"></div>
 
-<!-- ===== Header with pill buttons ===== -->
-<header>
+<!-- ===== Header ===== -->
+<header id="siteHeader">
   <div class="container nav">
     <div class="brand"><span class="logo" aria-hidden="true"></span><span>茶茶兒專頁</span></div>
+
+    <!-- 桌機導覽（保留原本樣式） -->
+    <nav class="nav-links" id="nav" aria-label="主選單">
+      <a href="#about">自我介紹</a>
+      <a href="#work">作品</a>
+      <a href="#swim">泳裝</a>
+      <a href="#services">合作</a>
+      <a href="#contact">聯絡</a>
+    </nav>
+
+    <!-- 手機三顆膠囊 -->
     <div class="pills-right">
       <button id="btnMenu" class="pillbtn" aria-haspopup="dialog" aria-controls="drawer" aria-expanded="false">
         <span class="dot"></span> 目錄
@@ -219,13 +247,9 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
   </div>
 </header>
 
-<!-- Drawer + overlay -->
+<!-- 手機抽屜（不蓋 header）、無右上關閉鈕 -->
 <div id="overlay" class="drawer-overlay" hidden></div>
 <aside id="drawer" class="drawer" role="dialog" aria-modal="true" aria-label="主選單" hidden>
-  <header>
-    <div class="title"><span class="logo" aria-hidden="true"></span><span>茶茶兒專頁</span></div>
-    <button class="close" id="btnClose">關閉 ✕</button>
-  </header>
   <nav class="drawer-nav">
     <a href="#about">自我介紹 <span class="arrow">›</span></a>
     <a href="#work">作品選集 <span class="arrow">›</span></a>
@@ -239,10 +263,10 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
 </aside>
 
 <main>
-  <!-- Hero / About -->
+  <!-- 自我介紹 -->
   <section class="section hero" id="about" aria-label="自我介紹">
     <div class="hero-inner">
-      <!-- 固定貓咪 -->
+      <!-- 固定吉祥物（貓） -->
       <div id="mascotDock" aria-hidden="true">
         <div id="mascot" class="idle">
           <svg viewBox="0 0 120 120" width="100%" height="100%" aria-label="可愛貓咪吉祥物">
@@ -325,7 +349,7 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
   <section class="section swim" id="swim" aria-label="泳裝與游泳特輯">
     <div class="container">
       <div class="heading"><span class="kawaii">🐬</span><h2>泳裝 / 游泳特輯</h2></div>
-      <p>以海藍色調與水面反光為靈感，展現可愛又性感的泳裝視覺。</p>
+    <p>以海藍色調與水面反光為靈感，展現可愛又性感的泳裝視覺。</p>
       <div class="grid-works grid-swim" style="margin-top:12px">
         <figure class="work reveal"><img src="https://images.unsplash.com/photo-1512777576244-b846ac3d816f?q=80&w=1600&auto=format&fit=crop" alt="泳裝特輯1" width="600" height="400" loading="lazy" decoding="async"/><figcaption class="cap">Aqua Glow</figcaption></figure>
         <figure class="work reveal"><img src="https://images.unsplash.com/photo-1492284163710-4eef97892705?q=80&w=1600&auto=format&fit=crop" alt="泳裝特輯2" width="600" height="400" loading="lazy" decoding="async"/><figcaption class="cap">Sun Kiss</figcaption></figure>
@@ -418,28 +442,43 @@ label{font-size:13px;color:var(--muted);display:block;margin:0 0 6px}
   <div class="container" style="padding:26px 0;text-align:center;color:var(--muted)">© <span id="y"></span> 茶茶兒 · 示意頁</div>
 </footer>
 
-<!-- Sparkle Canvas -->
+<!-- 粒子 -->
 <canvas id="sparkle" width="0" height="0" aria-hidden="true"></canvas>
 
 <script>
 /* ===== helpers ===== */
 const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
 
-/* year + theme + progress */
+/* 年份、主題、Header 進度線、Header 高度（供抽屜使用不蓋 header） */
 (()=>{$('#y').textContent=new Date().getFullYear();
   const r=document.documentElement,b=$('#theme'),t=localStorage.getItem('theme'); if(t) r.setAttribute('data-theme',t);
-  b.textContent=(r.getAttribute('data-theme')==='dark')?'🌙':'🌞';
-  b.addEventListener('click',()=>{const cur=r.getAttribute('data-theme')==='dark'?'dark':'light'; const nxt=cur==='dark'?'light':'dark';
-    r.setAttribute('data-theme',nxt); localStorage.setItem('theme',nxt); b.textContent=(nxt==='dark')?'🌙':'🌞';});
+  if(b){b.textContent=(r.getAttribute('data-theme')==='dark')?'🌙':'🌞';
+    b.addEventListener('click',()=>{const cur=r.getAttribute('data-theme')==='dark'?'dark':'light'; const nxt=cur==='dark'?'light':'dark';
+      r.setAttribute('data-theme',nxt); localStorage.setItem('theme',nxt); b.textContent=(nxt==='dark')?'🌙':'🌞';});
+  }
   const onScroll=()=>{const max=document.documentElement.scrollHeight-innerHeight; const p=Math.max(0,Math.min(1,scrollY/max));
     document.querySelector('header').style.setProperty('--prog',`${p*100}%`)}
   addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+  function syncHdr(){ const h=document.getElementById('siteHeader').offsetHeight; document.documentElement.style.setProperty('--hdr',h+'px'); }
+  addEventListener('resize',syncHdr,{passive:true}); syncHdr();
 })();
 
-/* drawer logic */
+/* 桌機導覽高亮 */
 (function(){
-  const drawer=$('#drawer'), overlay=$('#overlay'), menu=$('#btnMenu'), close=$('#btnClose');
-  const focusable='a,button,select,textarea,input,[tabindex]:not([tabindex="-1"])';
+  const links=[...document.querySelectorAll('.nav-links a[href^="#"]')];
+  if(!links.length) return;
+  const map=Object.fromEntries(links.map(a=>[a.getAttribute('href').slice(1),a]));
+  const io=new IntersectionObserver(es=>{
+    es.forEach(e=>{ if(e.isIntersecting){ links.forEach(l=>l.classList.remove('active')); map[e.target.id]?.classList.add('active'); }});
+  },{rootMargin:"-55% 0px -40% 0px",threshold:0});
+  ['about','work','swim','services','contact'].forEach(id=>{ const s=document.getElementById(id); s&&io.observe(s); });
+})();
+
+/* 手機抽屜：不覆蓋 header，無右上角關閉鈕，點遮罩或連結關閉 */
+(function(){
+  const drawer=$('#drawer'), overlay=$('#overlay'), menu=$('#btnMenu');
+  if(!drawer || !menu) return;
   let lastFocus=null;
 
   function open(){
@@ -450,11 +489,8 @@ const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
       drawer.style.transform='translateX(0)';
       document.body.classList.add('no-scroll');
       menu.setAttribute('aria-expanded','true');
-      // focus first item
-      const first=drawer.querySelector(focusable); first && first.focus();
+      const first=drawer.querySelector('a'); first && first.focus();
     });
-    // focus trap
-    drawer.addEventListener('keydown',trap);
   }
   function closeDrawer(){
     overlay.style.opacity='0'; overlay.style.pointerEvents='none';
@@ -462,37 +498,16 @@ const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
     document.body.classList.remove('no-scroll');
     menu.setAttribute('aria-expanded','false');
     setTimeout(()=>{drawer.hidden=true; overlay.hidden=true;},280);
-    drawer.removeEventListener('keydown',trap);
     lastFocus && lastFocus.focus();
-  }
-  function trap(e){
-    if(e.key==='Escape'){e.preventDefault(); closeDrawer(); return;}
-    if(e.key!=='Tab') return;
-    const f=[...drawer.querySelectorAll(focusable)].filter(el=>!el.disabled && el.offsetParent!==null);
-    if(!f.length) return;
-    const first=f[0], last=f[f.length-1];
-    if(e.shiftKey && document.activeElement===first){e.preventDefault(); last.focus()}
-    else if(!e.shiftKey && document.activeElement===last){e.preventDefault(); first.focus()}
   }
 
   menu.addEventListener('click',open);
-  close.addEventListener('click',closeDrawer);
   overlay.addEventListener('click',closeDrawer);
   $$('#drawer .drawer-nav a').forEach(a=>a.addEventListener('click',closeDrawer));
   addEventListener('keydown',e=>{ if(e.key==='Escape' && !drawer.hidden) closeDrawer(); });
 })();
 
-/* section active underline (for drawer links not needed but nice) */
-(function(){
-  const ids=['about','work','swim','services','contact'];
-  const map={}; ids.forEach(id=>map[id]=id);
-  const io=new IntersectionObserver(es=>{
-    es.forEach(e=>{ if(e.isIntersecting){ /* no inline underline in pills version */ }});
-  },{rootMargin:"-55% 0px -40% 0px",threshold:0});
-  ids.forEach(id=>{const s=document.getElementById(id); s&&io.observe(s)});
-})();
-
-/* BG kawaii */
+/* 背景 Q 動物 */
 (function(){
   const box=$('#bgQ'); const small = matchMedia('(max-width:640px)').matches;
   const pool=['🐰','🐶','🐥','🐱','🐻','🐼','🦊','🐹'];
@@ -505,7 +520,7 @@ const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
   } requestIdleCallback(add);
 })();
 
-/* Sparkle cursor */
+/* 彩色微光粒子（穩定不跑版） */
 (function(){
   const c=$('#sparkle'),ctx=c.getContext('2d',{alpha:true,desynchronized:true});
   const small = matchMedia('(max-width:640px)').matches;
@@ -533,10 +548,10 @@ const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
   addEventListener('pointermove',e=>{ const now=performance.now(); if(now-last>THROTTLE){ const r=c.getBoundingClientRect(); emit(e.clientX-r.left,e.clientY-r.top); last=now; }},{passive:true});
 })();
 
-/* reveal */
+/* Reveal */
 (function(){ const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('show')),{threshold:.12}); $$('.reveal').forEach(n=>io.observe(n))})();
 
-/* mailto */
+/* Mailto */
 function submitMailto(e){
   e.preventDefault();
   const f=e.target, data={
