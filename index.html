@@ -13,143 +13,318 @@ h1,h2,h3{line-height:1.2;margin:0 0 10px}h1{font-size:clamp(30px,4.2vw,48px)}h2{
 /* ===== Header 固定（不再消失） ===== */
 header{position:fixed;left:0;right:0;top:0;z-index:2000;background:rgba(15,18,21,.78);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line)}:root[data-theme="light"] header{background:rgba(255,255,255,.72)}
 body{padding-top:66px}.nav{display:flex;align-items:center;justify-content:space-between;height:66px}.brand{display:flex;align-items:center;gap:10px;font-weight:800}
+.logo{<!doctype html><html lang="zh-Hant"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="color-scheme" content="light dark"/>
+<title>TeaTea｜可愛 x 性感 個人品牌（3D 入場＋Q 動物背景）</title>
+<meta name="description" content="WebGL 3D 水滴漣漪入場、Q 版動物背景、彩色微光粒子、固定導覽、女性作品選集、自我介紹、JVID/IG/活動。"/>
+<style>
+/* ===== 基礎 ===== */
+*,*::before,*::after{box-sizing:border-box}html,body{height:100%}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.6;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+:root{
+  --bg:#0f1215;--text:#f5f7fa;--muted:#a7b0ba;--line:#1f252b;--brand:#ff7ebe;--brand-2:#ffd3e8;--accent:#78e3ff;--accent2:#7be9e3;
+  --spark1:#ff7ebe;--spark2:#5cc9ff;--spark3:#ffd166
+}
+:root[data-theme="light"]{
+  --bg:#fff7fb;--text:#1a1b1e;--muted:#5b6670;--line:#e6dbe7;--brand:#ff64b0;--brand-2:#ffd3e8;--accent:#2fbfff;--accent2:#41d6cc;
+  --spark1:#ff5daa;--spark2:#2db7ff;--spark3:#ff9a3c
+}
+.container{max-width:1080px;margin:auto;padding:0 20px}
+h1,h2,h3{line-height:1.2;margin:0 0 8px}
+h1{font-size:clamp(30px,4.2vw,48px)}h2{font-size:clamp(22px,3vw,32px)}p{margin:0 0 10px;color:var(--muted)}
+a{color:var(--brand);text-decoration:none}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:999px;border:1px solid color-mix(in oklab,var(--brand) 60%,#fff 40%);background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#000;box-shadow:0 10px 24px rgba(255,111,169,.25);cursor:pointer;transition:transform .18s ease,box-shadow .18s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(255,111,169,.32)}
+.btn.ghost{background:transparent;color:var(--brand);border:1px solid var(--brand);box-shadow:none}
+
+/* ===== Header（固定不消失） ===== */
+header{position:fixed;inset:0 0 auto 0;z-index:3000;background:rgba(15,18,21,.78);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line)}:root[data-theme=light] header{background:rgba(255,255,255,.72)}
+body{padding-top:66px}
+.nav{display:flex;align-items:center;justify-content:space-between;height:66px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800}
 .logo{width:28px;height:28px;border-radius:8px;background:conic-gradient(from 200deg,var(--brand),var(--accent),var(--brand-2))}
-.nav-links{display:flex;align-items:center;gap:12px}.theme{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:var(--card);display:grid;place-items:center;cursor:pointer}
-.progress{position:absolute;inset:auto 0 0 0;height:3px;background:linear-gradient(90deg,var(--accent),var(--brand));transform-origin:0 50%;transform:scaleX(0)}
-/* ===== 背景（保持你滿意的 Q 版動物：emoji 飄浮） ===== */
+.nav-links{display:flex;align-items:center;gap:12px}
+.theme{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:transparent;color:inherit;display:grid;place-items:center;cursor:pointer}
+
+/* ===== Q 版動物背景（保留你滿意的：emoji 漂浮） ===== */
 .bg-q{position:fixed;inset:-10% -10% 0 -10%;z-index:-2;pointer-events:none;overflow:hidden}
-.q{position:absolute;font-size:28px;opacity:.22;filter:drop-shadow(0 8px 16px rgba(0,0,0,.25));animation:floatUp linear infinite}@keyframes floatUp{0%{transform:translateY(0) rotate(0)}100%{transform:translateY(-120vh) rotate(360deg)}}
-/* ===== HERO（可愛卡片風版面，與 Q 動物配色一致） ===== */
-.hero{position:relative;min-height:78vh;display:grid;place-items:center;padding-top:8px;background:radial-gradient(700px 380px at 50% 0,rgba(255,126,190,.08),transparent 60%)}
-.hero-inner{max-width:940px;text-align:center;padding:40px 20px}
-.tag{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid var(--line);color:var(--muted)}
+.q{position:absolute;font-size:28px;opacity:.22;filter:drop-shadow(0 8px 16px rgba(0,0,0,.25));animation:floatUp linear infinite}
+@keyframes floatUp{0%{transform:translateY(0) rotate(0)}100%{transform:translateY(-120vh) rotate(360deg)}}
+
+/* ===== 段落邊界（不要大色塊，只用一條柔和分隔線） ===== */
+.section{padding:72px 0 64px}
+.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent)}
+:root[data-theme=light] .divider{background:linear-gradient(90deg,transparent,rgba(0,0,0,.08),transparent)}
+
+/* ===== 小標題徽章（熊/兔/狗/貓 可愛區塊） ===== */
+.heading{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.kawaii{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:10px;border:1px solid var(--line);background:
+  radial-gradient(circle at 30% 25%,var(--brand-2),transparent 58%),
+  linear-gradient(180deg,rgba(255,255,255,.08),transparent);
+box-shadow:0 6px 16px rgba(0,0,0,.16);font-size:20px}
+
+/* ===== HERO（柔和、與背景融洽） ===== */
+.hero{position:relative;min-height:72vh;display:grid;place-items:center;padding-top:8px;background:
+  radial-gradient(800px 420px at 50% 0,rgba(255,126,190,.08),transparent 60%),
+  radial-gradient(600px 340px at 85% 70%,rgba(120,227,255,.06),transparent 70%)}
+.hero-inner{max-width:960px;text-align:center;padding:40px 20px}
+.tag{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted);background:rgba(255,255,255,.04)}
 .avatar-wrap{display:inline-grid;place-items:center;width:118px;height:118px;border-radius:50%;background:radial-gradient(circle at 50% 40%,var(--brand-2),transparent 62%);box-shadow:0 10px 26px rgba(0,0,0,.18);border:1px solid var(--line)}
 .avatar{width:104px;height:104px;border-radius:50%;object-fit:cover;border:2px solid var(--line)}
-.kpis{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:12px}.kpi{display:flex;flex-direction:column;align-items:center;background:var(--card);border:1px solid var(--line);padding:10px 14px;border-radius:12px;min-width:120px}
-/* ===== 作品（女性圖片） ===== */
+.kpis{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.kpi{display:flex;flex-direction:column;align-items:center;padding:8px 12px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.04)}
+
+/* ===== 作品（女性圖片，簡潔） ===== */
 .grid-works{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
 .work{position:relative;overflow:hidden;border-radius:16px;border:1px solid var(--line);background:#000}
 .work img{width:100%;height:280px;object-fit:cover;display:block;transition:filter .25s ease,transform .25s ease}
 .work:hover img{filter:brightness(1.12) saturate(1.2);transform:scale(1.02)}
-.work .cap{position:absolute;left:10px;bottom:10px;padding:6px 10px;border-radius:12px;background:rgba(0,0,0,.35);color:#fff;font-size:14px}
-/* ===== 自我介紹（新增） ===== */
-.profile{display:grid;grid-template-columns:160px 1fr;gap:16px;align-items:center}.profile img{width:160px;height:160px;object-fit:cover;border-radius:16px;border:1px solid var(--line)}
-.badges{display:flex;flex-wrap:wrap;gap:8px}.badge{padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--muted)}
-/* ===== 合作（寫真檔期 / JVID·IG / 活動） ===== */
-.list{display:grid;gap:10px}.list li{display:flex;gap:8px;align-items:flex-start}
+.work .cap{position:absolute;left:10px;bottom:10px;padding:6px 10px;border-radius:12px;background:rgba(0,0,0,.35);color:#fff;font-size:13px}
+
+/* ===== 自我介紹 ===== */
+.profile{display:grid;grid-template-columns:160px 1fr;gap:16px;align-items:center}
+.profile img{width:160px;height:160px;object-fit:cover;border-radius:16px;border:1px solid var(--line)}
+.badges{display:flex;flex-wrap:wrap;gap:8px}
+.badge{padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--muted)}
+
+/* ===== 列表、表單（極簡） ===== */
+.list{display:grid;gap:8px}.list li{display:flex;gap:8px;align-items:flex-start}
 .pills{display:flex;flex-wrap:wrap;gap:8px}.pill{padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.06);color:var(--muted)}
-input,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--text)}
-/* ===== 入場覆蓋：3D 水滴（WebGL；質感升級） ===== */
-.intro{position:fixed;inset:0;z-index:9999;background:radial-gradient(900px 420px at 50% -10%,rgba(120,227,255,.14),transparent 60%),linear-gradient(180deg,color-mix(in oklab,var(--bg) 92%,#000 8%),var(--bg));display:grid;place-items:center;overflow:hidden}
-.intro.hidden{opacity:0;transition:opacity .6s ease}.skip{position:absolute;right:14px;top:14px;padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--muted);cursor:pointer}
-#intro3d{width:min(960px,92vw);height:min(540px,62vh)}.fallback{display:none}.no-webgl .fallback{display:block;width:min(520px,80vw);aspect-ratio:1/1;border-radius:50%;background:radial-gradient(circle at 50% 50%,#9be7ff 0 6%,transparent 6%),radial-gradient(circle at 50% 50%,#9be7ff55 0 10%,transparent 10%),radial-gradient(circle at 50% 50%,#9be7ff33 0 16%,transparent 16%);animation:cssRipple 1.6s ease-out infinite}@keyframes cssRipple{from{transform:scale(.4);opacity:1}to{transform:scale(1.6);opacity:0}}
-/* ===== 全站彩色微光粒子（亮/暗主題可見；細微） ===== */
+input,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--text)}
+
+/* ===== 入場覆蓋（WebGL 原生 — 無外部依賴） ===== */
+#intro{position:fixed;inset:0;z-index:4000;display:grid;place-items:center;background:linear-gradient(180deg,color-mix(in oklab,var(--bg) 92%,#000 8%),var(--bg))}
+#intro.hidden{opacity:0;transition:opacity .6s ease}
+#introGL{position:absolute;inset:0;width:100%;height:100%}
+#skip{position:absolute;right:14px;top:14px;padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:var(--muted);cursor:pointer}
+
+/* ===== 全站彩色微光粒子 ===== */
 #sparkle{position:fixed;inset:0;z-index:40;pointer-events:none;mix-blend-mode:screen;opacity:.9}
-/* ===== RWD 與低動效 ===== */
+
+/* ===== reveal & RWD ===== */
 .reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s ease}.reveal.show{opacity:1;transform:translateY(0)}
-@media(max-width:980px){.grid-works{grid-template-columns:repeat(3,minmax(0,1fr))}.grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}.profile{grid-template-columns:1fr}}
-@media(max-width:640px){.grid-works{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-2,.grid-3{grid-template-columns:1fr}.work img{height:220px}.avatar-wrap{width:104px;height:104px}.avatar{width:92px;height:92px}}
-@media(prefers-reduced-motion:reduce){.q,.work img,#sparkle,.intro *{animation:none;transition:none}}
+@media(max-width:980px){.grid-works{grid-template-columns:repeat(3,minmax(0,1fr))}.profile{grid-template-columns:1fr}}
+@media(max-width:640px){.grid-works{grid-template-columns:repeat(2,minmax(0,1fr))}.work img{height:220px}.avatar-wrap{width:104px;height:104px}.avatar{width:92px;height:92px}}
+@media(prefers-reduced-motion:reduce){.q,.work img,#sparkle,#intro *{animation:none;transition:none}}
 </style>
 </head><body>
-<!-- 背景：保持「Q 版動物 emoji」版本（你說滿意的那個） -->
+<!-- ===== 保留：Q 版動物背景 ===== -->
 <div class="bg-q" id="bgQ" aria-hidden="true"></div>
 
 <header>
   <div class="container nav">
     <div class="brand"><span class="logo" aria-hidden="true"></span><span>TeaTea</span></div>
-    <nav class="nav-links" aria-label="主選單"><a href="#work">作品</a><a href="#about">自我介紹</a><a href="#services">合作</a><a href="#contact">聯絡</a><button id="theme" class="theme" aria-label="切換主題">🌙</button></nav>
+    <nav class="nav-links" aria-label="主選單">
+      <a href="#work">作品</a><a href="#about">自我介紹</a><a href="#services">合作</a><a href="#contact">聯絡</a>
+      <button id="theme" class="theme" aria-label="切換主題">🌙</button>
+    </nav>
   </div>
-  <div class="progress" id="progress"></div>
 </header>
 
 <main>
-  <!-- HERO（與 Q 背景一致的可愛版面） -->
+  <!-- ===== HERO（融合、柔和，不用大片色塊） ===== -->
   <section class="hero" aria-label="主視覺">
     <div class="hero-inner">
-      <!-- ===== REPLACE START：主視覺資料 ===== -->
       <div class="avatar-wrap"><img class="avatar" src="https://images.unsplash.com/photo-1519643381401-22c77e60520e?q=80&w=800&auto=format&fit=crop" alt="創作者頭像（請替換）"/></div>
       <div class="tag" style="margin-top:10px">IG｜@teatea0317 · 可愛 / 性感 / 寫真</div>
       <h1 style="margin:10px 0 6px">可愛與性感的雙重敘事，<br/>把視覺做成會心動的體驗。</h1>
       <p>3D 水滴漣漪入場、Q 動物背景、彩色微光粒子——為插畫＋寫真創作者打造。</p>
-      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px"><a class="btn" href="#services">合作洽談</a><a class="btn ghost" href="#work">看作品</a><a class="btn ghost" href="https://www.instagram.com/teatea0317" target="_blank" rel="noopener">Instagram</a></div>
-      <!-- ===== REPLACE END ===== -->
-      <div class="kpis"><div class="kpi"><strong>3D 入場</strong><span class="muted">水滴+波紋</span></div><div class="kpi"><strong>可愛背景</strong><span class="muted">兔狗鳥飄浮</span></div><div class="kpi"><strong>微光粒子</strong><span class="muted">全站彩色</span></div></div>
+      <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px">
+        <a class="btn" href="#services">合作洽談</a>
+        <a class="btn ghost" href="#work">看作品</a>
+        <a class="btn ghost" href="https://www.instagram.com/teatea0317" target="_blank" rel="noopener">Instagram</a>
+      </div>
+      <div class="kpis" style="margin-top:12px">
+        <div class="kpi"><strong>3D 入場</strong><span class="muted">水滴+波紋</span></div>
+        <div class="kpi"><strong>可愛背景</strong><span class="muted">兔狗貓鳥</span></div>
+        <div class="kpi"><strong>彩色粒子</strong><span class="muted">全站滑鼠</span></div>
+      </div>
     </div>
   </section>
 
-  <!-- 作品（女性圖片） -->
+  <div class="divider"></div>
+
+  <!-- ===== 作品 ===== -->
   <section class="section" id="work">
     <div class="container">
-      <h2 class="reveal">作品選集</h2>
+      <div class="heading"><span class="kawaii">🐱</span><h2>作品選集</h2></div>
       <div class="grid-works">
-        <!-- ===== REPLACE START：女性圖片（建議寬≥1600px） ===== -->
         <figure class="work reveal"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1600&auto=format&fit=crop" alt="女性作品1"/><figcaption class="cap">Glow · 私房系列</figcaption></figure>
         <figure class="work reveal"><img src="https://images.unsplash.com/photo-1554151228-14d9def656e4?q=80&w=1600&auto=format&fit=crop" alt="女性作品2"/><figcaption class="cap">Soft Pink · 可愛系</figcaption></figure>
         <figure class="work reveal"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1600&auto=format&fit=crop" alt="女性作品3"/><figcaption class="cap">Neon Kiss · 霓虹感</figcaption></figure>
         <figure class="work reveal"><img src="https://images.unsplash.com/photo-1520975922284-56c1a3313381?q=80&w=1600&auto=format&fit=crop" alt="女性作品4"/><figcaption class="cap">Vintage Film · 膠片</figcaption></figure>
-        <!-- ===== REPLACE END ===== -->
       </div>
     </div>
   </section>
 
-  <!-- 自我介紹（新增、取代你不想看的「風格定位」） -->
+  <div class="divider"></div>
+
+  <!-- ===== 自我介紹 ===== -->
   <section class="section" id="about">
-    <div class="container card" style="padding:16px">
+    <div class="container">
+      <div class="heading"><span class="kawaii">🐻</span><h2>自我介紹</h2></div>
       <div class="profile">
-        <!-- ===== REPLACE START：個人照與簡介 ===== -->
         <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=900&auto=format&fit=crop" alt="個人形象照（請替換）"/>
-        <div><h2>關於我</h2><p>嗨，我是 TeaTea，經營 IG / X / JVID 的插畫與寫真創作者。喜歡把可愛與性感融合，用色彩與光影講故事，合作主題包含私房、外拍、品牌聯名等。</p><div class="badges" style="margin-top:8px"><span class="badge">插畫·可愛系</span><span class="badge">寫真·性感系</span><span class="badge">品牌合作友善</span><span class="badge">檔期彈性</span></div></div>
-        <!-- ===== REPLACE END ===== -->
+        <div>
+          <p>嗨，我是 TeaTea，經營 IG / X / JVID 的插畫與寫真創作者。喜歡把可愛與性感融合，用色彩與光影講故事；合作主題包含私房、外拍、品牌聯名等。</p>
+          <div class="badges" style="margin-top:8px">
+            <span class="badge">插畫 · 可愛系</span><span class="badge">寫真 · 性感系</span>
+            <span class="badge">品牌合作友善</span><span class="badge">檔期彈性</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- 合作（寫真檔期 / JVID·IG / 活動） -->
+  <div class="divider"></div>
+
+  <!-- ===== 合作項目 ===== -->
   <section class="section" id="services">
     <div class="container">
-      <h2 class="reveal">合作項目</h2>
-      <div class="grid grid-3" style="margin-top:8px">
-        <div class="card reveal" style="padding:16px"><h3>寫真檔期</h3><p>近期可預約時段、主題與地點偏好，快速對接洽談。</p><ul class="list" style="margin-top:6px"><li>📅 每月更新：平日/假日</li><li>📍 台北/桃園為主，外縣市可議</li><li>🎨 主題：可愛/性感/時尚/膠片</li></ul></div>
-        <div class="card reveal" style="padding:16px"><h3>JVID / IG 連結</h3><p>整合社群入口，提升導流與曝光。</p><div class="pills" style="margin-top:8px"><a class="pill" href="#" onclick="alert('請替換為 JVID 連結');return false;">JVID</a><a class="pill" href="https://www.instagram.com/teatea0317" target="_blank" rel="noopener">Instagram</a><a class="pill" href="#" onclick="alert('請替換為 X 連結');return false;">X</a></div></div>
-        <div class="card reveal" style="padding:16px"><h3>會參與的活動</h3><p>展演 / 攝影展 / 聯名合作等行程公告，便於粉絲追蹤。</p><ul class="list" style="margin-top:6px"><li>🏷️ 快閃販售</li><li>🎞️ 攝影聯展</li><li>🤝 品牌聯名</li></ul></div>
+      <div class="heading"><span class="kawaii">🐰</span><h2>合作項目</h2></div>
+      <div class="list" style="margin-top:6px">
+        <div>
+          <h3 class="heading" style="margin:0 0 6px"><span class="kawaii">📸</span><span>寫真檔期</span></h3>
+          <ul class="list"><li>📅 每月更新：平日/假日</li><li>📍 台北/桃園為主，外縣市可議</li><li>🎨 主題：可愛/性感/時尚/膠片</li></ul>
+        </div>
+        <div>
+          <h3 class="heading" style="margin:12px 0 6px"><span class="kawaii">🔗</span><span>JVID / IG 連結</span></h3>
+          <div class="pills"><a class="pill" href="#" onclick="alert('請替換為 JVID 連結');return false;">JVID</a><a class="pill" href="https://www.instagram.com/teatea0317" target="_blank" rel="noopener">Instagram</a><a class="pill" href="#" onclick="alert('請替換為 X 連結');return false;">X</a></div>
+        </div>
+        <div>
+          <h3 class="heading" style="margin:12px 0 6px"><span class="kawaii">🎪</span><span>會參與的活動</span></h3>
+          <ul class="list"><li>🏷️ 快閃販售</li><li>🎞️ 攝影聯展</li><li>🤝 品牌聯名</li></ul>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- 聯絡 -->
+  <div class="divider"></div>
+
+  <!-- ===== 聯絡 ===== -->
   <section class="section" id="contact">
-    <div class="container grid grid-2">
-      <div class="reveal"><h2>聯絡合作</h2><p>把你的想法告訴我：主題、風格、地點與檔期，越具體越好。</p><ul class="list" style="margin-top:6px"><li>流程：需求訪談 → 風格確認 → 設計/拍攝 → 成果交付</li><li>加購：會員/付費牆、私密相簿、進階動畫</li></ul></div>
-      <form class="card reveal" onsubmit="event.preventDefault();window.location.href=`mailto:hello@example.com?subject=${encodeURIComponent('合作洽談（來自網站）')}&body=${encodeURIComponent(this.msg.value)}`" style="padding:16px">
-        <!-- ===== REPLACE START：信箱 ===== -->
-        <label for="msg">訊息</label><textarea id="msg" rows="6" placeholder="你好，我想合作的內容是…（可附 IG / X / JVID 連結與檔期）"></textarea>
-        <button class="btn" type="submit" style="margin-top:10px">用 Email 送出</button>
-        <!-- ===== REPLACE END ===== -->
+    <div class="container">
+      <div class="heading"><span class="kawaii">🐶</span><h2>聯絡合作</h2></div>
+      <div class="list" style="margin-bottom:10px">
+        <p>把你的想法告訴我：主題、風格、地點與檔期，越具體越好。</p>
+        <ul class="list"><li>流程：需求訪談 → 風格確認 → 設計/拍攝 → 成果交付</li><li>加購：會員/付費牆、私密相簿、進階動畫</li></ul>
+      </div>
+      <form onsubmit="event.preventDefault();window.location.href=`mailto:hello@example.com?subject=${encodeURIComponent('合作洽談（來自網站）')}&body=${encodeURIComponent(this.msg.value)}`">
+        <label for="msg">訊息</label>
+        <textarea id="msg" rows="6" placeholder="你好，我想合作的內容是…（可附 IG / X / JVID 連結與檔期）"></textarea>
+        <div style="margin-top:10px"><button class="btn" type="submit">用 Email 送出</button></div>
       </form>
     </div>
   </section>
 </main>
 
-<footer><div class="container" style="padding:30px 0;text-align:center;color:var(--muted);border-top:1px solid var(--line)">© <span id="y"></span> TeaTea · 示意頁（展示互動與排版，非最終商用版）。</div></footer>
+<footer>
+  <div class="divider"></div>
+  <div class="container" style="padding:26px 0;text-align:center;color:var(--muted)">© <span id="y"></span> TeaTea · 示意頁（展示互動與排版，非最終商用版）。</div>
+</footer>
 
-<!-- 入場：高質感 3D 水滴（WebGL Shader＋光澤水滴；含降級與略過） -->
-<div class="intro" id="intro" aria-hidden="true"><button class="skip" id="skip">略過動畫</button><div id="intro3d"><div class="fallback" aria-hidden="true"></div></div></div>
+<!-- ===== 入場：最高規格（原生 WebGL 3D，無外部依賴） ===== -->
+<div id="intro" aria-hidden="true">
+  <canvas id="introGL"></canvas>
+  <button id="skip">略過動畫</button>
+</div>
 
-<!-- 全站彩色微光粒子（細微、亮/暗主題皆可見） -->
+<!-- 全站彩色微光粒子 -->
 <canvas id="sparkle" width="0" height="0" aria-hidden="true"></canvas>
 
 <script>
-/* ===== 工具/主題/進度 ===== */const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);(()=>{$('#y').textContent=new Date().getFullYear();const r=document.documentElement,b=$('#theme'),t=localStorage.getItem('theme');if(t)r.setAttribute('data-theme',t);b.textContent=(r.getAttribute('data-theme')==='light')?'🌞':'🌙';b.addEventListener('click',()=>{const cur=r.getAttribute('data-theme')==='light'?'light':'dark';const nxt=cur==='light'?'dark':'light';r.setAttribute('data-theme',nxt);localStorage.setItem('theme',nxt);b.textContent=(nxt==='light')?'🌞':'🌙'})})();(function(){const bar=$('#progress');function onScroll(){const h=document.documentElement;const p=h.scrollTop/((h.scrollHeight-h.clientHeight)||1);bar.style.transform=`scaleX(${p})`}onScroll();document.addEventListener('scroll',onScroll,{passive:true})})();
-/* ===== Q 版動物（emoji 保留原風格） ===== */(function(){const box=$('#bgQ');const pool=['🐰','🐶','🐥','🐱','🐻','🐼','🦊','🐹'];for(let i=0;i<22;i++){const e=document.createElement('div');e.className='q';const s=.7+Math.random()*1.4;const left=Math.random()*110-5;const delay=Math.random()*-20;const dur=26+Math.random()*18;e.style.left=left+'%';e.style.bottom='-12%';e.style.transform=`scale(${s})`;e.style.animationDuration=`${dur}s`;e.style.animationDelay=`${delay}s`;e.textContent=pool[Math.floor(Math.random()*pool.length)];box.appendChild(e)}})();
-/* ===== 滾動揭露 ===== */(function(){const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('show')),{threshold:.12});$$('.reveal').forEach(n=>io.observe(n))})();
-/* ===== 全站微光粒子（彩色；低密度） ===== */(function(){const c=$('#sparkle'),ctx=c.getContext('2d');let W=innerWidth,H=innerHeight;function resize(){W=innerWidth;H=innerHeight;c.width=W;c.height=H}resize();addEventListener('resize',resize);const styles=getComputedStyle(document.documentElement);const colors=[styles.getPropertyValue('--spark1').trim(),styles.getPropertyValue('--spark2').trim(),styles.getPropertyValue('--spark3').trim()];let particles=[];let last=0;function emit(x,y){particles.push({x,y,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,life:1,decay:.012+Math.random()*.012,size:1+Math.random()*2,color:colors[Math.floor(Math.random()*colors.length)]})}function step(){ctx.clearRect(0,0,W,H);ctx.globalCompositeOperation='lighter';for(let i=particles.length-1;i>=0;i--){const p=particles[i];p.x+=p.vx;p.y+=p.vy;p.life-=p.decay;if(p.life<=0){particles.splice(i,1);continue}ctx.globalAlpha=Math.max(p.life,0);ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);ctx.fillStyle=p.color;ctx.fill()}requestAnimationFrame(step)}step();addEventListener('pointermove',e=>{const now=performance.now();if(now-last>30){emit(e.clientX,e.clientY);last=now}})})();
-/* ===== 3D 水滴入場（Three.js Shader，質感更高） ===== */(function(){const prefersReduced=matchMedia('(prefers-reduced-motion: reduce)').matches;if(prefersReduced){document.getElementById('intro').remove();return}const intro=document.getElementById('intro');const container=document.getElementById('intro3d');const skip=document.getElementById('skip');function end(){intro.classList.add('hidden');setTimeout(()=>intro.remove(),600)}let ok=true;try{const cnv=document.createElement('canvas');ok=!!(window.WebGLRenderingContext&&(cnv.getContext('webgl')||cnv.getContext('experimental-webgl')))}catch(e){ok=false}if(!ok){document.body.classList.add('no-webgl');setTimeout(end,1800);skip.addEventListener('click',end);return}
-const mod=`import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';import {EffectComposer} from 'https://unpkg.com/three@0.160.0/examples/jsm/postprocessing/EffectComposer.js';import {RenderPass} from 'https://unpkg.com/three@0.160.0/examples/jsm/postprocessing/RenderPass.js';import {UnrealBloomPass} from 'https://unpkg.com/three@0.160.0/examples/jsm/postprocessing/UnrealBloomPass.js';let scene=new THREE.Scene();let camera=new THREE.PerspectiveCamera(45,${container.clientWidth}/${container.clientHeight},0.1,100);camera.position.set(0,1.2,2.25);camera.lookAt(0,0,0);let renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});renderer.setPixelRatio(Math.min(2,window.devicePixelRatio||1));renderer.setSize(${container.clientWidth},${container.clientHeight});renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.1;document.getElementById('intro3d').appendChild(renderer.domElement);const geo=new THREE.PlaneGeometry(3.0,3.0,280,280);const uniforms={u_time:{value:0},u_amp:{value:0.0},u_center:{value:new THREE.Vector2(0.5,0.54)},u_t1:{value:new THREE.Color(getComputedStyle(document.documentElement).getPropertyValue('--accent').trim())},u_t2:{value:new THREE.Color(getComputedStyle(document.documentElement).getPropertyValue('--accent2').trim())}};const vtx='uniform float u_time;uniform float u_amp;uniform vec2 u_center;varying vec2 vUv;varying float vH;float ripple(vec2 uv,vec2 c,float t){float d=distance(uv,c);return sin(18.0*d-(t*5.0))*exp(-3.2*d);}void main(){vUv=uv;vec3 p=position;float w=ripple(uv,u_center,u_time)+0.5*ripple(uv,u_center+vec2(0.02,0.01),u_time-0.08);p.z+=u_amp*w*0.22;vH=p.z;gl_Position=projectionMatrix*modelViewMatrix*vec4(p,1.0);}';const frg='varying vec2 vUv;varying float vH;uniform vec3 u_t1;uniform vec3 u_t2;void main(){vec3 base=mix(u_t1,u_t2,vUv.y);float h=clamp(vH*2.0,0.0,1.0);vec3 col=base+vec3(h*0.35);gl_FragColor=vec4(col,1.0);}';const mat=new THREE.ShaderMaterial({uniforms,vertexShader:vtx,fragmentShader:frg});const plane=new THREE.Mesh(geo,mat);plane.rotation.x=-Math.PI/2.6;scene.add(plane);const dropGeo=new THREE.SphereGeometry(0.075,48,48);const dropMat=new THREE.MeshPhysicalMaterial({color:0xbfe9ff,metalness:0.2,roughness:.05,transmission:.5,thickness:.4,clearcoat:1,clearcoatRoughness:.06});const drop=new THREE.Mesh(dropGeo,dropMat);drop.position.set(0,0.9,0.0);scene.add(drop);const hemi=new THREE.HemisphereLight(0xffffff,0x223344,1.15);scene.add(hemi);const composer=new EffectComposer(renderer);composer.addPass(new RenderPass(scene,camera));const bloom=new UnrealBloomPass(new THREE.Vector2(${container.clientWidth},${container.clientHeight}),.5,.9,.2);composer.addPass(bloom);let t=0;let dropping=true;function animate(){t+=0.016;uniforms.u_time.value=t;if(dropping){drop.position.y-=0.02;if(drop.position.y<=0.05){dropping=false;uniforms.u_amp.value=1.0}}else{uniforms.u_amp.value+= (0.0-uniforms.u_amp.value)*0.04;}composer.render();requestAnimationFrame(animate)}animate();window.addEventListener('resize',()=>{const w=${container.clientWidth},h=${container.clientHeight};renderer.setSize(w,h);composer.setSize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix()});setTimeout(()=>{document.getElementById('intro').classList.add('hidden');setTimeout(()=>{document.getElementById('intro')?.remove()},600)},2600);`;const s=document.createElement('script');s.type='module';s.textContent=mod;document.body.appendChild(s);skip.addEventListener('click',end)})();
-</script>
+/* 工具 & 主題切換 */
+const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
+(()=>{$('#y').textContent=new Date().getFullYear();const r=document.documentElement,b=$('#theme'),t=localStorage.getItem('theme');if(t)r.setAttribute('data-theme',t);b.textContent=(r.getAttribute('data-theme')==='light')?'🌞':'🌙';b.addEventListener('click',()=>{const cur=r.getAttribute('data-theme')==='light'?'light':'dark';const nxt=cur==='light'?'dark':'light';r.setAttribute('data-theme',nxt);localStorage.setItem('theme',nxt);b.textContent=(nxt==='light')?'🌞':'🌙'})})();
+/* 滾動 reveal */
+(function(){const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('show')),{threshold:.12});$$('.reveal').forEach(n=>io.observe(n))})();
+/* Q 版動物背景（保留） */
+(function(){const box=$('#bgQ');const pool=['🐰','🐶','🐥','🐱','🐻','🐼','🦊','🐹'];for(let i=0;i<24;i++){const e=document.createElement('div');e.className='q';const s=.7+Math.random()*1.4;const left=Math.random()*110-5;const delay=Math.random()*-22;const dur=28+Math.random()*18;e.style.left=left+'%';e.style.bottom='-12%';e.style.transform=`scale(${s})`;e.style.animationDuration=`${dur}s`;e.style.animationDelay=`${delay}s`;e.textContent=pool[Math.floor(Math.random()*pool.length)];box.appendChild(e)}})();
+/* 全站彩色微光粒子（低密度；亮/暗主題可見） */
+(function(){const c=$('#sparkle'),ctx=c.getContext('2d');let W=innerWidth,H=innerHeight;function resize(){W=innerWidth;H=innerHeight;c.width=W;c.height=H}resize();addEventListener('resize',resize);const styles=getComputedStyle(document.documentElement);const colors=[styles.getPropertyValue('--spark1').trim(),styles.getPropertyValue('--spark2').trim(),styles.getPropertyValue('--spark3').trim()];let particles=[];let last=0;function emit(x,y){particles.push({x,y,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,life:1,decay:.012+Math.random()*.012,size:1+Math.random()*2,color:colors[Math.floor(Math.random()*colors.length)]})}function step(){ctx.clearRect(0,0,W,H);ctx.globalCompositeOperation='lighter';for(let i=particles.length-1;i>=0;i--){const p=particles[i];p.x+=p.vx;p.y+=p.vy;p.life-=p.decay;if(p.life<=0){particles.splice(i,1);continue}ctx.globalAlpha=Math.max(p.life,0);ctx.beginPath();ctx.arc(p.x,p.y,p.size,0,Math.PI*2);ctx.fillStyle=p.color;ctx.fill()}requestAnimationFrame(step)}step();addEventListener('pointermove',e=>{const now=performance.now();if(now-last>30){emit(e.clientX,e.clientY);last=now}})})();
+/* ======= 入場動畫：原生 WebGL（全屏） ======= */
+(function(){
+  const prefersReduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const overlay=$('#intro'),canvas=$('#introGL'),skip=$('#skip');
+  function end(){overlay.classList.add('hidden');setTimeout(()=>overlay.remove(),600)}
+  if(prefersReduced){end();return}
+  let gl=canvas.getContext('webgl',{antialias:true,alpha:true,powerPreference:'high-performance'});
+  if(!gl){end();return}
+  // 尺寸
+  function resize(){const dpr=Math.min(2,devicePixelRatio||1);canvas.width=innerWidth*dpr;canvas.height=innerHeight*dpr;gl.viewport(0,0,canvas.width,canvas.height)}
+  resize();addEventListener('resize',resize);
+  const vertSrc=`attribute vec2 p;void main(){gl_Position=vec4(p,0.0,1.0);}`;
+  const fragSrc=`precision highp float;
+    uniform vec2 u_res;uniform float u_time;
+    uniform vec3 u_c1;uniform vec3 u_c2;
+    // 基底顏色（與主題相連）
+    vec3 baseColor(vec2 uv){return mix(u_c1,u_c2,uv.y);}
+    // 偽法線高光
+    vec3 shade(vec2 uv,float h){
+      vec3 n=normalize(vec3(dFdx(h),dFdy(h),1.0));
+      vec3 l=normalize(vec3(0.3,0.6,1.0));
+      float diff=clamp(dot(n,l),0.0,1.0);
+      float spec=pow(max(dot(reflect(-l,n),vec3(0,0,1)),0.0),32.0);
+      return vec3(diff)*0.55 + spec*0.65;
+    }
+    void main(){
+      vec2 uv=gl_FragCoord.xy/u_res.xy; uv.y=1.0-uv.y;
+      // 掉落中的水滴
+      float t=u_time;
+      float dropT=1.15;                         // 落下時間
+      float hitT=dropT+0.05;                    // 接觸水面
+      float dropY=mix(1.3,0.58,clamp(t/dropT,0.0,1.0));
+      vec2 drop=vec2(0.5,dropY);
+      // 背景水面
+      float amp=0.0;
+      if(t>hitT){
+        float a=t-hitT;
+        float d=distance(uv,vec2(0.5,0.58));
+        float wave=sin(22.0*d-5.2*a)*exp(-3.2*d);
+        float wave2=sin(22.0*(d+0.018)-5.2*(a-0.08))*exp(-3.2*d)*0.6;
+        amp=(wave+wave2);
+      }
+      float height=amp*0.22;                    // 高度場
+      vec3 col=baseColor(uv)+shade(uv,height)*0.25;
+      // 漣漪亮邊
+      col += vec3(smoothstep(0.16,0.0,abs(amp))*0.05);
+      // 水滴本體（亮高光）
+      if(t<hitT+0.12){
+        float d=distance(uv,drop);
+        float body=smoothstep(0.09,0.0,d);
+        vec3 dropCol=mix(vec3(0.80,0.93,1.0),vec3(0.55,0.85,1.0),uv.y);
+        col = mix(col,dropCol + vec3(0.25,0.25,0.35), body);
+        col += vec3(smoothstep(0.06,0.03,d))*0.35;
+      }
+      // 暈影
+      float v=pow(1.0-length(uv-0.5)*1.2,1.2);
+      col *= v;
+      gl_FragColor=vec4(col,1.0);
+    }`;
+  function compile(type,src){const s=gl.createShader(type);gl.shaderSource(s,src);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS)){console.error(gl.getShaderInfoLog(s));}return s}
+  const prog=gl.createProgram();gl.attachShader(prog,compile(gl.VERTEX_SHADER,vertSrc));gl.attachShader(prog,compile(gl.FRAGMENT_SHADER,fragSrc));gl.linkProgram(prog);gl.useProgram(prog);
+  const buf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1, 1,-1, -1,1,  -1,1, 1,-1, 1,1]),gl.STATIC_DRAW);
+  const loc=gl.getAttribLocation(prog,'p');gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
+  const u_res=gl.getUniformLocation(prog,'u_res'),u_time=gl.getUniformLocation(prog,'u_time');
+  const styles=getComputedStyle(document.documentElement);
+  const c1=styles.getPropertyValue('--accent').trim(),c2=styles.getPropertyValue('--accent2').trim();
+  function hexToRGB(h){let x=h.replace('#','');if(x.length===3)x=x[0]+x[0]+x[1]+x[1]+x[2]+x[2];return [parseInt(x.slice(0,2),16)/255,parseInt(x.slice(2,4),16)/255,parseInt(x.slice(4,6),16)/255]}
+  const [r1,g1,b1]=hexToRGB(/^#/.test(c1)?c1:'#78e3ff');const [r2,g2,b2]=hexToRGB(/^#/.test(c2)?c2:'#7be9e3');
+  gl.uniform3f(gl.getUniformLocation(prog,'u_c1'),r1,g1,b1);gl.uniform3f(gl.getUniformLocation(prog,'u_c2'),r2,g2,b2);
+  let start=performance.now();
+  function frame(now){
+    const t=(now-start)/1000;
+    const dpr=Math.min(2,devicePixelRatio||1);canvas.width=innerWidth*dpr;canvas.height=innerHeight*dpr;gl.viewport(0,0,canvas.width,canvas.height);
+    gl.uniform2f(u_res,canvas.width,canvas.height);
+    gl.uniform1f(u_time,t);
+    gl.drawArrays(gl.TRIANGLES,0,6);
+    if(t>2.6){end();return}
+    requestAnimationFrame(frame)
+  }
+  requestAnimationFrame(frame);
+  skip.addEventListener('click',end);
+})();
 
-<!-- 使用說明（不顯示）
-REPLACE：1) 主視覺頭像/文案/連結；2) #work 四張女性圖片；3) #services 內 JVID/X 連結；4) 聯絡信箱。
-重點：保留你滿意的「Q 版 emoji 背景」；整體版面改為可愛卡片風；全站粒子改彩色在亮/暗模式都可見；Header 設 position:fixed + z-index:2000（不會再消失）；入場為高質感 3D 水滴（Bloom + 物理材質），動畫結束自動移除。
--->
+/* 無障礙：Esc 跳過入場 */
+addEventListener('keydown',e=>{if(e.key==='Escape'){const i=$('#intro');if(i){i.classList.add('hidden');setTimeout(()=>i.remove(),300)}}});
+</script>
 </body></html>
